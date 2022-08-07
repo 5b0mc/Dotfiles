@@ -1,19 +1,19 @@
 DISABLE_AUTO_TITLE="true"
 NPM_PACKAGES="${HOME}/.npm-packages"
+ZSH_THEME="robbyrussell"
 
 export LANG=en_US.UTF-8
 export LC_CTYPE=en_US.UTF-8
 export PATH="$PATH:$NPM_PACKAGES/bin"
+export ZSH="/home/m/.oh-my-zsh"
+plugins=(git fzf)
+source $ZSH/oh-my-zsh.sh
 
-alias xresourceseconfig="nvim ~/.Xresources"
-alias i3config="nvim ~/.config/i3/config"
-alias ms="cd ~/Writing/MirkoSacchetti"
-alias zshconfig="nvim ~/.zshrc"
 alias open="xdg-open"
 alias jn="jupyter notebook"
 alias wn="cd ~/Code/WiNet"
 alias pr="cd ~/Projects"
-alias vi="nvim"
+alias vim="nvim"
 
 todo(){
   vim ~/Writing/notes/TODO
