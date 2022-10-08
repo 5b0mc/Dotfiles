@@ -1,0 +1,7 @@
+vim.keymap.set('n', '<Leader>o', ':FzfLua files<CR>')
+vim.keymap.set('n', '<Leader>e', ':Lexplore<CR>')
+vim.keymap.set('n', '<Leader>b', ':FzfLua buffers<CR>')
+vim.keymap.set('n', '<Leader>w', ':w!<CR>')
+vim.keymap.set('n', '<Leader>d', ':bd<CR>')
+vim.keymap.set('i', 'kj', '<ESC>')
+vim.keymap.set('n', '<Leader>vd', 'lua vim.diagnostic.open_float()')
