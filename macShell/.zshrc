@@ -13,9 +13,7 @@ export ZSH="/Users/m/.oh-my-zsh"
 plugins=(git fzf )
 source $ZSH/oh-my-zsh.sh
 
-alias nvimconfig="nvim ~/.config/nvim"
-alias zshconfig="vim ~/.zshrc"
-alias vimconfig="vim ~/.vimrc"
+alias dotfiles="nvim ~/Projects/dotfiles"
 alias python="python3"
 alias smerge='/Applications/Sublime\ Merge.app/Contents/SharedSupport/bin/smerge'
 alias subl='/Applications/Sublime\ Text.app/Contents/SharedSupport/bin/subl'
@@ -99,8 +97,7 @@ export NVM_DIR="$HOME/.nvm"
 }
 
 haskellload(){
-# learn You a Haskell for Great Good!
-[ -f "/Users/m/.ghcup/env" ] && source "/Users/m/.ghcup/env" # ghcup-env
+  # learn You a Haskell for Great Good!
+  [ -f "/Users/m/.ghcup/env" ] && source "/Users/m/.ghcup/env" # ghcup-env
 }
 
-source /Users/m/.config/broot/launcher/bash/br

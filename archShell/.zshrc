@@ -9,35 +9,13 @@ export ZSH="/home/m/.oh-my-zsh"
 plugins=(git fzf)
 source $ZSH/oh-my-zsh.sh
 
-alias nvimconfig="nvim ~/.config/nvim"
+alias dotfiles="nvim ~/dotfiles"
 alias open="xdg-open"
 alias jn="jupyter notebook"
 alias wn="cd ~/Code/WiNet"
 alias ms="cd ~/Writing/MirkoSacchetti"
 alias pr="cd ~/Projects"
 alias vim="nvim"
-
-todo(){
-  vim ~/Writing/notes/TODO
-}
-
-qn(){
-  if [[ $1 = '-l' ]]; then
-    ls -l ~/Writing/notes
-  elif [[ $1 ]]; then
-    vim ~/Writing/notes/$1
-  else
-    vim ~/Writing/notes/random_note_$(date +'%Y_%m_%d__%H_%M')
-  fi
-}
-
-passwordrandom (){
-  if [ -z "$1" ]; then
-     openssl rand -base64 6
-  else
-    openssl rand -base64 $1
-  fi
-}
 
 killmyport(){
   sudo fuser -k -n tcp $1
@@ -46,14 +24,6 @@ killmyport(){
 downloadyoutubeaudio(){
   cd ~/Documents/synthMusic         
   youtube-dl -f 'bestaudio[ext=m4a]' $1
-}
-
-dsstorefucker(){
-  sudo find ~/Code -name .DS_Store -depth -exec rm {} \;
-  sudo find ~/Projects -name .DS_Store -depth -exec rm {} \;
-  sudo find ~/Documents -name .DS_Store -depth -exec rm {} \;
-  sudo find ~/Writing -name .DS_Store -depth -exec rm {} \;
-  defaults write com.apple.desktopservices DSDontWriteNetworkStores true
 }
 
 listenvideoaudio() {
@@ -81,12 +51,4 @@ condainit(){
   fi
   unset __conda_setup
 }
-
-gitignore() { 
-  curl -sLw n https://www.toptal.com/developers/gitignore/api/$@
-}
-
-
-# learn You a Haskell for Great Good!
-[ -f "/Users/m/.ghcup/env" ] && source "/Users/m/.ghcup/env" # ghcup-env
 
