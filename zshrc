@@ -1,6 +1,6 @@
 DISABLE_AUTO_TITLE="true"
 NPM_PACKAGES="${HOME}/.npm-packages"
-ZSH_THEME="robbyrussell"
+ZSH_THEME="eastwood"
 
 export LANG=en_US.UTF-8
 export LC_CTYPE=en_US.UTF-8
@@ -9,9 +9,11 @@ export ZSH="/home/m/.oh-my-zsh"
 plugins=(git fzf)
 source $ZSH/oh-my-zsh.sh
 
+alias nvimconfig="nvim ~/.config/nvim"
 alias open="xdg-open"
 alias jn="jupyter notebook"
 alias wn="cd ~/Code/WiNet"
+alias ms="cd ~/Writing/MirkoSacchetti"
 alias pr="cd ~/Projects"
 alias vim="nvim"
 
@@ -83,6 +85,7 @@ condainit(){
 gitignore() { 
   curl -sLw n https://www.toptal.com/developers/gitignore/api/$@
 }
+
 
 # learn You a Haskell for Great Good!
 [ -f "/Users/m/.ghcup/env" ] && source "/Users/m/.ghcup/env" # ghcup-env
