@@ -9,7 +9,7 @@ export ZSH="/home/m/.oh-my-zsh"
 plugins=(git fzf)
 source $ZSH/oh-my-zsh.sh
 
-alias dotfiles="nvim ~/dotfiles"
+alias dotfiles="nvim ~/Projects/dotfiles"
 alias open="xdg-open"
 alias jn="jupyter notebook"
 alias wn="cd ~/Code/WiNet"

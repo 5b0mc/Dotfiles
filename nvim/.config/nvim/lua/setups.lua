@@ -190,7 +190,6 @@ local function on_new_config(new_config, new_root_dir)
       { name = 'nvim_lsp' },
       { name = 'vsnip' },
     }, {
-      { name = 'buffer' },
     })
   })
 
