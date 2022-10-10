@@ -13,7 +13,7 @@ export ZSH="/Users/m/.oh-my-zsh"
 plugins=(git fzf )
 source $ZSH/oh-my-zsh.sh
 
-alias dotfiles="nvim ~/Projects/dotfiles"
+alias dotfiles="cd ~/Projects/dotfiles; nvim ."
 alias python="python3"
 alias smerge='/Applications/Sublime\ Merge.app/Contents/SharedSupport/bin/smerge'
 alias subl='/Applications/Sublime\ Text.app/Contents/SharedSupport/bin/subl'
