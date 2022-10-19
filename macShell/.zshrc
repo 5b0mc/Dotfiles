@@ -1,6 +1,9 @@
 DISABLE_AUTO_TITLE="true"
 ZSH_THEME="robbyrussell"
 
+NPM_PACKAGES="${HOME}/.npm-packages"
+GOPATH="~/Code/go"
+
 export LANG=en_US.UTF-8
 export LC_CTYPE=en_US.UTF-8
 export PATH="/opt/homebrew/bin":$PATH
