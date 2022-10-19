@@ -3,6 +3,7 @@ use 'wbthomason/packer.nvim'
 
 use 'tpope/vim-commentary'
 use 'tpope/vim-fugitive'
+use 'tpope/vim-surround'
 use 'ibhagwan/fzf-lua'
 
 use 'neovim/nvim-lspconfig'
