@@ -18,6 +18,7 @@ alias wn="cd ~/Code/WiNet"
 alias ms="cd ~/Writing/MirkoSacchetti"
 alias pr="cd ~/Projects"
 alias vim="nvim"
+alias mypi="ssh pi@192.168.2.8"
 
 killmyport(){
   sudo fuser -k -n tcp $1
@@ -54,3 +55,9 @@ condainit(){
   unset __conda_setup
 }
 
+
+nvmloader(){
+export NVM_DIR="$HOME/.nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
+[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
+}
