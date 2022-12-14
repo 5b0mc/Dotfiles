@@ -26,7 +26,7 @@ end
 
 local capabilities = require('cmp_nvim_lsp').default_capabilities(vim.lsp.protocol.make_client_capabilities())
 local lspconfig = require'lspconfig'
-local servers = { "tsserver", "volar", "html" }
+local servers = { "tsserver", "volar", "html", "gopls" }
 for _, lsp in ipairs(servers) do
   lspconfig[lsp].setup {
     flags = lsp_flags,
