@@ -1,6 +1,6 @@
-vim.keymap.set('n', '<Leader>o', ':FzfLua files<CR>')
+vim.keymap.set('n', '<Leader>o', ':Files<CR>')
 vim.keymap.set('n', '<Leader>e', ':Lexplore<CR>')
-vim.keymap.set('n', '<Leader>b', ':FzfLua buffers<CR>')
+vim.keymap.set('n', '<Leader>b', ':Buffers<CR>')
 vim.keymap.set('n', '<Leader>w', ':w!<CR>')
 vim.keymap.set('n', '<Leader>d', ':bd<CR>')
 vim.keymap.set('i', 'kj', '<ESC>')

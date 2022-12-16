@@ -5,6 +5,7 @@ vim.opt.number = true
 vim.opt.relativenumber = true
 vim.opt.errorbells = false
 vim.opt.updatetime = 50
+vim.opt.signcolumn="yes"
 
 vim.opt.tabstop = 4
 vim.opt.softtabstop = 4

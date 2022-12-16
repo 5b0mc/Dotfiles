@@ -5,6 +5,8 @@ use 'tpope/vim-commentary'
 use 'tpope/vim-fugitive'
 use 'tpope/vim-surround'
 use 'ibhagwan/fzf-lua'
+use 'junegunn/fzf'
+use 'junegunn/fzf.vim'
 
 use 'neovim/nvim-lspconfig'
 use 'hrsh7th/cmp-nvim-lsp'
