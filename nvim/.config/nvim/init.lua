@@ -1,6 +1,6 @@
 require('plugins')
-require('setups')
 require('options')
 require('mappings')
+require('setup')
 
 vim.cmd("colorscheme gruvbox")
