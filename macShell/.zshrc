@@ -1,5 +1,6 @@
 DISABLE_AUTO_TITLE="true"
 ZSH_THEME="robbyrussell"
+BAT_THEME="gruvbox-light"
 
 NPM_PACKAGES="${HOME}/.npm-packages"
 GOPATH="~/Code/go"

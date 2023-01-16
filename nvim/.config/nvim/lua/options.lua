@@ -4,11 +4,11 @@ vim.g.netrw_keepdir = 1
 vim.g.netrw_winsize = 30
 vim.g.netrw_localcopydircmd = 'cp -r'
 
-
-vim.opt.number = true
 vim.opt.relativenumber = true
 vim.opt.errorbells = false
-vim.opt.updatetime = 50
+vim.opt.updatetime = 250
+vim.opt.number = true
+vim.opt.redrawtime = 0
 vim.opt.signcolumn="yes"
 
 vim.opt.tabstop = 4
