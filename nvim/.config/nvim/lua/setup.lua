@@ -3,6 +3,10 @@ telescope.setup {
     pickers = {
         find_files = {
             find_command = {'rg', '--files', '--hidden', '-g', '!.git'},
+        },
+        buffers = {
+            sort_lastused = true,
+            ignore_current_buffer = true,
         }
     }
 }
