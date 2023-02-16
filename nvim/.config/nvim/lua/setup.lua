@@ -1,3 +1,23 @@
+local telescope = require('telescope')
+telescope.setup {
+    pickers = {
+        find_files = {
+            find_command = {'rg', '--files', '--hidden', '-g', '!.git'},
+        }
+    }
+}
+require('telescope').load_extension('fzf')
+require("neo-tree").setup({
+        filesystem = {
+            filtered_items = {
+                visible = true, 
+                hide_dotfiles = true,
+                hide_gitignored = true,
+            }
+        }
+    
+})
+
 
 local opts = { noremap=true, silent=true }
 vim.keymap.set('n', '<space>e', vim.diagnostic.open_float, opts)
