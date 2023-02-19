@@ -8,6 +8,12 @@ vim.opt.relativenumber = true
 vim.opt.errorbells = false
 vim.opt.updatetime = 250
 vim.opt.number = true
+vim.opt.hidden = true
+vim.opt.redrawtime = 0
+vim.opt.signcolumn="yes"
+
+vim.opt.tabstop = 4
+vim.opt.softtabstop = 4
 vim.opt.redrawtime = 0
 vim.opt.signcolumn="yes"
 
