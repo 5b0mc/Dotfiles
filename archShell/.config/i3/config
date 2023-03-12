@@ -5,15 +5,12 @@ set $mod Mod4
 focus_follows_mouse no
 floating_modifier $super
 
-exec --no-startup-id /usr/bin/gnome-keyring-daemon --start --components=secret
-exec --no-startup-id i3-battery-popup -n
-exec --no-startup-id autorandr --change
+exec --no-startup-id /usr/bin/gnome-keyring-daemon --start --components=ssh,secrets,pkcs11
 exec --no-startup-id volumeicon
 exec --no-startup-id redshift
-exec --no-startup-id picon -b
 exec --no-startup-id clipit
 
-
+# exec ../scripts/inverse-scroll.sh
 
 # launchers
 bindsym $mod+Return exec i3-sensible-terminal
@@ -67,10 +64,7 @@ bindsym $super+Shift+9 move container to workspace 9
 bindsym $super+Shift+0 move container to workspace 10
 
 # window rules, you can find the window class using xprop
-assign [class=Google-chrome*] 3
-assign [class=Mailspring] 7
 for_window [class=Pavucontrol|Gnome-calculator] floating enable
-for_window [class="Spotify"] move to workspace 6
 
 # i3 style 
 default_border pixel 0
@@ -96,7 +90,6 @@ bindsym XF86AudioPrev exec playerctl previous
 
 # Touchpad config
 exec --no-startup-id xinput set-prop "$touchpad" "libinput Tapping Enabled" 1
-exec --no-startup-id xinput set-prop "$touchpad" "libinput Natural Scrolling Enabled" 1
 exec --no-startup-id xinput set-prop "$touchpad" "libinput Disable While Typing Enabled" 0
 
 # rofi
@@ -109,10 +102,8 @@ bindsym Ctrl+space exec rofi -lines 8 \
   -kb-row-down "Control+j"\
   -kb-accept-entry "Return" \
   -kb-remove-to-eol "Control+Shift+e"\
-  -kb-mode-next "Control+l"\
   -kb-mode-previous "Control+h"\
   -kb-remove-char-back "BackSpace"\
-  -kb-row-select "Tab"\
   -kb-row-tab "" \
   -font 'Fira Code 22'\
   -combi-modi "window#drun" \
@@ -121,9 +112,5 @@ bindsym Ctrl+space exec rofi -lines 8 \
 
 bar {
   status_command i3status
-  binding_mode_indicator no
   position top
-  mode hide
-  font pango:Operator Mono 22
-  separator_symbol " "
 }
