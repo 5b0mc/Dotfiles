@@ -12,14 +12,14 @@ telescope.setup {
 }
 require('telescope').load_extension('fzf')
 require("neo-tree").setup({
-        filesystem = {
-            filtered_items = {
-                visible = true, 
-                hide_dotfiles = true,
-                hide_gitignored = true,
-            }
+    filesystem = {
+        filtered_items = {
+            visible = true, 
+            hide_dotfiles = true,
+            hide_gitignored = true,
         }
-    
+    }
+
 })
 
 
@@ -61,6 +61,11 @@ for _, lsp in ipairs(servers) do
         capabilities = capabilities
     }
 end
+require'lspconfig'.tsserver.setup{
+    filetypes = { "javascript", "typescript", "typescriptreact", "typescript.tsx" },
+    on_attach = on_attach,
+    capabilities = capabilities
+}
 
 require'lspconfig'.volar.setup{
     cmd = {'vue-language-server', '--stdio'},
