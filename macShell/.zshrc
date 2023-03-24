@@ -1,35 +1,27 @@
 DISABLE_AUTO_TITLE="true"
 ZSH_THEME="robbyrussell"
-BAT_THEME="gruvbox-light"
-
-NPM_PACKAGES="${HOME}/.npm-packages"
-GOPATH="~/Code/go"
-
 export LANG=en_US.UTF-8
 export LC_CTYPE=en_US.UTF-8
-export PATH="/opt/homebrew/bin":$PATH
-export PATH="$PATH:/Users/m/Library/flutter/bin"
-export PATH="$PATH:/Users/m/.local/bin"
-export PATH="$PATH:/opt/homebrew/Cellar/llvm/12.0.1/bin"
-export GOPATH="/Users/m/Code/go"
+
+NPM_PACKAGES="${HOME}/.npm-packages"
+export PATH="$PATH:$NPM_PACKAGES/bin"
+
+GOPATH="/Users/m/Code/go"
 export PATH="$PATH:$GOPATH/bin"
+
 export ZSH="/Users/m/.oh-my-zsh"
 plugins=(git fzf)
 source $ZSH/oh-my-zsh.sh
 
 alias dotfiles="cd ~/Projects/dotfiles"
 alias python="python3"
-alias smerge='/Applications/Sublime\ Merge.app/Contents/SharedSupport/bin/smerge'
-alias subl='/Applications/Sublime\ Text.app/Contents/SharedSupport/bin/subl'
-alias mypi="ssh pi@192.168.2.8"
-alias mypc="ssh 192.168.2.10"
-alias syncMS=" rsync -avzu m@192.168.2.14:~/Writing/ ~/Writing; rsync -avzu ~/Writing/ m@192.168.2.14:~/Writing;" 
+alias smerge='/Applications/Sublime\ Merge.app/Contents/SharedSupport/bin/smerge .'
+alias subl='/Applications/Sublime\ Text.app/Contents/SharedSupport/bin/subl .'
 alias jn="jupyter notebook"
 alias wn="cd ~/Code/WiNet"
 alias ms="cd ~/Writing/MirkoSacchetti"
 alias vi=vim
 alias vim=nvim
-
 
 todo(){
     vim ~/Writing/notes/TODO

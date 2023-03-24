@@ -21,7 +21,7 @@ use 'sainnhe/gruvbox-material'
 vim.cmd("colorscheme gruvbox-material")
 
 use {
-  'nvim-telescope/telescope.nvim', tag = '0.1.1',
+  'nvim-telescope/telescope.nvim',
   requires = {
       {'nvim-telescope/telescope-fzf-native.nvim', run = 'make' },
       {'nvim-lua/plenary.nvim'}
