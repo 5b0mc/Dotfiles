@@ -2,7 +2,9 @@ DISABLE_AUTO_TITLE="true"
 ZSH_THEME="eastwood"
 
 NPM_PACKAGES="${HOME}/.npm-packages"
-GOPATH="~/Code/go"
+
+export GOPATH="/home/m/Code/go"
+export PATH="$PATH:$GOPATH/bin"
 
 export LANG=en_US.UTF-8
 export LC_CTYPE=en_US.UTF-8
