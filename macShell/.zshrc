@@ -1,10 +1,12 @@
 DISABLE_AUTO_TITLE="true"
-ZSH_THEME="robbyrussell"
+ZSH_THEME="refined"
 export LANG=en_US.UTF-8
 export LC_CTYPE=en_US.UTF-8
 
 NPM_PACKAGES="${HOME}/.npm-packages"
 export PATH="$PATH:$NPM_PACKAGES/bin"
+
+export TERM=xterm-256color
 
 GOPATH="/Users/m/Code/go"
 export PATH="$PATH:$GOPATH/bin"
