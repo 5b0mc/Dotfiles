@@ -23,21 +23,13 @@ alias ms="cd ~/Writing/MirkoSacchetti"
 alias vi=vim
 alias vim=nvim
 
-todo(){
-    vim ~/Writing/notes/TODO
-}
-
-todow(){
-    vim ~/Code/WiNet/TODO
-}
-
 qn(){
     if [[ $1 = 'rand' ]]; then
-        vi ~/Writing/notes/rand_$(date +'%Y_%m_%d__%H_%M')
+        vim ~/Writing/notes/rand_$(date +'%Y_%m_%d__%H_%M')
     elif [[ $1 ]]; then
-        vi ~/Writing/notes/$1
+        vim ~/Writing/notes/$1
     else
-        vi -c "cd ~/Writing/notes"
+        vim -c "cd ~/Writing/notes"
     fi
 }
 
