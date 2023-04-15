@@ -1,10 +1,12 @@
 DISABLE_AUTO_TITLE="true"
-ZSH_THEME="robbyrussell"
+ZSH_THEME="refined"
 export LANG=en_US.UTF-8
 export LC_CTYPE=en_US.UTF-8
 
 NPM_PACKAGES="${HOME}/.npm-packages"
 export PATH="$PATH:$NPM_PACKAGES/bin"
+
+export TERM=xterm-256color
 
 GOPATH="/Users/m/Code/go"
 export PATH="$PATH:$GOPATH/bin"
@@ -23,21 +25,13 @@ alias ms="cd ~/Writing/MirkoSacchetti"
 alias vi=vim
 alias vim=nvim
 
-todo(){
-    vim ~/Writing/notes/TODO
-}
-
-todow(){
-    vim ~/Code/WiNet/TODO
-}
-
 qn(){
     if [[ $1 = 'rand' ]]; then
-        vi ~/Writing/notes/rand_$(date +'%Y_%m_%d__%H_%M')
+        vim ~/Writing/notes/rand_$(date +'%Y_%m_%d__%H_%M')
     elif [[ $1 ]]; then
-        vi ~/Writing/notes/$1
+        vim ~/Writing/notes/$1
     else
-        vi -c "cd ~/Writing/notes"
+        vim -c "cd ~/Writing/notes"
     fi
 }
 
