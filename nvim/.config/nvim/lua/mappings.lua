@@ -1,4 +1,4 @@
-vim.keymap.set('n', '<Leader>e', ':Neotree reveal toggle<CR>')
+vim.keymap.set('n', '<Leader>e', ':Neotree reveal<CR>')
 vim.keymap.set('n', '<Leader>b', ':Telescope buffers<CR>')
 vim.keymap.set('n', '<Leader>o', ':Telescope find_files<CR>')
 vim.keymap.set('n', '<Leader>g', ':Telescope live_grep<CR>')
