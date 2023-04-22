@@ -133,7 +133,7 @@ font:
     #   - (macOS) Menlo
     #   - (Linux/BSD) monospace
     #   - (Windows) Consolas
-    family: FiraCode Nerd Font
+    family: monospace
 
     # The `style` can be specified to pick a specific face.
     style: Regular
@@ -453,7 +453,7 @@ selection:
 #   - (Linux/BSD/macOS) `$SHELL` or the user's login shell, if `$SHELL` is unset
 #   - (Windows) powershell
 shell:
-  program: /opt/homebrew/bin/fish
+  program: fish
   args:
     - -l
     - -c
