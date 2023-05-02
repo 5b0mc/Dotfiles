@@ -64,7 +64,7 @@ window:
   # Values for `decorations` (macOS only):
   #     - transparent: Title bar, transparent background and title bar buttons
   #     - buttonless: Title bar, transparent background and no title bar buttons
-  decorations: none
+  # decorations: none
 
   # Background opacity
   #
@@ -92,7 +92,7 @@ window:
   # Window class (Linux/BSD only):
   #class:
     # Application instance name
-    #instance: Alacritty
+    #instance: Alacritt
     # General application class
     #general: Alacritty
 
@@ -172,7 +172,7 @@ font:
     #style: Bold Italic
 
   # Point size
-  size: 11.0
+  size: 12.0
 
   # Offset is the extra space around each character. `offset.y` can be thought
   # of as modifying the line spacing, and `offset.x` as modifying the letter

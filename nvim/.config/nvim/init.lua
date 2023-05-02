@@ -1,7 +1,6 @@
-require('plugins')
-require('setup')
-require('lsp')
-
 require('options')
 require('mappings')
 
+require('plugins')
+require('lsp')
+require('setup')

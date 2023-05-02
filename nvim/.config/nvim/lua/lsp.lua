@@ -58,9 +58,12 @@ lspconfig.volar.setup{
     capabilities = capabilities
 }
 
+
 lspconfig.rust_analyzer.setup {
+    flags = lsp_flags,
     on_attach = on_attach,
     capabilities = capabilities,
+    cmd = {"rustup", "run", "stable", "rust-analyzer"},
 }
 
 lspconfig.gopls.setup {
