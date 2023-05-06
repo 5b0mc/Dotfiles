@@ -7,7 +7,7 @@ alias vim="nvim"
 
 alias python="python3"
 alias ms="cd ~/Writing/MirkoSacchetti"
-alias dotfiles="nvim ~/Projects/dotfiles"
+alias dotfiles="nvim ~/Code/dotfiles"
 alias wn="cd ~/Code/WiNet"
 
 set -g theme_nerd_fonts yes
