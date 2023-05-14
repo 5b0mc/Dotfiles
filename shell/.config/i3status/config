@@ -1,0 +1,28 @@
+general {
+        colors = false
+        output_format = "i3bar"
+        interval = 30
+}
+
+order += "disk /"
+order += "memory"
+order += "tztime week"
+order += "tztime local"
+
+tztime local {
+		format = " %a %-d %b %H:%M "
+}
+
+tztime week {
+		format = " W:%W "
+}
+
+disk "/" {
+    format = " %avail "
+}
+
+memory {
+        format = " %used "
+        threshold_degraded = "10%"
+        format_degraded = "MEMORY: %free"
+}
