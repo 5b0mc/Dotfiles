@@ -4,13 +4,10 @@ general {
         interval = 10
 }
 
-order += "disk /"
-order += "memory"
-order += "tztime week"
 order += "tztime local"
 
 tztime local {
-		format = " W:%W \ %a %-d %b %H:%M "
+		format = "%a %-d %b %H:%M "
 }
 
 disk "/" {

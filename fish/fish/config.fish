@@ -5,8 +5,10 @@ alias vim="nvim"
 
 alias python="python3"
 alias ms="cd ~/Writing/MirkoSacchetti"
-alias dotfiles="nvim ~/Code/dotfiles"
+alias dotfiles="nvim ~/Dotfiles"
 alias wn="cd ~/Code/WiNet"
+alias open="xdg-open"
+alias jn="jupyter notebook"
 
 set -g theme_nerd_fonts yes
 set fish_greeting
@@ -24,6 +26,7 @@ end
 function pick10
     find . -maxdepth 1  -type f -o -type d -a ! -name '.' ! -name '..' | shuf -n 10
 end
+
 function newpass
     for i in (seq 3)
         tr -dc 'A-Za-z0-9!@#%^&*_+-' < /dev/urandom | head -c 8; echo
@@ -46,3 +49,6 @@ function nvmloader
     [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion" 
 end
 
+function aj
+    mpv https://live-hls-aje-ak.getaj.net/AJE/04.m3u8 &>/dev/null &
+end
