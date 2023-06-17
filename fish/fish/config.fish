@@ -17,12 +17,6 @@ set -x GOPATH $HOME/Code/go
 set -x NPM_PACKAGES $HOME/.npm-packages
 set -x PATH $PATH $NPM_PACKAGES/bin $GOPATH/bin
 
-if test (uname) = "Darwin"
-    set -x PATH $PATH /Users/m/Library/flutter/bin
-    set -x PATH $PATH /opt/homebrew/bin
-else if test (uname) = "Linux"
-end
-
 function pick10
     find . -maxdepth 1  -type f -o -type d -a ! -name '.' ! -name '..' | shuf -n 10
 end
@@ -52,3 +46,14 @@ end
 function aj
     mpv https://live-hls-aje-ak.getaj.net/AJE/04.m3u8 &>/dev/null &
 end
+
+if test (uname) = "Darwin"
+    set -x PATH $PATH /Users/m/Library/flutter/bin
+    set -x PATH $PATH /opt/homebrew/bin
+
+    # opam configuration
+    source /Users/m/.opam/opam-init/init.fish > /dev/null 2> /dev/null; or true
+
+else if test (uname) = "Linux"
+end
+
