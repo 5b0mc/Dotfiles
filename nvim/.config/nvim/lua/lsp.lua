@@ -20,7 +20,7 @@ end
 
 local capabilities = require('cmp_nvim_lsp').default_capabilities(vim.lsp.protocol.make_client_capabilities())
 local lspconfig = require "lspconfig"
-local servers = {"cssls", "tsserver", "html"}
+local servers = {"cssls", "html"}
 local util = require "lspconfig/util"
 
 for _, lsp in ipairs(servers) do
@@ -82,4 +82,13 @@ lspconfig.gopls.setup {
         },
     },
 }
+lspconfig.denols.setup {
+  on_attach = on_attach,
+  root_dir = util.root_pattern("deno.json", "deno.jsonc"),
+}
 
+lspconfig.tsserver.setup {
+  on_attach = on_attach,
+  root_dir = util.root_pattern("package.json"),
+  single_file_support = false
+}
