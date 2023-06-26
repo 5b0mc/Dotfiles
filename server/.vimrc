@@ -1,14 +1,11 @@
 call plug#begin('~/.vim/plugged')
 Plug 'preservim/nerdtree'
-Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'junegunn/fzf.vim'
 Plug 'tpope/vim-commentary'
-Plug 'tpope/vim-surround'
 Plug 'tpope/vim-fugitive'
-Plug 'tpope/vim-repeat'
+Plug 'ctrlpvim/ctrlp.vim'
 Plug 'arcticicestudio/nord-vim'
-Plug 'vim-airline/vim-airline'
-Plug 'fatih/vim-go'
+Plug 'pangloss/vim-javascript'
 call plug#end()
 
 syntax enable
@@ -24,25 +21,27 @@ set nobackup
 set nowritebackup
 set noswapfile
 set hidden
-set nohlsearch
+set nohlsearch 
 set cursorline
 set incsearch
+set smarttab
 set shiftwidth=4
 set softtabstop=4
 set tabstop=4
 set lbr
+set shortmess+=c
+set updatetime=300
+set completeopt=longest,menuone
+set clipboard^=unnamed,unnamedplus
+set backspace=indent,eol,start
 
 let mapleader=";"
 let NERDTreeQuitOnOpen=1
 let NERDTreeShowHidden=1
 let NERDTreeIgnore = ['\.pyc$']
 
-nnoremap j gj
-nnoremap k gk
-inoremap kj <Esc>
-map <leader>d :bd<cr>
-map <leader>w :w<cr>
-map <leader>e :NERDTreeFind<CR>
-map <C-e> :NERDTreeToggle<CR>
+noremap <Leader>m mmHmt:%s/<C-V><cr>//ge<cr>'tzt'm
+nnoremap <leader>w :w<cr>
 nnoremap <silent> <Leader>o :Files<CR>
 nnoremap <silent> <Leader>b :Buffers<CR>
+
