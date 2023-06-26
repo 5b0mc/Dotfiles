@@ -13,8 +13,7 @@ use 'hrsh7th/vim-vsnip'
 
 use 'tpope/vim-commentary'
 use 'tpope/vim-fugitive'
-
-use 'digitaltoad/vim-pug'
+use 'tpope/vim-surround'
 
 use 'nvim-lualine/lualine.nvim'
 use 'sainnhe/gruvbox-material'

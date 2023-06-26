@@ -7,7 +7,6 @@ alias python="python3"
 alias ms="cd ~/Writing/MirkoSacchetti"
 alias dotfiles="nvim ~/Dotfiles"
 alias wn="cd ~/Code/WiNet"
-alias open="xdg-open"
 alias jn="jupyter notebook"
 
 set -g theme_nerd_fonts yes
@@ -55,5 +54,6 @@ if test (uname) = "Darwin"
     source /Users/m/.opam/opam-init/init.fish > /dev/null 2> /dev/null; or true
 
 else if test (uname) = "Linux"
+    alias open="xdg-open"
 end
 
