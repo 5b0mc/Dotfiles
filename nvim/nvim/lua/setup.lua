@@ -20,22 +20,7 @@ require('lualine').setup{
     }
 }
 
-require("neo-tree").setup({
-	filesystem = {
-		filtered_items = {
-			visible = true, 
-			hide_dotfiles = false,
-			hide_gitignored = false,
-		},
-		window = {
-			mapping = {
-				["C"] = "close_all_subnodes",
-				["Z"] = "expand_all_nodes"
-			},
-		},
-	}
-})
-
+require("nvim-tree").setup()
 -- nvim-cmp setup
 local cmp = require 'cmp'
 

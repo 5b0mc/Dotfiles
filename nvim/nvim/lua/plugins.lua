@@ -27,15 +27,10 @@ use {
   }
 }
 
-vim.cmd([[ let g:neo_tree_remove_legacy_commands = 1 ]])
 use {
-    "nvim-neo-tree/neo-tree.nvim",
-    branch = "v2.x",
-    requires = { 
-      "nvim-tree/nvim-web-devicons",
-      "nvim-lua/plenary.nvim",
-      "MunifTanjim/nui.nvim"
-    }
-  }
-
+  'nvim-tree/nvim-tree.lua',
+  requires = {
+    'nvim-tree/nvim-web-devicons', -- optional
+  },
+}
 end)
