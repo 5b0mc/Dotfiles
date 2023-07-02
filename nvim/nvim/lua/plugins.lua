@@ -15,22 +15,11 @@ use 'tpope/vim-commentary'
 use 'tpope/vim-fugitive'
 use 'tpope/vim-surround'
 
+use "ibhagwan/fzf-lua"
 use 'nvim-lualine/lualine.nvim'
+
 use 'sainnhe/gruvbox-material'
 vim.cmd("colorscheme gruvbox-material")
 
-use {
-  'nvim-telescope/telescope.nvim',
-  requires = {
-      {'nvim-telescope/telescope-fzf-native.nvim', run = 'make' },
-      {'nvim-lua/plenary.nvim'}
-  }
-}
 
-use {
-  'nvim-tree/nvim-tree.lua',
-  requires = {
-    'nvim-tree/nvim-web-devicons', -- optional
-  },
-}
 end)

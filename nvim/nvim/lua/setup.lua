@@ -1,17 +1,3 @@
-local telescope = require('telescope')
-telescope.setup {
-    pickers = {
-        find_files = {
-            find_command = {'rg', '--files', '--hidden', '-g', '!.git'},
-            sort_mru = true
-        },
-        buffers = {
-            sort_lastused = true,
-            sort_mru = true
-        }
-    }
-}
-telescope.load_extension('fzf')
 
 require('lualine').setup{
     options = {
@@ -19,8 +5,6 @@ require('lualine').setup{
         icons_enabled = false
     }
 }
-
--- require("nvim-tree").setup()
 
 -- nvim-cmp setup
 local cmp = require 'cmp'
