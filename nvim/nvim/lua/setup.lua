@@ -20,7 +20,8 @@ require('lualine').setup{
     }
 }
 
-require("nvim-tree").setup()
+-- require("nvim-tree").setup()
+
 -- nvim-cmp setup
 local cmp = require 'cmp'
 
