@@ -1,4 +1,6 @@
 all:
+	# remember to intall make and ripgrep for telescope plugin
+	-git clone --depth 1 https://github.com/wbthomason/packer.nvim ~/.local/share/nvim/site/pack/packer/start/packer.nvim
 	stow --verbose --target=$(HOME)/.config --restow nvim
 	stow --verbose --target=$(HOME)/.config --restow tmux
 	stow --verbose --target=$(HOME)/.config --restow fish
@@ -10,3 +12,11 @@ i3:
 
 delete:
 	#stow --verbose --target=$(HOME) --delete */
+
+font:
+	wget -O /tmp/font.zip https://github.com/ryanoasis/nerd-fonts/releases/download/v3.0.2/FiraCode.zip
+	unzip /tmp/font.zip -d /tmp/font
+	cp -R /tmp/font/ ~/.local/share/fonts/
+	fc-cache -f -v
+	rm /tmp/font.zip
+	rm -rf /tmp/font
