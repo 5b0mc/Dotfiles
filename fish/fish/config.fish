@@ -12,9 +12,12 @@ alias jn="jupyter notebook"
 set -g theme_nerd_fonts yes
 set fish_greeting
 
-set -x GOPATH $HOME/Code/go
-set -x NPM_PACKAGES $HOME/.npm-packages
-set -x PATH $PATH $NPM_PACKAGES/bin $GOPATH/bin
+set NPM_PACKAGES "$HOME/.npm-packages"
+set PATH $PATH $NPM_PACKAGES/bin
+set MANPATH $NPM_PACKAGES/share/man $MANPATH  
+
+set -x GOPATH $HOME/.go
+set -x PATH $PATH $GOPATH/bin
 
 function pick10
     find . -maxdepth 1  -type f -o -type d -a ! -name '.' ! -name '..' | shuf -n 10
