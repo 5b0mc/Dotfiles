@@ -11,6 +11,7 @@ alias jn="jupyter notebook"
 
 set -g theme_nerd_fonts yes
 set fish_greeting
+set  -g TERM xterm-256color
 
 set NPM_PACKAGES "$HOME/.npm-packages"
 set PATH $PATH $NPM_PACKAGES/bin
@@ -49,14 +50,20 @@ function aj
     mpv https://live-hls-aje-ak.getaj.net/AJE/04.m3u8 &>/dev/null &
 end
 
-if test (uname) = "Darwin"
+
+switch (uname)
+case "Darwin"
     set -x PATH $PATH /Users/m/Library/flutter/bin
     set -x PATH $PATH /opt/homebrew/bin
-
     # opam configuration
-    source /Users/m/.opam/opam-init/init.fish > /dev/null 2> /dev/null; or true
+    #source /Users/m/.opam/opam-init/init.fish > /dev/null 2> /dev/null; or true
 
-else if test (uname) = "Linux"
+case "Linux"
+    if status is-login
+        if test -z "$DISPLAY" -a "$XDG_VTNR" = 1
+            exec startx -- -keeptty
+        end
+    end
     alias open="xdg-open"
 end
 
