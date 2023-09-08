@@ -1,6 +1,5 @@
 
 
-
 vim.keymap.set('n', '<Leader>e', ':Explore<CR>')
 
 vim.keymap.set('n', '<Leader>b', 

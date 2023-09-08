@@ -33,7 +33,7 @@ end
 
 lspconfig.volar.setup{
     cmd = {'vue-language-server', '--stdio'},
-    filetypes = {'typescript', 'javascript', 'javascriptreact', 'typescriptreact', 'vue', 'json'},
+--    filetypes = {'typescript', 'javascript', 'javascriptreact', 'typescriptreact', 'vue', 'json'},
     languageFeatures = {
         implementation = true, -- new in @volar/vue-language-server v0.33
         references = true,
@@ -101,3 +101,7 @@ lspconfig.tsserver.setup {
   root_dir = util.root_pattern("package.json"),
   single_file_support = false
 }
+
+lspconfig.pyright.setup{}
+
+
