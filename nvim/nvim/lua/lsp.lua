@@ -1,3 +1,5 @@
+local home = os.getenv( "HOME" )
+
 local opts = { noremap=true, silent=true }
 vim.keymap.set('n', '<space>e', vim.diagnostic.open_float, opts)
 vim.keymap.set('n', '<space>]', vim.diagnostic.goto_prev, opts)
@@ -32,45 +34,30 @@ for _, lsp in ipairs(servers) do
 end
 
 lspconfig.volar.setup{
-    cmd = {'vue-language-server', '--stdio'},
---    filetypes = {'typescript', 'javascript', 'javascriptreact', 'typescriptreact', 'vue', 'json'},
-    languageFeatures = {
-        implementation = true, -- new in @volar/vue-language-server v0.33
-        references = true,
-        definition = true,
-        typeDefinition = true,
-        callHierarchy = true,
-        hover = true,
-        rename = true,
-        renameFileRefactoring = true,
-        signatureHelp = true,
-        codeAction = true,
-        workspaceSymbol = true,
-        completion = {
-            defaultTagNameCase = 'both',
-            defaultAttrNameCase = 'kebabCase',
-            getDocumentNameCasesRequest = false,
-            getDocumentSelectionRequest = false,
-        },
+    filetypes = {'typescript', 'javascript', 'javascriptreact', 'typescriptreact', 'vue', 'json'},
+    init_options = {
+        typescript = {
+        tsdk = home .. '/.npm-packages/lib/node_modules/typescript/lib'
+        }
     },
     flags = lsp_flags,
+    capabilities = capabilities,
     on_attach = on_attach,
-    capabilities = capabilities
 }
 
 
 lspconfig.rust_analyzer.setup {
+    cmd = {"rustup", "run", "stable", "rust-analyzer"},
     flags = lsp_flags,
     on_attach = on_attach,
     capabilities = capabilities,
-    cmd = {"rustup", "run", "stable", "rust-analyzer"},
 }
 
 lspconfig.gopls.setup {
+    cmd = {"gopls", "serve"},
     flags = lsp_flags,
     on_attach = on_attach,
     capabilities = capabilities,
-    cmd = {"gopls", "serve"},
     filetypes = {"go", "gomod"},
     root_dir = util.root_pattern("go.work", "go.mod", ".git"),
     settings = {
@@ -91,15 +78,9 @@ lspconfig.ocamllsp.setup({
     capabilities = capabilities
 })
 
-lspconfig.denols.setup {
-  on_attach = on_attach,
-  root_dir = util.root_pattern("deno.json", "deno.jsonc"),
-}
-
 lspconfig.tsserver.setup {
-  on_attach = on_attach,
-  root_dir = util.root_pattern("package.json"),
-  single_file_support = false
+    on_attach = on_attach,
+    capabilities = capabilities
 }
 
 lspconfig.pyright.setup{}
