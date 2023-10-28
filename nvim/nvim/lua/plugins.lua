@@ -11,15 +11,10 @@ use 'hrsh7th/cmp-cmdline'
 use 'hrsh7th/cmp-vsnip'
 use 'hrsh7th/vim-vsnip'
 
-use 'tpope/vim-commentary'
 use 'tpope/vim-fugitive'
-use 'tpope/vim-surround'
-
 use "ibhagwan/fzf-lua"
+
+use 'cocopon/iceberg.vim'
 use 'nvim-lualine/lualine.nvim'
-
-use 'sainnhe/gruvbox-material'
-vim.cmd("colorscheme gruvbox-material")
-
-
+vim.cmd("colorscheme iceberg")
 end)

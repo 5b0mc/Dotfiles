@@ -1,6 +1,6 @@
 require('lualine').setup{
     options = {
-        theme = 'gruvbox-material',
+        theme = 'iceberg',
         icons_enabled = false
     }
 }
