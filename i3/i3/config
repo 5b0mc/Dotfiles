@@ -70,7 +70,7 @@ bindsym $mod+Return exec alacritty
 bindsym $mod+Shift+q kill
 
 # start dmenu (a program launcher)
-bindsym $mod+d exec --no-startup-id "rofi -combi-modi window,drun,ssh -theme gruvbox-dark-soft -show combi -modi combi"
+bindsym $mod+d exec --no-startup-id "rofi -combi-modi window,drun,ssh -theme Arc-Dark -font 'FiraCode Nerd Font 14' -show combi"
 
 # change focus
 bindsym $mod+h focus left
