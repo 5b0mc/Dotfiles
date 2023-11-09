@@ -53,8 +53,14 @@ bindsym XF86AudioRaiseVolume exec --no-startup-id pactl set-sink-volume @DEFAULT
 bindsym XF86AudioLowerVolume exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ -10%
 bindsym XF86AudioMute exec --no-startup-id pactl set-sink-mute @DEFAULT_SINK@ toggle
 bindsym XF86AudioMicMute exec --no-startup-id pactl set-source-mute @DEFAULT_SOURCE@ toggle
-# hhkb "eject" key  (fn+f) code: Event code 198
-bindcode --release 198 exec  --no-startup-id playerctl next
+# remap hhkb "eject" key (fn+f)
+# sudo evtest /dev/input/by-id/usb-Topre_Corporation_HHKB_Professional-event-kbd
+# (fn+f) => 190 but wrong!!!
+# xorg remap the keycode, use xinput to find the new code:
+# xinput list && xinput test IDKEYBOARD
+bindcode --release 198 exec --no-startup-id playerctl next
+# remap hhkb "pause" key (fn+p)
+bindcode --release 127 exec --no-startup-id playerctl play-pause
 
 # Use Mouse+$mod to drag floating windows to their wanted position
 floating_modifier $mod
