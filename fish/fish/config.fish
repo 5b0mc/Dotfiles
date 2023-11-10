@@ -50,6 +50,10 @@ function aj
     mpv https://live-hls-aje-ak.getaj.net/AJE/04.m3u8 &>/dev/null &
 end
 
+function pippo
+    python -m venv .env
+    source .env/bin/activate.fish
+end
 
 switch (uname)
 case "Darwin"
