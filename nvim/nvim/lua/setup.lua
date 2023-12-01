@@ -4,7 +4,6 @@ require('lualine').setup{
         icons_enabled = false
     }
 }
-
 -- nvim-cmp setup
 local cmp = require 'cmp'
 

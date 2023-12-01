@@ -20,8 +20,8 @@ set MANPATH $NPM_PACKAGES/share/man $MANPATH
 set -x GOPATH $HOME/.go
 set -x PATH $PATH $GOPATH/bin
 
-function pick10
-    find . -maxdepth 1  -type f -o -type d -a ! -name '.' ! -name '..' | shuf -n 10
+function pickrandom
+    find . -maxdepth 1  -type f -o -type d -a ! -name '.' ! -name '..' | shuf -n 20
 end
 
 function newpass
