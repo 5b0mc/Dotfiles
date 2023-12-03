@@ -33,17 +33,19 @@ for _, lsp in ipairs(servers) do
     }
 end
 
-lspconfig.volar.setup{
-    filetypes = {'typescript', 'javascript', 'javascriptreact', 'typescriptreact', 'vue', 'json'},
-    init_options = {
-        typescript = {
-        tsdk = home .. '/.npm-packages/lib/node_modules/typescript/lib'
-        }
-    },
-    flags = lsp_flags,
-    capabilities = capabilities,
-    on_attach = on_attach,
-}
+if vim.fn.executable("vls") then
+    lspconfig.volar.setup{
+        filetypes = {'typescript', 'javascript', 'javascriptreact', 'typescriptreact', 'vue', 'json'},
+        init_options = {
+            typescript = {
+            tsdk = home .. '/.npm-packages/lib/node_modules/typescript/lib'
+            }
+        },
+        flags = lsp_flags,
+        capabilities = capabilities,
+        on_attach = on_attach,
+    }
+end
 
 
 lspconfig.rust_analyzer.setup {
