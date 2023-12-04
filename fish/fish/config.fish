@@ -21,7 +21,7 @@ set -x GOPATH $HOME/.go
 set -x PATH $PATH $GOPATH/bin
 
 function pickrandom
-    find . -maxdepth 1  -type f -o -type d -a ! -name '.' ! -name '..' | shuf -n 20
+    find . -maxdepth 1  -type f -o -type d -a ! -name '.' ! -name '..' | shuf -n 8
 end
 
 function newpass
