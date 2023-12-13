@@ -90,7 +90,7 @@ lspconfig.pyright.setup{
     on_attach = on_attach
 }
 
-lspconfig.ccls.setup({
+lspconfig.clangd.setup({
     capabilities = capabilities,
     on_attach = on_attach
 })
