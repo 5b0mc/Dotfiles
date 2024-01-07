@@ -4,6 +4,8 @@ vim.keymap.set('n', '<Leader>e', ':Explore<CR>')
 
 vim.keymap.set('n', '<Leader>b', 
   "<cmd>lua require('fzf-lua').buffers()<CR>", { silent = true })
+vim.keymap.set('n', '<Leader>c', 
+  "<cmd>lua require('fzf-lua').git_status()<CR>", { silent = true })
 vim.keymap.set('n', '<Leader>o', 
   "<cmd>lua require('fzf-lua').files()<CR>", { silent = true })
 vim.keymap.set('n', '<Leader>g', 
