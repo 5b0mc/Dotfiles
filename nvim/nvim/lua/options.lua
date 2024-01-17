@@ -4,7 +4,7 @@ vim.g.netrw_banner = 0
 vim.g.netrw_keepdir = 0
 vim.g.netrw_localcopydircmd = 'cp -r'
 
-vim.opt.relativenumber = true
+vim.opt.relativenumber = false
 vim.opt.number = true
 vim.opt.errorbells = false
 vim.opt.updatetime = 300

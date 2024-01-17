@@ -1,6 +1,5 @@
-
-
 vim.keymap.set('n', '<Leader>e', ':Explore<CR>')
+vim.keymap.set('i', 'kj', '<ESC>')
 
 vim.keymap.set('n', '<Leader>b', 
   "<cmd>lua require('fzf-lua').buffers()<CR>", { silent = true })
@@ -14,4 +13,3 @@ vim.keymap.set('n', '<Leader>g',
 vim.keymap.set('n', '<Leader>w', ':w!<CR>')
 vim.keymap.set('n', '<Leader>d', ':bd<CR>')
 vim.keymap.set('x', '<Leader>p', '\"_dP')
-vim.keymap.set('i', 'kj', '<ESC>')
