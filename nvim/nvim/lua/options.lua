@@ -6,9 +6,9 @@ vim.g.netrw_localcopydircmd = 'cp -r'
 vim.opt.relativenumber = false
 vim.opt.number = true
 vim.opt.errorbells = false
-vim.opt.updatetime = 300
-vim.opt.signcolumn ="yes:1"
 vim.opt.linebreak = true
+vim.opt.updatetime = 250
+vim.opt.signcolumn="yes:1"
 
 vim.opt.tabstop = 4
 vim.opt.expandtab = true
