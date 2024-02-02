@@ -1,4 +1,19 @@
+### Variables
+#
+# Logo key. Use Mod1 for Alt.
 set $mod Mod4
+# Home row direction keys, like vim
+set $left h
+set $down j
+set $up k
+set $right l
+# Your preferred terminal emulator
+set $term alacritty
+# Your preferred application launcher
+# Note: pass the final command to swaymsg so that the resulting window can be opened
+# on the original workspace that the command was run on.
+set $menu dmenu_path | dmenu | xargs swaymsg exec --
+
 
 # Font for window titles. Will also be used by the bar unless a different font
 # is used in the bar {} block below.
@@ -19,6 +34,12 @@ bindsym XF86AudioRaiseVolume exec --no-startup-id pactl set-sink-volume @DEFAULT
 bindsym XF86AudioLowerVolume exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ -10%
 bindsym XF86AudioMute exec --no-startup-id pactl set-sink-mute @DEFAULT_SINK@ toggle
 bindsym XF86AudioMicMute exec --no-startup-id pactl set-source-mute @DEFAULT_SOURCE@ toggle
+bindsym XF86MonBrightnessDown exec brightnessctl set 5%-
+bindsym XF86MonBrightnessUp exec brightnessctl set 5%+
+bindsym XF86AudioPlay exec playerctl play-pause
+bindsym XF86AudioNext exec playerctl next
+bindsym XF86AudioPrev exec playerctl previous
+bindsym XF86Search exec bemenu-run
 # remap hhkb "eject" key (fn+f)
 # sudo evtest /dev/input/by-id/usb-Topre_Corporation_HHKB_Professional-event-kbd
 # (fn+f) => 190 but wrong!!!
@@ -31,18 +52,14 @@ bindcode --release 127 exec --no-startup-id playerctl play-pause
 # Use Mouse+$mod to drag floating windows to their wanted position
 floating_modifier $mod
 
-# move tiling windows via drag & drop by left-clicking into the title bar,
-# or left-clicking anywhere into the window while holding the floating modifier.
-#tiling_drag modifier titlebar
-
 # start a terminal
-bindsym $mod+Return exec alacritty
+bindsym $mod+Return exec $term
 
 # kill focused window
 bindsym $mod+Shift+q kill
 
-# start dmenu (a program launcher)
-bindsym $mod+d exec --no-startup-id "rofi -combi-modi window,drun,ssh -theme Arc-Dark -font 'FiraCode Nerd Font 14' -show combi"
+# Start your launcher
+bindsym $mod+d exec $menu
 
 # change focus
 bindsym $mod+h focus left
@@ -50,29 +67,17 @@ bindsym $mod+j focus down
 bindsym $mod+k focus up
 bindsym $mod+l focus right
 
-# alternatively, you can use the cursor keys:
-bindsym $mod+Left focus left
-bindsym $mod+Down focus down
-bindsym $mod+Up focus up
-bindsym $mod+Right focus right
-
 # move focused window
 bindsym $mod+Shift+h move left
 bindsym $mod+Shift+j move down
 bindsym $mod+Shift+k move up
 bindsym $mod+Shift+l move right
 
-# alternatively, you can use the cursor keys:
-bindsym $mod+Shift+Left move left
-bindsym $mod+Shift+Down move down
-bindsym $mod+Shift+Up move up
-bindsym $mod+Shift+Right move right
-
-# split in horizontal orientation
-bindsym $mod+semicolon split h
-
-# split in vertical orientation
-bindsym $mod+v split v
+# You can "split" the current object of your focus with
+# $mod+b or $mod+v, for horizontal and vertical splits
+# respectively.
+bindsym $mod+b splith
+bindsym $mod+v splitv
 
 # enter fullscreen mode for the focused container
 bindsym $mod+f fullscreen toggle
@@ -90,9 +95,6 @@ bindsym $mod+space focus mode_toggle
 
 # focus the parent container
 bindsym $mod+a focus parent
-
-# focus the child container
-#bindsym $mod+d focus child
 
 # Define names for default workspaces for which we configure key bindings later on.
 # We use variables to avoid repeating the names in multiple places.
@@ -153,28 +155,26 @@ mode "resize" {
 
 bindsym $mod+r mode "resize"
 
-assign [class="Spotify"] 4
-assign [class="Telegram"] 3
-assign [class="thunderbird"] 3
-
 for_window [class="Pavucontrol"] floating enable, border normal
 for_window [class="Thunar"] floating enable, border normal
 
 bar {
     position top
     status_command i3status
-    
     colors {
 	    background #161821
 	    statusline #c6c8d1
 	    separator  #c6c8d1
-
 	    focused_workspace   #161821 #c6c8d1 #161821
 	    active_workspace    #d2d4de #d2d4de #161821
 	    inactive_workspace  #161821 #161821 #d2d4de
 	    urgent_workspace    #b4be82 #b4be82 #161821
     }
 }
-output DP-1 scale 1.2
 
+output DP-1 {
+    scale 1
+}
+
+include /etc/sway/config.d/*
 
