@@ -64,10 +64,10 @@ case "Darwin"
 
 case "Linux"
      if status is-login
-        exec sway
-        # if test -z "$DISPLAY" -a "$XDG_VTNR" = 1
-        #     exec startx -- -keeptty
-        # end
+         exec sway
+        if test -z "$DISPLAY" -a "$XDG_VTNR" = 1
+             exec startx -- -keeptty
+         end
      end
     alias open="xdg-open"
 end
