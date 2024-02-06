@@ -32,7 +32,6 @@ end
 
 function dsstorefucker
     sudo find ~/Code -name .DS_Store -depth -exec rm {} \;
-    sudo find ~/Projects -name .DS_Store -depth -exec rm {} \;
     sudo find ~/Documents -name .DS_Store -depth -exec rm {} \;
     sudo find ~/Writing -name .DS_Store -depth -exec rm {} \;
     if test (uname) = "Darwin"
