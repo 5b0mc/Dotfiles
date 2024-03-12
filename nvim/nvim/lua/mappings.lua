@@ -1,4 +1,4 @@
-vim.keymap.set('n', '<Leader>e', ':Explore<CR>')
+vim.keymap.set('n', '<Leader>.', ':Explore<CR>')
 vim.keymap.set('i', 'kj', '<ESC>')
 
 vim.keymap.set('n', '<Leader>b', 
