@@ -12,6 +12,7 @@ vim.keymap.set('n', '<Leader>g',
 
 vim.keymap.set('n', '<Leader>w', ':w!<CR>')
 vim.keymap.set('n', '<Leader>d', ':bd<CR>')
+vim.keymap.set('n', '<Leader>n', ':bn<CR>')
 vim.keymap.set('x', '<Leader>p', '\"_dP')
 
 vim.keymap.set('v','j','h')
