@@ -5,6 +5,7 @@ vim.g.netrw_localcopydircmd = 'cp -r'
 
 vim.opt.relativenumber = false
 vim.opt.number = true
+vim.opt.relativenumber = true
 vim.opt.errorbells = false
 vim.opt.linebreak = true
 vim.opt.updatetime = 250
