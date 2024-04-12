@@ -45,3 +45,10 @@ save_to_clipboard = true
 [window.padding]
 x = 0
 y = 0
+
+
+[keyboard] 
+bindings = [
+{ key = "Tab", mods = "Control", action = "SelectNextTab" },
+{ key = "Tab", mods = "Control|Shift", action = "SelectPreviousTab" },
+]
