@@ -5,6 +5,7 @@ vim.g.netrw_localcopydircmd = 'cp -r'
 
 vim.opt.relativenumber = false
 vim.opt.number = true
+vim.opt.relativenumber = true
 vim.opt.errorbells = false
 vim.opt.linebreak = true
 vim.opt.updatetime = 250
@@ -28,3 +29,8 @@ vim.opt.mouse = "a"
 vim.opt.clipboard = "unnamedplus"
 vim.opt.shortmess = vim.opt.shortmess + 'I'
 vim.opt.completeopt=menu,menuone,noselect
+
+vim.api.nvim_create_autocmd({ 'BufEnter' }, {
+  pattern = '*.{js,jsx,ts,tsx,vue}',
+  command = 'syntax sync fromstart',
+})

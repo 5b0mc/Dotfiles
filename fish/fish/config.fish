@@ -26,7 +26,7 @@ end
 
 function newpass
     for i in (seq 3)
-        tr -dc 'A-Za-z0-9!@#%^&*_+-' < /dev/urandom | head -c 8; echo
+        openssl rand -base64 10 | tr -d '/+=\n' | head -c 8; echo
     end
 end
 
