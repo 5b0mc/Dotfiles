@@ -23,8 +23,11 @@ client.urgent           #b4be82 #b4be82 #161821 #268BD2
 client.placeholder      #000000 #0c0c0c #ffffff #000000
 client.background       #161821
 
-default_border none
 focus_follows_mouse no
+
+default_border none
+gaps inner 8px
+#gaps outer 8px
 
 #exec --no-startup-id feh --bg-scale /home/m/Pictures/bg.jpg
 
