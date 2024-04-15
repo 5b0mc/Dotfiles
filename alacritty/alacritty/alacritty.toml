@@ -50,4 +50,8 @@ y = 0
 bindings = [
 { key = "Tab", mods = "Control", action = "SelectNextTab" },
 { key = "Tab", mods = "Control|Shift", action = "SelectPreviousTab" },
+{ key = "j", action = "Left", mode ="Vi|~Search" },
+{ key = "k", action = "Down", mode = "Vi|~Search"},
+{ key = "l", action = "Up", mode = "Vi|~Search"},
+{ key = ";", action = "Right", mode = "Vi|~Search"},
 ]
