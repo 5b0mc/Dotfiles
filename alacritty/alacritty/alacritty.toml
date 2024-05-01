@@ -43,8 +43,8 @@ y = 6
 save_to_clipboard = true
 
 [window.padding]
-x = 0
-y = 0
+x = 2
+y = 2
 
 [keyboard] 
 bindings = [
@@ -55,3 +55,6 @@ bindings = [
 { key = "l", action = "Up", mode = "Vi|~Search"},
 { key = ";", action = "Right", mode = "Vi|~Search"},
 ]
+
+[mouse]
+hide_when_typing = true

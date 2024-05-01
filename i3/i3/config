@@ -26,11 +26,10 @@ client.background       #161821
 focus_follows_mouse no
 
 default_border none
-gaps inner 8px
+gaps inner 12px
 #gaps outer 8px
 
-#exec --no-startup-id feh --bg-scale /home/m/Pictures/bg.jpg
-
+exec --no-startup-id feh --bg-scale /home/m/Documents/stuff/Nighthawks_by_Edward_Hopper_1942.jpg
 # Start XDG autostart .desktop files using dex. See also
 # https://wiki.archlinux.org/index.php/XDG_Autostart
 exec --no-startup-id dex --autostart --environment i3
