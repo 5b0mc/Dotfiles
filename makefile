@@ -5,14 +5,11 @@ all:
 	stow --verbose --target=$(HOME)/.config --restow tmux
 	stow --verbose --target=$(HOME)/.config --restow fish
 	stow --verbose --target=$(HOME)/.config --restow alacritty
-	stow --verbose --target=$(HOME)/.config --restow sway
 
-i3:
+linux:
+	stow --verbose --target=$(HOME)/.config --restow sway
 	stow --verbose --target=$(HOME)/.config --restow i3
 	stow --verbose --target=$(HOME) --restow Xorg
-
-delete:
-	#stow --verbose --target=$(HOME) --delete */
 
 font:
 	wget -O /tmp/font.zip https://github.com/ryanoasis/nerd-fonts/releases/download/v3.0.2/FiraCode.zip
