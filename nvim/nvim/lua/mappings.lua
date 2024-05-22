@@ -2,11 +2,9 @@ vim.keymap.set('i', 'jj', '<Esc>')
 vim.keymap.set('n', '<Leader>e', ':Explore<CR>')
 
 vim.keymap.set('n', '<Leader>d', ':bd<CR>')
-vim.keymap.set('n', '<Leader>n', ':bn<CR>')
-vim.keymap.set('n', '<Leader>p', ':bp<CR>')
 vim.keymap.set('n', '<Leader>w', ':w<CR>')
 
-vim.keymap.set('n', '<Leader>b', 
+vim.keymap.set('n', '<Leader>p', 
   "<cmd>lua require('fzf-lua').buffers()<CR>", { silent = true })
 vim.keymap.set('n', '<Leader>c', 
   "<cmd>lua require('fzf-lua').git_status()<CR>", { silent = true })
@@ -14,6 +12,8 @@ vim.keymap.set('n', '<Leader>o',
   "<cmd>lua require('fzf-lua').files()<CR>", { silent = true })
 vim.keymap.set('n', '<Leader>g', 
   "<cmd>lua require('fzf-lua').live_grep()<CR>", { silent = true })
+vim.keymap.set('n', '<Leader>q', 
+  "<cmd>lua require('fzf-lua').quickfix()<CR>", { silent = true })
 
 vim.keymap.set('v','j','h')
 vim.keymap.set('v','k','j')

@@ -2,8 +2,8 @@ local home = os.getenv( "HOME" )
 
 local opts = { noremap=true, silent=true }
 vim.keymap.set('n', '<space>z', vim.diagnostic.open_float, opts)
-vim.keymap.set('n', '<space>]', vim.diagnostic.goto_prev, opts)
-vim.keymap.set('n', '<space>[', vim.diagnostic.goto_next, opts)
+vim.keymap.set('n', '<space>p', vim.diagnostic.goto_prev, opts)
+vim.keymap.set('n', '<space>n', vim.diagnostic.goto_next, opts)
 vim.keymap.set('n', '<space>q', vim.diagnostic.setloclist, opts)
 local on_attach = function(client, bufnr)
     vim.api.nvim_buf_set_option(bufnr, 'omnifunc', 'v:lua.vim.lsp.omnifunc')
@@ -13,18 +13,18 @@ local on_attach = function(client, bufnr)
     vim.keymap.set('n', 'gi', vim.lsp.buf.implementation, bufopts)
     vim.keymap.set('n', 'gt', vim.lsp.buf.type_definition, bufopts)
     vim.keymap.set('n', 'K', vim.lsp.buf.hover, bufopts)
-    vim.keymap.set('n', '<C-k>', vim.lsp.buf.signature_help, bufopts)
-    vim.keymap.set('n', '<space>rn', vim.lsp.buf.rename, bufopts)
-    vim.keymap.set('n', '<space>ca', vim.lsp.buf.code_action, bufopts)
+    vim.keymap.set('n', '<space>k', vim.lsp.buf.signature_help, bufopts)
+    vim.keymap.set('n', '<space>r', vim.lsp.buf.rename, bufopts)
+    vim.keymap.set('n', '<space>c', vim.lsp.buf.code_action, bufopts)
     vim.keymap.set('n', '<space>f', function() vim.lsp.buf.format { async = true } end, bufopts)
     client.server_capabilities.semanticTokensProvider = nil 
 end
 
 local capabilities = require('cmp_nvim_lsp').default_capabilities(vim.lsp.protocol.make_client_capabilities())
 local lspconfig = require "lspconfig"
-local servers = {"cssls", "html"}
 local util = require "lspconfig/util"
 
+local servers = {"cssls", "html"}
 for _, lsp in ipairs(servers) do
     lspconfig[lsp].setup {
         flags = lsp_flags,
@@ -46,7 +46,6 @@ if vim.fn.executable("vls") == 1 then
         on_attach = on_attach,
     }
 end
-
 
 lspconfig.rust_analyzer.setup {
     cmd = {"rustup", "run", "stable", "rust-analyzer"},
@@ -71,14 +70,6 @@ lspconfig.gopls.setup {
         },
     },
 }
-
-lspconfig.ocamllsp.setup({
-    cmd = { "ocamllsp" },
-    filetypes = { "ocaml", "ocaml.menhir", "ocaml.interface", "ocaml.ocamllex", "reason", "dune" },
-    root_dir = util.root_pattern("*.opam", "esy.json", "package.json", ".git", "dune-project", "dune-workspace"),
-    on_attach = on_attach,
-    capabilities = capabilities
-})
 
 lspconfig.tsserver.setup {
     on_attach = on_attach,
