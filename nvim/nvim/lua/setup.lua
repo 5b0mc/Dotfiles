@@ -24,3 +24,35 @@ cmp.setup({
     { name = 'vsnip' },
   })
 })
+
+require'fzf-lua'.setup {
+  keymap = {
+    builtin = {
+      ["<F1>"]        = "toggle-help",
+      ["<F2>"]        = "toggle-fullscreen",
+      ["<F3>"]        = "toggle-preview-wrap",
+      ["<F4>"]        = "toggle-preview",
+      ["<F5>"]        = "toggle-preview-ccw",
+      ["<F6>"]        = "toggle-preview-cw",
+      ["<S-down>"]    = "preview-page-down",
+      ["<S-up>"]      = "preview-page-up",
+      ["<S-left>"]    = "preview-page-reset",
+    },
+    fzf = {
+      ["ctrl-k"]      = "down",
+      ["ctrl-l"]      = "up",
+      ["ctrl-z"]      = "abort",
+      ["ctrl-z"]      = "abort",
+      ["ctrl-u"]      = "unix-line-discard",
+      ["ctrl-f"]      = "half-page-down",
+      ["ctrl-b"]      = "half-page-up",
+      ["ctrl-a"]      = "beginning-of-line",
+      ["ctrl-e"]      = "end-of-line",
+      ["alt-a"]       = "toggle-all",
+      ["f3"]          = "toggle-preview-wrap",
+      ["f4"]          = "toggle-preview",
+      ["shift-down"]  = "preview-page-down",
+      ["shift-up"]    = "preview-page-up",
+    },
+  },
+}

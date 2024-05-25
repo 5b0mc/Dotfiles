@@ -13,6 +13,7 @@ set -g theme_nerd_fonts yes
 set fish_greeting
 set  -g TERM xterm-256color
 
+set FZF_DEFAULT_OPTS "--bind ctrl-k:down,ctrl-l:up"
 set NPM_PACKAGES "$HOME/.npm-packages"
 set PATH $PATH $NPM_PACKAGES/bin
 set MANPATH $NPM_PACKAGES/share/man $MANPATH  
