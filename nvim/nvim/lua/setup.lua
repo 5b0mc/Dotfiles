@@ -13,6 +13,8 @@ cmp.setup({
     end,
   },
   mapping = cmp.mapping.preset.insert({
+    ['<C-k>'] = cmp.mapping.select_next_item(),
+    ['<C-l>'] = cmp.mapping.select_prev_item(),
     ['<C-b>'] = cmp.mapping.scroll_docs(-4),
     ['<C-f>'] = cmp.mapping.scroll_docs(4),
     ['<C-Space>'] = cmp.mapping.complete(),
@@ -27,17 +29,6 @@ cmp.setup({
 
 require'fzf-lua'.setup {
   keymap = {
-    builtin = {
-      ["<F1>"]        = "toggle-help",
-      ["<F2>"]        = "toggle-fullscreen",
-      ["<F3>"]        = "toggle-preview-wrap",
-      ["<F4>"]        = "toggle-preview",
-      ["<F5>"]        = "toggle-preview-ccw",
-      ["<F6>"]        = "toggle-preview-cw",
-      ["<S-down>"]    = "preview-page-down",
-      ["<S-up>"]      = "preview-page-up",
-      ["<S-left>"]    = "preview-page-reset",
-    },
     fzf = {
       ["ctrl-k"]      = "down",
       ["ctrl-l"]      = "up",
