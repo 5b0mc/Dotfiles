@@ -4,7 +4,11 @@ vim.keymap.set('n', '<Leader>e', ':Explore<CR>')
 vim.keymap.set('n', '<Leader>d', ':bd<CR>')
 vim.keymap.set('n', '<Leader>w', ':w<CR>')
 
-vim.keymap.set('n', '<Leader>p', 
+vim.keymap.set('n', '<Leader>j', ':bnext<CR>')
+vim.keymap.set('n', '<Leader>;', ':bprevious<CR>')
+
+
+vim.keymap.set('n', '<Leader>u', 
   "<cmd>lua require('fzf-lua').buffers()<CR>", { silent = true })
 vim.keymap.set('n', '<Leader>c', 
   "<cmd>lua require('fzf-lua').git_status()<CR>", { silent = true })
