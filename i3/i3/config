@@ -15,7 +15,7 @@ client.background       #161821
 focus_follows_mouse no
 default_border pixel 0
 title_align center
-gaps inner 12px
+gaps inner 11px
 
 exec --no-startup-id feh --bg-scale /home/m/Documents/stuff/Nighthawks_by_Edward_Hopper_1942.jpg
 exec --no-startup-id dex --autostart --environment i3
@@ -48,7 +48,7 @@ floating_modifier $mod
 
 # move tiling windows via drag & drop by left-clicking into the title bar,
 # or left-clicking anywhere into the window while holding the floating modifier.
-#tiling_drag modifier titlebar
+tiling_drag modifier titlebar
 
 # start a terminal
 bindsym $mod+Return exec alacritty
@@ -66,15 +66,10 @@ bindsym $mod+l focus up
 bindsym $mod+semicolon focus right
 
 # move focused window
-bindsym $mod+Shift+j move left
-bindsym $mod+Shift+k move down
-bindsym $mod+Shift+l move up
-bindsym $mod+Shift+semicolon move right
-
-# Focus parent and move right
-bindsym $mod+u exec "i3-msg focus parent; i3-msg focus right"
-# Focus parent and move left
-bindsym $mod+p exec "i3-msg focus parent; i3-msg focus left"
+bindsym $mod+control+j move left
+bindsym $mod+control+k move down
+bindsym $mod+control+l move up
+bindsym $mod+control+semicolon move right
 
 # split in horizontal orientation
 bindsym $mod+h split h
@@ -91,10 +86,7 @@ bindsym $mod+w layout tabbed
 bindsym $mod+e layout toggle split
 
 # toggle tiling / floating
-bindsym $mod+Shift+space floating toggle
-
-# change focus between tiling / floating windows
-bindsym $mod+space focus mode_toggle
+bindsym $mod+space floating toggle
 
 # focus the parent container
 bindsym $mod+a focus parent
@@ -102,42 +94,56 @@ bindsym $mod+a focus parent
 # focus the child container
 bindsym $mod+c focus child
 
-# Define names for default workspaces for which we configure key bindings later on.
-# We use variables to avoid repeating the names in multiple places.
 set $ws1 "1"
 set $ws2 "2"
 set $ws3 "3"
+
 set $ws4 "4"
 set $ws5 "5"
 set $ws6 "6"
+
 set $ws7 "7"
 set $ws8 "8"
 set $ws9 "9"
-set $ws10 "10"
 
 # switch to workspace
 bindsym $mod+1 workspace number $ws1
 bindsym $mod+2 workspace number $ws2
 bindsym $mod+3 workspace number $ws3
+
 bindsym $mod+4 workspace number $ws4
 bindsym $mod+5 workspace number $ws5
 bindsym $mod+6 workspace number $ws6
+
 bindsym $mod+7 workspace number $ws7
 bindsym $mod+8 workspace number $ws8
 bindsym $mod+9 workspace number $ws9
-bindsym $mod+0 workspace number $ws10
+
+# use xprop to find the WM_CLASS
+assign [class="Telegram"] "4"
+assign [class="Spotify"] "5"
+assign [class="thunderbird"] "6"
+
+assign [class="libreoffice"] "7"
+assign [class="Brave-browser"] "8"
+assign [class="Chromium"] "8"
+assign [class="beekeeper-studio"] "9"
+
+for_window [class="Pavucontrol"] floating enable, border pixel 12
+for_window [class="Thunar"] floating enable, border pixel 12
 
 # move focused container to workspace
-bindsym $mod+Shift+1 move container to workspace number $ws1
-bindsym $mod+Shift+2 move container to workspace number $ws2
-bindsym $mod+Shift+3 move container to workspace number $ws3
-bindsym $mod+Shift+4 move container to workspace number $ws4
-bindsym $mod+Shift+5 move container to workspace number $ws5
-bindsym $mod+Shift+6 move container to workspace number $ws6
-bindsym $mod+Shift+7 move container to workspace number $ws7
-bindsym $mod+Shift+8 move container to workspace number $ws8
-bindsym $mod+Shift+9 move container to workspace number $ws9
-bindsym $mod+Shift+0 move container to workspace number $ws10
+bindsym $mod+Control+1 move container to workspace number $ws1
+bindsym $mod+Control+2 move container to workspace number $ws2
+bindsym $mod+Control+3 move container to workspace number $ws3
+bindsym $mod+Control+4 move container to workspace number $ws4
+bindsym $mod+Control+5 move container to workspace number $ws5
+bindsym $mod+Control+6 move container to workspace number $ws6
+bindsym $mod+Control+7 move container to workspace number $ws7
+bindsym $mod+Control+8 move container to workspace number $ws8
+bindsym $mod+Control+9 move container to workspace number $ws9
+# screenshoot area and send to xclip
+bindsym $mod+Control+s exec maim -su ~/Pictures/screenshot-$(date +\%y\%m\%d-\%h\%m\%s).png
 
 # reload the configuration file
 bindsym $mod+Shift+c reload
@@ -145,8 +151,6 @@ bindsym $mod+Shift+c reload
 bindsym $mod+Shift+r restart
 # exit i3 (logs you out of your X session)
 bindsym $mod+Shift+e exec "i3-nagbar -t warning -m 'You pressed the exit shortcut. Do you really want to exit i3? This will end your X session.' -B 'Yes, exit i3' 'i3-msg exit'"
-# screenshoot area and send to xclip
-bindsym $mod+Control+4 exec maim -su ~/Pictures/screenshot-$(date +\%y\%m\%d-\%h\%m\%s).png
 
 bindsym $mod+Tab workspace back_and_forth
 
@@ -164,13 +168,6 @@ mode "resize" {
 }
 
 bindsym $mod+r mode "resize"
-
-assign [class="Spotify"] 4
-assign [class="Telegram"] 3
-assign [class="thunderbird"] 3
-
-for_window [class="Pavucontrol"] floating enable, border pixel 12
-for_window [class="Thunar"] floating enable, border pixel 12
 
 bar {
     position top
