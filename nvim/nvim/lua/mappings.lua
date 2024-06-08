@@ -7,26 +7,26 @@ vim.keymap.set('n', '<Leader>e', ':Explore<CR>', { noremap = true, silent = true
 vim.keymap.set('n', '<Leader>d', ':bd<CR>', { noremap = true, silent = true })
 vim.keymap.set('n', '<Leader>w', ':w<CR>', { noremap = true, silent = true })
 
-vim.keymap.set('n', '<Leader>u', 
-  "<cmd>lua require('fzf-lua').buffers()<CR>", { silent = true })
-vim.keymap.set('n', '<Leader>c', 
-  "<cmd>lua require('fzf-lua').git_status()<CR>", { silent = true })
-vim.keymap.set('n', '<Leader>o', 
-  "<cmd>lua require('fzf-lua').files()<CR>", { silent = true })
-vim.keymap.set('n', '<Leader>g', 
-  "<cmd>lua require('fzf-lua').live_grep()<CR>", { silent = true })
-vim.keymap.set('n', '<Leader>q', 
-  "<cmd>lua require('fzf-lua').quickfix()<CR>", { silent = true })
+vim.keymap.set('n', '<Leader>u',
+    "<cmd>lua require('fzf-lua').buffers()<CR>", { silent = true })
+vim.keymap.set('n', '<Leader>c',
+    "<cmd>lua require('fzf-lua').git_status()<CR>", { silent = true })
+vim.keymap.set('n', '<Leader>o',
+    "<cmd>lua require('fzf-lua').files()<CR>", { silent = true })
+vim.keymap.set('n', '<Leader>g',
+    "<cmd>lua require('fzf-lua').live_grep()<CR>", { silent = true })
+vim.keymap.set('n', '<Leader>q',
+    "<cmd>lua require('fzf-lua').quickfix()<CR>", { silent = true })
 
-vim.keymap.set('v','j','h', { noremap = true, silent = true })
-vim.keymap.set('v','k','j', { noremap = true, silent = true })
-vim.keymap.set('v','l','k', { noremap = true, silent = true })
-vim.keymap.set('v',';','l', { noremap = true, silent = true })
+vim.keymap.set('v', 'j', 'h', { noremap = true, silent = true })
+vim.keymap.set('v', 'k', 'j', { noremap = true, silent = true })
+vim.keymap.set('v', 'l', 'k', { noremap = true, silent = true })
+vim.keymap.set('v', ';', 'l', { noremap = true, silent = true })
 
-vim.keymap.set('n','j','h', { noremap = true, silent = true })
-vim.keymap.set('n','k','j', { noremap = true, silent = true })
-vim.keymap.set('n','l','k', { noremap = true, silent = true })
-vim.keymap.set('n',';','l', { noremap = true, silent = true })
+vim.keymap.set('n', 'j', 'h', { noremap = true, silent = true })
+vim.keymap.set('n', 'k', 'j', { noremap = true, silent = true })
+vim.keymap.set('n', 'l', 'k', { noremap = true, silent = true })
+vim.keymap.set('n', ';', 'l', { noremap = true, silent = true })
 
 vim.keymap.set('n', '<C-w>j', '<C-w>h', { noremap = true, silent = true })
 vim.keymap.set('n', '<C-w>k', '<C-w>j', { noremap = true, silent = true })
