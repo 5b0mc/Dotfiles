@@ -21,6 +21,10 @@ set MANPATH $NPM_PACKAGES/share/man $MANPATH
 set -x GOPATH $HOME/.go
 set -x PATH $PATH $GOPATH/bin
 
+set -g os "linux"
+if test (uname) = "Darwin"
+    set os "macos"
+end
 function pickrandom
     find . -maxdepth 1  -type f -o -type d -a ! -name '.' ! -name '..' | shuf -n 8
 end
@@ -46,23 +50,39 @@ function nvmloader
     [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion" 
 end
 
-function aj
-    mpv https://live-hls-aje-ak.getaj.net/AJE/04.m3u8 &>/dev/null &
+function timer
+    set -l minutes 4
+    if test (count $argv) -eq 1
+        set minutes $argv[1]
+    end
+    sleep (math $minutes \* 60)
+    switch $os
+    case "macos"
+        afplay /System/Library/Sounds/Ping.aiff
+    case "linux"
+        paplay /usr/share/sounds/freedesktop/stereo/complete.oga
+        paplay /usr/share/sounds/freedesktop/stereo/complete.oga
+    end
 end
 
-function pippo
+function aj
+    mpv https://live-hls-aje-ak.getaj.net/AJE/06.m3u8 &>/dev/null &
+end
+
+
+function venv
     python -m venv .env
     source .env/bin/activate.fish
 end
 
-switch (uname)
-case "Darwin"
+switch $os
+case "macos"
     set -x PATH $PATH /Users/m/Library/flutter/bin
     set -x PATH $PATH /opt/homebrew/bin
     # opam configuration
     #source /Users/m/.opam/opam-init/init.fish > /dev/null 2> /dev/null; or true
 
-case "Linux"
+case "linux"
      if status is-login
          #         exec sway
         if test -z "$DISPLAY" -a "$XDG_VTNR" = 1
