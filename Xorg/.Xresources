@@ -1,15 +1,15 @@
 Xft.dpi: 96
-Xft.autohint: false
+
+Xft.lcdfilter: lcddefault
+Xft.hintstyle: hintslight
+Xft.hinting: 1
+Xft.antialias: 1
 Xft.rgba: rgb
-*.antialias: true
-*.hintstyle: hintslight
-*.hinting: true
-*.lcdfilter: lcddefault
+
 
 ! special
 *.foreground:   #c6c8d1
-*.background:   #161821
-*.cursorColor:  #c6c8d1
+*.background:   #161821*.cursorColor:  #c6c8d1
 
 ! black
 *.color0:       #1e2132

@@ -47,6 +47,7 @@ x = 2
 y = 2
 
 [keyboard] 
+#https://alacritty.org/config-alacritty-bindings.html
 bindings = [
 { key = "Tab", mods = "Control", action = "SelectNextTab" },
 { key = "Tab", mods = "Control|Shift", action = "SelectPreviousTab" },
