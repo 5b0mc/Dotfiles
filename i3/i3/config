@@ -1,4 +1,5 @@
 set $mod Mod4
+font pango:FiraCode Nerd Font 11
 
 # class                 border  backgr. text    indic.   child_border
 client.focused          #c6c8d1 #c6c8d1 #161821 #84a0c6
