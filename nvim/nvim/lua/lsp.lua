@@ -1,7 +1,7 @@
 local home = os.getenv("HOME")
-local capabilities = require('cmp_nvim_lsp').default_capabilities(vim.lsp.protocol.make_client_capabilities())
-local lspconfig = require "lspconfig"
 local util = require "lspconfig/util"
+local lspconfig = require "lspconfig"
+local capabilities = require('cmp_nvim_lsp').default_capabilities(vim.lsp.protocol.make_client_capabilities())
 
 local opts = { noremap = true, silent = true }
 vim.keymap.set('n', '<space>z', vim.diagnostic.open_float, opts)
@@ -64,11 +64,19 @@ lspconfig.volar.setup {
     capabilities = capabilities,
 }
 
-lspconfig.rust_analyzer.setup {
-    cmd = { "rustup", "run", "stable", "rust-analyzer" },
-    on_attach = on_attach,
-    capabilities = capabilities,
-}
+lspconfig.rust_analyzer.setup({
+  on_attach = on_attach,
+  capabilities = capabilities,
+  filetypes = {"rust"},
+  root_dir = util.root_pattern("Cargo.toml"),
+  settings = {
+    ['rust_analyzer'] = {
+      cargo = {
+        allFeatures = true,
+      },
+    },
+  },
+})
 
 lspconfig.gopls.setup {
     cmd = { "gopls", "serve" },

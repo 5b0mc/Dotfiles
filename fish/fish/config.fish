@@ -79,6 +79,7 @@ switch $os
 case "macos"
     set -x PATH $PATH /Users/m/Library/flutter/bin
     set -x PATH $PATH /opt/homebrew/bin
+    source "$HOME/.cargo/env.fish" 
     # opam configuration
     #source /Users/m/.opam/opam-init/init.fish > /dev/null 2> /dev/null; or true
 
