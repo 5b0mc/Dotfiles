@@ -35,6 +35,14 @@ function newpass
     end
 end
 
+function coin
+    if test ( math (random) % 2) -eq 0
+        echo "No."
+    else
+        echo "Yes."
+    end
+end
+
 function dsstorefucker
     sudo find ~/Code -name .DS_Store -depth -exec rm {} \;
     sudo find ~/Documents -name .DS_Store -depth -exec rm {} \;
