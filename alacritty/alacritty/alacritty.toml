@@ -54,7 +54,9 @@ bindings = [
 { key = "k", action = "Down", mode = "Vi|~Search"},
 { key = "l", action = "Up", mode = "Vi|~Search"},
 { key = ";", action = "Right", mode = "Vi|~Search"},
+#disable macos shit
+{ key = "w", mods= "Command", action = "None"},
 ]
 
 [mouse]
-hide_when_typing = true
+hide_when_typing = false
