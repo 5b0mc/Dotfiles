@@ -13,8 +13,8 @@ cmp.setup({
         end,
     },
     mapping = cmp.mapping.preset.insert({
-        ['<C-k>'] = cmp.mapping.select_next_item(),
-        ['<C-l>'] = cmp.mapping.select_prev_item(),
+        -- ['<C-k>'] = cmp.mapping.select_next_item(),
+        -- ['<C-l>'] = cmp.mapping.select_prev_item(),
         ['<C-b>'] = cmp.mapping.scroll_docs(-4),
         ['<C-f>'] = cmp.mapping.scroll_docs(4),
         ['<C-Space>'] = cmp.mapping.complete(),
@@ -30,8 +30,8 @@ cmp.setup({
 require 'fzf-lua'.setup {
     keymap = {
         fzf = {
-            ["ctrl-k"]     = "down",
-            ["ctrl-l"]     = "up",
+            -- ["ctrl-k"]     = "down",
+            -- ["ctrl-l"]     = "up",
             ["ctrl-z"]     = "abort",
             ["ctrl-u"]     = "unix-line-discard",
             ["ctrl-f"]     = "half-page-down",
