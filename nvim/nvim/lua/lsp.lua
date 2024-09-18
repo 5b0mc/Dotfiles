@@ -38,13 +38,8 @@ lspconfig.lua_ls.setup {
     capabilities = capabilities,
 }
 
-lspconfig.tsserver.setup {
-    on_attach = on_attach,
-    capabilities = capabilities
-}
-
 local vue_language_server_path = home .. "/.npm-packages/lib/node_modules/@vue/language-server"
-lspconfig.tsserver.setup {
+lspconfig.ts_ls.setup {
     init_options = {
         plugins = {
             {

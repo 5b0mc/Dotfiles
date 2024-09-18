@@ -101,3 +101,6 @@ case "linux"
     alias open="xdg-open"
 end
 
+
+# The next line updates PATH for the Google Cloud SDK.
+if [ -f '/Users/m/Downloads/google-cloud-sdk/path.fish.inc' ]; . '/Users/m/Downloads/google-cloud-sdk/path.fish.inc'; end
