@@ -26,7 +26,7 @@ if test (uname) = "Darwin"
     set os "macos"
 end
 function pickrandom
-    find . -maxdepth 1  -type f -o -type d -a ! -name '.' ! -name '..' | shuf -n 8
+    find . -maxdepth 1 -mindepth 1 -type d | shuf -n 8
 end
 
 function newpass
