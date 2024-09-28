@@ -29,7 +29,7 @@ if test (uname) = "Darwin"
     set os "macos"
 end
 function pickrandom
-    find . -maxdepth 1  -type f -o -type d -a ! -name '.' ! -name '..' | shuf -n 8
+    find . -maxdepth 1 -mindepth 1 -type d | shuf -n 8
 end
 
 function newpass
@@ -90,7 +90,7 @@ switch $os
 case "macos"
     set -x PATH $PATH /Users/m/Library/flutter/bin
     set -x PATH $PATH /opt/homebrew/bin
-    source "$HOME/.cargo/env.fish" 
+    #source "$HOME/.cargo/env.fish" 
     # opam configuration
     #source /Users/m/.opam/opam-init/init.fish > /dev/null 2> /dev/null; or true
 
@@ -104,3 +104,6 @@ case "linux"
     alias open="xdg-open"
 end
 
+
+# The next line updates PATH for the Google Cloud SDK.
+if [ -f '/Users/m/Downloads/google-cloud-sdk/path.fish.inc' ]; . '/Users/m/Downloads/google-cloud-sdk/path.fish.inc'; end
