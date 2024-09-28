@@ -9,6 +9,9 @@ alias dotfiles="nvim ~/Dotfiles"
 alias wn="cd ~/Code/WiNet"
 alias jn="jupyter notebook"
 
+# sunday as first day of the week is abomination
+alias cal="cal -m"
+
 set -g theme_nerd_fonts yes
 set fish_greeting
 set  -g TERM xterm-256color
