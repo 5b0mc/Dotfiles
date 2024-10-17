@@ -1,9 +1,8 @@
 outline-width = 0
 border-width = 0
-padding-right = 0
+padding-left = 40
+padding-top= 40
 padding-bottom = 0
-
-background-color = #0000
-text-color = #fff
+background-color = #161821
+ext-color = #fff
 selection-color = #e27878
-
