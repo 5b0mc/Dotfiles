@@ -1,5 +1,5 @@
-### Variables
-#
+xwayland enable
+output * bg /home/m/Documents/stuff/Nighthawks_by_Edward_Hopper_1942.jpg fill
 # Logo key. Use Mod1 for Alt.
 set $mod Mod4
 # Home row direction keys, like vim
@@ -12,7 +12,7 @@ set $term alacritty
 # Your preferred application launcher
 # Note: pass the final command to swaymsg so that the resulting window can be opened
 # on the original workspace that the command was run on.
-set $menu dmenu_path | dmenu | xargs swaymsg exec --
+set $menu tofi-run --font /home/m/.local/share/fonts/ttf/FiraCodeNerdFont/FiraCodeNerdFont-SemiBold.ttf --border-width 0  --ascii-input true  | xargs swaymsg exec --
 
 
 # Font for window titles. Will also be used by the bar unless a different font
@@ -163,7 +163,8 @@ for_window [class="Thunar"] floating enable, border normal
 
 bar {
     position top
-    status_command i3status
+    swaybar_command waybar
+
     colors {
 	    background #161821
 	    statusline #c6c8d1
@@ -178,6 +179,3 @@ bar {
 output DP-1 {
     scale 1
 }
-
-include /etc/sway/config.d/*
-
