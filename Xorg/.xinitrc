@@ -1,4 +1,4 @@
 xrdb -merge ~/.Xresources
 xset -dpms s off
-exec  i3
+exec i3
 

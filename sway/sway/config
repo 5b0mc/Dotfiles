@@ -26,9 +26,11 @@ client.unfocused        #161821 #161821 #ffffff #454948
 client.urgent           #b4be82 #b4be82 #161821 #268BD2
 client.placeholder      #000000 #0c0c0c #ffffff #000000
 client.background       #161821
-
 default_border none
 focus_follows_mouse no
+
+gaps inner 11px
+
 # # Use pactl to adjust volume in PulseAudio.
 bindsym XF86AudioRaiseVolume exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ +10%
 bindsym XF86AudioLowerVolume exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ -10%
@@ -62,16 +64,17 @@ bindsym $mod+Shift+q kill
 bindsym $mod+d exec $menu
 
 # change focus
-bindsym $mod+h focus left
-bindsym $mod+j focus down
-bindsym $mod+k focus up
-bindsym $mod+l focus right
+bindsym $mod+j focus left
+bindsym $mod+k focus down
+bindsym $mod+l focus up
+bindsym $mod+semicolon focus right
 
 # move focused window
-bindsym $mod+Shift+h move left
-bindsym $mod+Shift+j move down
-bindsym $mod+Shift+k move up
-bindsym $mod+Shift+l move right
+bindsym $mod+control+j move left
+bindsym $mod+control+k move down
+bindsym $mod+control+l move up
+bindsym $mod+control+semicolon move right
+
 
 # You can "split" the current object of your focus with
 # $mod+b or $mod+v, for horizontal and vertical splits

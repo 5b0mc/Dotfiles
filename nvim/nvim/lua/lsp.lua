@@ -33,28 +33,20 @@ lspconfig.html.setup {
     capabilities = capabilities,
 }
 
-lspconfig.lua_ls.setup {
-    on_attach = on_attach,
-    capabilities = capabilities,
-}
+local vue_language_server_path = home .. "/.npm-packages/lib/node_modules/@vue/typescript-plugin"
+lspconfig.volar.setup {}
 
-local vue_language_server_path = home .. "/.npm-packages/lib/node_modules/@vue/language-server"
 lspconfig.ts_ls.setup {
     init_options = {
         plugins = {
             {
                 name = '@vue/typescript-plugin',
                 location = vue_language_server_path,
-                languages = { 'vue' },
+                languages = {"javascript", "typescript", "vue"},
             },
         },
     },
     filetypes = { 'typescript', 'javascript', 'javascriptreact', 'typescriptreact', 'vue' },
-    on_attach = on_attach,
-    capabilities = capabilities,
-}
-
-lspconfig.volar.setup {
     on_attach = on_attach,
     capabilities = capabilities,
 }
