@@ -13,6 +13,7 @@ set $term alacritty
 # Note: pass the final command to swaymsg so that the resulting window can be opened
 # on the original workspace that the command was run on.
 set $menu tofi-drun --font /home/m/.local/share/fonts/ttf/FiraCodeNerdFont/FiraCodeNerdFont-SemiBold.ttf --border-width 0  --ascii-input true  | xargs swaymsg exec --
+exec swaync
 
 
 # Font for window titles. Will also be used by the bar unless a different font
@@ -64,6 +65,7 @@ bindsym $mod+Shift+q kill
 bindsym $mod+d exec $menu
 
 # change focus
+bindsym $mod+z focus next
 bindsym $mod+j focus left
 bindsym $mod+k focus down
 bindsym $mod+l focus up
@@ -83,7 +85,7 @@ bindsym $mod+b splith
 bindsym $mod+v splitv
 
 # enter fullscreen mode for the focused container
-bindsym $mod+f fullscreen toggle
+bindsym $mod+f fullscreen toggl
 
 # change container layout (stacked, tabbed, toggle split)
 bindsym $mod+s layout stacking
@@ -161,20 +163,21 @@ bindsym $mod+r mode "resize"
 for_window [class="Pavucontrol"] floating enable, border normal
 for_window [class="Thunar"] floating enable, border normal
 
-bar {
-    position top
-    swaybar_command waybar
-
-    colors {
-	    background #161821
-	    statusline #c6c8d1
-	    separator  #c6c8d1
-	    focused_workspace   #161821 #c6c8d1 #161821
-	    active_workspace    #d2d4de #d2d4de #161821
-	    inactive_workspace  #161821 #161821 #d2d4de
-	    urgent_workspace    #b4be82 #b4be82 #161821
-    }
-}
+# bar {
+#     position top
+#     wrap_scroll true
+#     status_command  /home/m/statusn.sh
+#     status_padding 20
+#     colors {
+# 	    background #161821
+# 	    statusline #c6c8d1
+# 	    separator  #c6c8d1
+# 	    focused_workspace   #161821 #c6c8d1 #161821
+# 	    active_workspace    #d2d4de #d2d4de #161821
+# 	    inactive_workspace  #161821 #161821 #d2d4de
+# 	    urgent_workspace    #b4be82 #b4be82 #161821
+#     }
+# }
 
 output DP-1 {
     scale 1
