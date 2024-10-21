@@ -2,7 +2,7 @@
 ### setup and variables
 ###########  
 # sway stuff
-xwayland enable
+xwayland disable
 exec dbus-update-activation-environment DISPLAY XAUTHORITY WAYLAND_DISPLAY
 exec gnome-keyring-daemon --start --components=secrets
 # My preferred background
@@ -172,11 +172,11 @@ bar {
 input  $laptop_keyboard {
     xkb_options caps:ctrl_modifier,altwin:swap_alt_win
 }
+output * {
+    scale 1
+}
 output $laptop_display {
     res 2880x1800@60.000Hz
-    scale 2
-}
-output * {
     scale 2
 }
 # Clamshell mode for laptops: if the lid is close then disable it
