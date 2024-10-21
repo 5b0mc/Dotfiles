@@ -1,16 +1,22 @@
 ###########  
-### setup 
+### setup and variables
 ###########  
-set $mod Mod4
-# keyring and stuff
-exec gnome-keyring-daemon --start --components=secrets
+# sway stuff
 xwayland enable
+exec dbus-update-activation-environment DISPLAY XAUTHORITY WAYLAND_DISPLAY
+exec gnome-keyring-daemon --start --components=secrets
 # My preferred background
 output * bg /home/m/Documents/stuff/Nighthawks_by_Edward_Hopper_1942.jpg fill
-# My preferred terminal emulator
-set $term alacritty
+set $mod Mod4
 # My preferred app launcher
 set $menu tofi-drun --font /home/m/.local/share/fonts/ttf/FiraCodeNerdFont/FiraCodeNerdFont-SemiBold.ttf --border-width 0  --ascii-input true  | xargs swaymsg exec --
+# My preferred terminal emulator
+set $term foot
+# My laptop 
+# check inputs names with: swaymsg -t get_intputs
+# check outputs names with: swaymsg -t get_outputs
+set $laptop_display "eDP-1"
+set $laptop_keyboard "1:1:AT_Translated_Set_2_keyboard"
 
 ###########  
 ### key bindings
@@ -25,6 +31,7 @@ bindsym XF86MonBrightnessUp exec brightnessctl set 5%+
 bindsym XF86AudioPlay exec playerctl play-pause
 bindsym XF86AudioNext exec playerctl next
 bindsym XF86AudioPrev exec playerctl previous
+bindsym XF86Display exec swaymsg output $laptop_display toggle
 # remap hhkb "eject" key (fn+f)
 # sudo evtest /dev/input/by-id/usb-Topre_Corporation_HHKB_Professional-event-kbd
 # (fn+f) => 190 but wrong!!!
@@ -161,20 +168,19 @@ bar {
 ###########  
 ###  inputs / outputs 
 ###########  
-# check with: swaymsg -t get_intputs
-# Notebook keyboard
-input "1:1:AT_Translated_Set_2_keyboard" {
+# Laptop keyboard
+input  $laptop_keyboard {
     xkb_options caps:ctrl_modifier,altwin:swap_alt_win
 }
-# check with: swaymsg -t get_outputs
-# Notebook display
-output eDP-1 {
+output $laptop_display {
     res 2880x1800@60.000Hz
     scale 2
 }
-# Clamshell mode for notebooks: if lid is close then disable it
-set $laptop_output "eDP-1"
-bindswitch --reload --locked lid:on output $laptop_output disable
-bindswitch --reload --locked lid:off output $laptop_output enable
-exec_always ./clamshellmode.sh $laptop_output
+output * {
+    scale 2
+}
+# Clamshell mode for laptops: if the lid is close then disable it
+bindswitch --reload --locked lid:on output $laptop_display disable
+bindswitch --reload --locked lid:off output $laptop_display enable
+exec_always ./clamshellmode.sh $laptop_display
 
