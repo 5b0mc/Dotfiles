@@ -1,10 +1,28 @@
 general {
         output_format = "i3bar"
         colors = false
-        interval = 10
+        interval = 30
 }
 
+order += "wireless wlp2s0"
+order += "battery 0"
 order += "tztime local"
+
+wireless wlp2s0 {
+        format_up = "W: %quality %essid %ip"
+        format_down = "W: down"
+}
+
+battery 0 {
+        format = "B%status%percentage"
+        format_down = "No Bat"
+        status_chr = ":P:"
+        status_bat = ":"
+        status_unk = "-"
+        status_full = "FULL"
+        path = "/sys/class/power_supply/BAT%d/uevent"
+        low_threshold = 10
+}
 
 tztime local {
 		format = "%a %-d %b %H:%M "

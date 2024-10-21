@@ -1,24 +1,21 @@
-xwayland enable
-output * bg /home/m/Documents/stuff/Nighthawks_by_Edward_Hopper_1942.jpg fill
-# Logo key. Use Mod1 for Alt.
+###########  
+### setup 
+###########  
 set $mod Mod4
-# Home row direction keys, like vim
-# Your preferred terminal emulator
+# keyring and stuff
+exec gnome-keyring-daemon --start --components=secrets
+xwayland enable
+# My preferred background
+output * bg /home/m/Documents/stuff/Nighthawks_by_Edward_Hopper_1942.jpg fill
+# My preferred terminal emulator
 set $term alacritty
-# Your preferred application launcher
-# Note: pass the final command to swaymsg so that the resulting window can be opened
-# on the original workspace that the command was run on.
+# My preferred app launcher
 set $menu tofi-drun --font /home/m/.local/share/fonts/ttf/FiraCodeNerdFont/FiraCodeNerdFont-SemiBold.ttf --border-width 0  --ascii-input true  | xargs swaymsg exec --
-exec swaync
 
 ###########  
-## key bindigs
+### key bindings
 ###########  
 bindsym $mod+shift+r reload
-# screenshoot area and send to xclip
-#bindsym $mod+Shift+4 exec maim -su ~/Pictures/screenshot-$(date +\%y\%m\%d-\%h\%m\%s).png
-# Font for window titles. Will also be used by the bar unless a different font
-# is used in the bar {} block below# # Use pactl to adjust volume in PulseAudio.
 bindsym XF86AudioRaiseVolume exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ +10%
 bindsym XF86AudioLowerVolume exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ -10%
 bindsym XF86AudioMute exec --no-startup-id pactl set-sink-mute @DEFAULT_SINK@ toggle
@@ -28,7 +25,6 @@ bindsym XF86MonBrightnessUp exec brightnessctl set 5%+
 bindsym XF86AudioPlay exec playerctl play-pause
 bindsym XF86AudioNext exec playerctl next
 bindsym XF86AudioPrev exec playerctl previous
-bindsym XF86Search exec bemenu-run
 # remap hhkb "eject" key (fn+f)
 # sudo evtest /dev/input/by-id/usb-Topre_Corporation_HHKB_Professional-event-kbd
 # (fn+f) => 190 but wrong!!!
@@ -37,42 +33,35 @@ bindsym XF86Search exec bemenu-run
 bindcode --release 198 exec --no-startup-id playerctl next
 # remap hhkb "pause" key (fn+p)
 bindcode --release 127 exec --no-startup-id playerctl play-pause
-# Use Mouse+$mod to drag floating windows to their wanted position
-floating_modifier $mod
-# start a terminal
+# start my terminal
 bindsym $mod+Return exec $term
+# Start my launcher
+bindsym $mod+d exec $menu
 # kill focused window
 bindsym $mod+Shift+q kill
-# Start your launcher
-bindsym $mod+d exec $menu
 # change focus
 bindsym $mod+j focus left
 bindsym $mod+k focus down
 bindsym $mod+l focus up
 bindsym $mod+semicolon focus right
+bindsym $mod+a focus parent
+bindsym $mod+c focus child
 # move focused window
 bindsym $mod+shift+j move left
 bindsym $mod+shift+k move down
 bindsym $mod+shift+l move up
 bindsym $mod+shift+semicolon move right
-# You can "split" the current object of your focus with
-# $mod+b or $mod+v, for horizontal and vertical splits
-# respectively.
 bindsym $mod+b splith
 bindsym $mod+v splitv
 # enter fullscreen mode for the focused container
 bindsym $mod+f fullscreen toggle
 # change container layout (stacked, tabbed, toggle split)
-bindsym $mod+s layout stacking
 bindsym $mod+w layout tabbed
 bindsym $mod+e layout toggle split
 bindsym $mod+space floating toggle
-# focus the parent/child container
-bindsym $mod+a focus parent
-bindsym $mod+c focus child
 
 ###########  
-## windows / workspaces
+### windows / workspaces
 ###########  
 # switch to workspace
 bindsym $mod+shift+Tab workspace next
@@ -104,6 +93,7 @@ set $wsSocial 4
 set $wsOffice 7
 set $wsMail 8
 set $wsDB 9
+set $ws0 0
 # assign window to a workspace with window criteria
 # use swaymsg -t get_tree 
 # use xprop to find WM_CLASS
@@ -113,44 +103,50 @@ assign [class="thunderbird"] $wsMail
 assign [app_id="org.gnome.Evolution"] $wsMail
 assign [class="libreoffice"] $wsOffice
 assign [class="beekeeper-studio"] $wsDB
+assign [app_id="transmission-gtk"] $ws0
 # assign window options with window criteria
 for_window [class="Pavucontrol"] floating enable, border pixel 12
 for_window [class="Thunar"] floating enable, border pixel 12
 for_window [class="Pavucontrol"] floating enable, border normal
-for_window [class="Thunar"] floating enable, border normal
+for_window [class="Nautilus"] floating enable, border normal
+for_window [window_role="pop-up"] floating enable
+for_window [window_role="bubble"] floating enable
+for_window [window_role="task_dialog"] floating enable
+for_window [window_type="dialog"] floating enable
+for_window [window_type="menu"] floating enable
+focus_follows_mouse no
 # resize window (you can also use the mouse for that)
 mode "resize" {
-        bindsym h resize shrink width 10 px or 10 ppt
+        bindsym j resize shrink width 10 px or 10 ppt
         bindsym k resize grow height 10 px or 10 ppt
-        bindsym j resize shrink height 10 px or 10 ppt
-        bindsym l resize grow width 11 px or 10 ppt
+        bindsym l resize shrink height 10 px or 10 ppt
+        bindsym semicolon resize grow width 11 px or 10 ppt
         # back to normal: Enter or Escape or $mod+r
         bindsym Return mode "default"
-        bindsym Escape mode "default"
         bindsym $mod+r mode "default"
 }
 bindsym $mod+r mode "resize"
 
 ###########  
-## style / bar
+### style / bar
 ###########  
 # global font
 font pango:FiraCode Nerd Font 11
+default_border none
+gaps inner 11px
 # global windows style
-# class                 border  backgr. text    indic.   child_border
+# class                 border  backgr  text    child_border
 client.focused          #c6c8d1 #c6c8d1 #161821 #84a0c6
 client.focused_inactive #161821 #161821 #ffffff #454948
 client.unfocused        #161821 #161821 #ffffff #454948
 client.urgent           #b4be82 #b4be82 #161821 #268BD2
 client.placeholder      #000000 #0c0c0c #ffffff #000000
 client.background       #161821
-default_border none
-focus_follows_mouse no
-gaps inner 11px
 # setup status bar
 bar {
-    position top
+    position bottom
     status_command  i3status
+    output "eDP-1"
     colors {
 	    background #161821
 	    statusline #c6c8d1
@@ -163,21 +159,22 @@ bar {
 }
 
 ###########  
-##  input / output
+###  inputs / outputs 
 ###########  
+# check with: swaymsg -t get_intputs
 # Notebook keyboard
-# check names with: swaymsg -t get_intputs
 input "1:1:AT_Translated_Set_2_keyboard" {
-    xkb_options altwin:swap_alt_win
-    xkb_options caps:ctrl_modifier
+    xkb_options caps:ctrl_modifier,altwin:swap_alt_win
+}
+# check with: swaymsg -t get_outputs
+# Notebook display
+output eDP-1 {
+    res 2880x1800@60.000Hz
+    scale 2
 }
 # Clamshell mode for notebooks: if lid is close then disable it
-# check names with: swaymsg -t get_outputs
 set $laptop_output "eDP-1"
 bindswitch --reload --locked lid:on output $laptop_output disable
 bindswitch --reload --locked lid:off output $laptop_output enable
 exec_always ./clamshellmode.sh $laptop_output
-# Notebook display
-output eDP-1 {
-    scale 2
-}
+
