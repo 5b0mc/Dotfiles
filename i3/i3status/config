@@ -4,13 +4,14 @@ general {
         interval = 30
 }
 
-order += "wireless wlp2s0"
+order += "volume master"
 order += "battery 0"
+order += "wireless wlp2s0"
 order += "tztime local"
 
 wireless wlp2s0 {
-        format_up = "W: %quality %essid %ip"
-        format_down = "W: down"
+        format_up = "W:%quality:%essid"
+        format_down = "W:-"
 }
 
 battery 0 {
@@ -18,10 +19,18 @@ battery 0 {
         format_down = "No Bat"
         status_chr = ":P:"
         status_bat = ":"
-        status_unk = "-"
-        status_full = "FULL"
+        status_unk = ":-"
+        status_full = ":FULL"
         path = "/sys/class/power_supply/BAT%d/uevent"
         low_threshold = 10
+}
+
+volume master {
+        format = "V:%volume"
+        format_muted = "♪: muted (%volume)"
+        device = "default"
+        mixer = "Master"
+        mixer_idx = 0
 }
 
 tztime local {
