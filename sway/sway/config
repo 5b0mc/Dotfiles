@@ -70,6 +70,9 @@ bindsym $mod+space floating toggle
 ###########  
 ### windows / workspaces
 ###########  
+# Allow switching between workspaces with left and right swipes
+bindgesture swipe:right workspace prev
+bindgesture swipe:left workspace next
 # switch to workspace
 bindsym $mod+shift+Tab workspace next
 bindsym $mod+Tab workspace back_and_forth
