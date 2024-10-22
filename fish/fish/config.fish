@@ -1,33 +1,29 @@
-export TERM=xterm-256color
-
-alias vi="vim"
-alias vim="nvim"
-
-alias python="python3"
-alias ms="cd ~/Writing/MirkoSacchetti"
-alias dotfiles="nvim ~/Dotfiles"
-alias wn="cd ~/Code/WiNet"
-alias jn="jupyter notebook"
-
-# sunday as first day of the week is abomination
-alias cal="cal -m"
-
-set -g theme_nerd_fonts yes
 set fish_greeting
+export TERM=xterm-256color
+# aliases
+alias python="python3"
+alias dots="nvim ~/Dotfiles"
+alias vim="nvim"
+alias vi="vim"
+alias wn="cd ~/Code/WiNet"
+alias ms="cd ~/Writing/MirkoSacchetti"
+alias jn="jupyter notebook"
+# sunday as first day of the week is an abomination
+alias cal="cal -m"
+# envs
+set -g theme_nerd_fonts yes
 set  -g TERM xterm-256color
-
-set FZF_DEFAULT_OPTS "--bind ctrl-k:down,ctrl-l:up"
 set NPM_PACKAGES "$HOME/.npm-packages"
 set PATH $PATH $NPM_PACKAGES/bin
 set MANPATH $NPM_PACKAGES/share/man $MANPATH  
-
 set -x GOPATH $HOME/.go
 set -x PATH $PATH $GOPATH/bin
-
-set -g os "linux"
-if test (uname) = "Darwin"
-    set os "macos"
+set os (uname)
+switch $os
+    case "Darwin"
+        set -x PATH $PATH /opt/homebrew/bin
 end
+# stuff
 function pickrandom
     find . -maxdepth 1 -mindepth 1 -type d | shuf -n 8
 end
@@ -86,24 +82,3 @@ function venv
     source .env/bin/activate.fish
 end
 
-switch $os
-case "macos"
-    set -x PATH $PATH /Users/m/Library/flutter/bin
-    set -x PATH $PATH /opt/homebrew/bin
-    #source "$HOME/.cargo/env.fish" 
-    # opam configuration
-    #source /Users/m/.opam/opam-init/init.fish > /dev/null 2> /dev/null; or true
-
-case "linux"
-     if status is-login
-         #         exec sway
-        if test -z "$DISPLAY" -a "$XDG_VTNR" = 1
-             exec startx -- -keeptty
-         end
-     end
-    alias open="xdg-open"
-end
-
-
-# The next line updates PATH for the Google Cloud SDK.
-if [ -f '/Users/m/Downloads/google-cloud-sdk/path.fish.inc' ]; . '/Users/m/Downloads/google-cloud-sdk/path.fish.inc'; end
