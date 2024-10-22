@@ -1,26 +1,42 @@
 ###########  
 ### setup and variables
 ###########  
-# sway stuff
-xwayland disable
 exec dbus-update-activation-environment DISPLAY XAUTHORITY WAYLAND_DISPLAY
-exec gnome-keyring-daemon --start --components=secrets
+exec gnome-keyring-daemon --start --components=ssh,secrets,pkcs11
 # My preferred background
 output * bg /home/m/Documents/stuff/Nighthawks_by_Edward_Hopper_1942.jpg fill
-set $mod Mod4
 # My preferred app launcher
 set $menu tofi-drun --font /home/m/.local/share/fonts/ttf/FiraCodeNerdFont/FiraCodeNerdFont-SemiBold.ttf --border-width 0  --ascii-input true  | xargs swaymsg exec --
 # My preferred terminal emulator
 set $term foot
-# My laptop 
+# My laptop i/o 
 # check inputs names with: swaymsg -t get_intputs
 # check outputs names with: swaymsg -t get_outputs
 set $laptop_display "eDP-1"
 set $laptop_keyboard "1:1:AT_Translated_Set_2_keyboard"
 
 ###########  
+###  inputs / outputs 
+###########  
+input  $laptop_keyboard {
+    xkb_options caps:ctrl_modifier,altwin:swap_alt_win
+}
+output * {
+    scale 1.2
+}
+output $laptop_display {
+    res 2880x1800@60.000Hz
+    scale 2
+}
+# Clamshell mode for laptops: if the lid is close then disable it
+bindswitch --reload --locked lid:on output $laptop_display disable
+bindswitch --reload --locked lid:off output $laptop_display enable
+exec_always ./clamshellmode.sh $laptop_display
+
+###########  
 ### key bindings
 ###########  
+set $mod Mod4
 bindsym $mod+shift+r reload
 bindsym XF86AudioRaiseVolume exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ +10%
 bindsym XF86AudioLowerVolume exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ -10%
@@ -32,49 +48,18 @@ bindsym XF86AudioPlay exec playerctl play-pause
 bindsym XF86AudioNext exec playerctl next
 bindsym XF86AudioPrev exec playerctl previous
 bindsym XF86Display exec swaymsg output $laptop_display toggle
-# remap hhkb "eject" key (fn+f)
-# sudo evtest /dev/input/by-id/usb-Topre_Corporation_HHKB_Professional-event-kbd
-# (fn+f) => 190 but wrong!!!
-# xorg remap the keycode, use xinput to find the new code:
-# xinput list && xinput test IDKEYBOARD
-bindcode --release 198 exec --no-startup-id playerctl next
-# remap hhkb "pause" key (fn+p)
-bindcode --release 127 exec --no-startup-id playerctl play-pause
 # start my terminal
 bindsym $mod+Return exec $term
-# Start my launcher
+# start my launcher
 bindsym $mod+d exec $menu
-# kill focused window
-bindsym $mod+Shift+q kill
-# change focus
-bindsym $mod+j focus left
-bindsym $mod+k focus down
-bindsym $mod+l focus up
-bindsym $mod+semicolon focus right
-bindsym $mod+a focus parent
-bindsym $mod+c focus child
-# move focused window
-bindsym $mod+shift+j move left
-bindsym $mod+shift+k move down
-bindsym $mod+shift+l move up
-bindsym $mod+shift+semicolon move right
-bindsym $mod+b splith
-bindsym $mod+v splitv
-# enter fullscreen mode for the focused container
-bindsym $mod+f fullscreen toggle
-# change container layout (stacked, tabbed, toggle split)
-bindsym $mod+w layout tabbed
-bindsym $mod+e layout toggle split
-bindsym $mod+space floating toggle
 
 ###########  
-### windows / workspaces
+### workspaces
 ###########  
 # Allow switching between workspaces with left and right swipes
 bindgesture swipe:right workspace prev
 bindgesture swipe:left workspace next
 # switch to workspace
-bindsym $mod+shift+Tab workspace next
 bindsym $mod+Tab workspace back_and_forth
 bindsym $mod+1 workspace number 1
 bindsym $mod+2 workspace number 2
@@ -86,6 +71,8 @@ bindsym $mod+7 workspace number 7
 bindsym $mod+8 workspace number 8
 bindsym $mod+9 workspace number 9
 bindsym $mod+0 workspace number 10
+bindsym $mod+shift+j workspace prev
+bindsym $mod+shift+semicolon workspace next
 # move focused container to workspace
 bindsym $mod+shift+1 move container to workspace number 1
 bindsym $mod+shift+2 move container to workspace number 2
@@ -98,32 +85,26 @@ bindsym $mod+shift+8 move container to workspace number 8
 bindsym $mod+shift+9 move container to workspace number 9
 bindsym $mod+shift+0 move container to workspace number 10
 # workspaces names
-set $wsMusic 3
+set $wsMedia 3
 set $wsSocial 4
 set $wsOffice 7
 set $wsMail 8
-set $wsDB 9
-set $ws0 0
+set $wsStuff 9
 # assign window to a workspace with window criteria
 # use swaymsg -t get_tree 
-# use xprop to find WM_CLASS
 assign [app_id="org.telegram.desktop"] $wsSocial
-assign [class="Spotify"] $wsMusic
-assign [class="thunderbird"] $wsMail
+assign [app_id="spotify"] $wsMedia
 assign [app_id="org.gnome.Evolution"] $wsMail
-assign [class="libreoffice"] $wsOffice
-assign [class="beekeeper-studio"] $wsDB
-assign [app_id="transmission-gtk"] $ws0
+assign [app_id="libreoffice"] $wsOffice
+assign [app_id="Electron"] $wsStuff
+assign [app_id="Bruno"] $wsStuff
+assign [app_id="brave*"] $wsMedia
+assign [app_id="com.transmissionbt*"] $wsStuff
 # assign window options with window criteria
-for_window [class="Pavucontrol"] floating enable, border pixel 12
-for_window [class="Thunar"] floating enable, border pixel 12
-for_window [class="Pavucontrol"] floating enable, border normal
-for_window [class="Nautilus"] floating enable, border normal
-for_window [window_role="pop-up"] floating enable
-for_window [window_role="bubble"] floating enable
-for_window [window_role="task_dialog"] floating enable
-for_window [window_type="dialog"] floating enable
-for_window [window_type="menu"] floating enable
+for_window [app_id="org.pulseaudio.pavucontrol"] floating enable, border normal
+for_window [app_id="org.gnome.Calculator"] floating enable, border normal
+for_window [app_id="org.gnome.Calendar"] floating enable, border normal
+for_window [app_id="org.gnome.Nautilus"] floating enable, border normal
 focus_follows_mouse no
 # resize window (you can also use the mouse for that)
 mode "resize" {
@@ -131,11 +112,41 @@ mode "resize" {
         bindsym k resize grow height 10 px or 10 ppt
         bindsym l resize shrink height 10 px or 10 ppt
         bindsym semicolon resize grow width 11 px or 10 ppt
-        # back to normal: Enter or Escape or $mod+r
-        bindsym Return mode "default"
-        bindsym $mod+r mode "default"
+        # back to normal
+        bindsym Escape mode "default"
 }
 bindsym $mod+r mode "resize"
+
+###########  
+### container / window
+###########  
+# change focus
+bindsym $mod+j focus left
+bindsym $mod+k focus down
+bindsym $mod+l focus up
+bindsym $mod+semicolon focus right
+bindsym $mod+a focus parent
+bindsym $mod+c focus child
+bindsym $mod+n focus next
+bindsym $mod+p focus prev
+# fullscreen mode for the focused container
+bindsym $mod+f fullscreen toggle
+# change layout mode for the focused container
+bindsym $mod+s layout stacking
+bindsym $mod+w layout tabbed
+bindsym $mod+e layout toggle split
+# split the focused container
+bindsym $mod+v split vertical
+bindsym $mod+h split horizontal
+bindsym $mod+t split vertical; layout tabbed
+bindsym $mod+space floating toggle
+# move focused window
+bindsym $mod+control+j move left
+bindsym $mod+control+k move down
+bindsym $mod+control+l move up
+bindsym $mod+control+semicolon move right
+# kill focused window
+bindsym $mod+control+w kill
 
 ###########  
 ### style / bar
@@ -154,9 +165,8 @@ client.placeholder      #000000 #0c0c0c #ffffff #000000
 client.background       #161821
 # setup status bar
 bar {
-    position bottom
+    position top
     status_command  i3status
-    output "eDP-1"
     colors {
 	    background #161821
 	    statusline #c6c8d1
@@ -167,23 +177,4 @@ bar {
 	    urgent_workspace    #b4be82 #b4be82 #161821
     }
 }
-
-###########  
-###  inputs / outputs 
-###########  
-# Laptop keyboard
-input  $laptop_keyboard {
-    xkb_options caps:ctrl_modifier,altwin:swap_alt_win
-}
-output * {
-    scale 1
-}
-output $laptop_display {
-    res 2880x1800@60.000Hz
-    scale 2
-}
-# Clamshell mode for laptops: if the lid is close then disable it
-bindswitch --reload --locked lid:on output $laptop_display disable
-bindswitch --reload --locked lid:off output $laptop_display enable
-exec_always ./clamshellmode.sh $laptop_display
 
