@@ -155,7 +155,6 @@ bindsym $mod+control+w kill
 font pango:FiraCode Nerd Font 11
 default_border none
 gaps inner 11px
-# global windows style
 # class                 border  backgr  text    child_border
 client.focused          #c6c8d1 #c6c8d1 #161821 #84a0c6
 client.focused_inactive #161821 #161821 #ffffff #454948
@@ -167,6 +166,11 @@ client.background       #161821
 bar {
     position top
     status_command  i3status
+    # disable mouse/trakpad scrolling
+    bindsym button4 nop
+    bindsym button5 nop
+    bindsym button6 nop
+    bindsym button7 nop  
     colors {
 	    background #161821
 	    statusline #c6c8d1

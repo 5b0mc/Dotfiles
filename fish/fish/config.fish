@@ -2,7 +2,7 @@ set fish_greeting
 export TERM=xterm-256color
 # aliases
 alias python="python3"
-alias dots="nvim ~/Dotfiles"
+alias dots="cd ~/Dotfiles && nvim ."
 alias vim="nvim"
 alias vi="vim"
 alias wn="cd ~/Code/WiNet"
@@ -12,7 +12,7 @@ alias jn="jupyter notebook"
 alias cal="cal -m"
 # envs
 set -g theme_nerd_fonts yes
-set  -g TERM xterm-256color
+set -g TERM xterm-256color
 set NPM_PACKAGES "$HOME/.npm-packages"
 set PATH $PATH $NPM_PACKAGES/bin
 set MANPATH $NPM_PACKAGES/share/man $MANPATH  

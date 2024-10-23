@@ -14,7 +14,7 @@ linux:
 	stow --verbose --target=$(HOME) --restow Xorg
 
 font:
-	wget -O /tmp/font.zip https://github.com/ryanoasis/nerd-fonts/releases/download/v3.0.2/FiraCode.zip
+	wget -O /tmp/font.zip https://github.com/ryanoasis/nerd-fonts/releases/download/v3.2.1/FiraCode.zip
 	unzip /tmp/font.zip -d /tmp/font
 	cp -R /tmp/font/ ~/.local/share/fonts/
 	fc-cache -f -v
