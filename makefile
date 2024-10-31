@@ -7,7 +7,7 @@ work:
 	stow --verbose --target=$(HOME)/.config --restow alacritty
 	stow --verbose --target=$(HOME) --restow npm
 
-linux:
+sway:
 	stow --verbose --target=$(HOME)/.config --restow sway
 	stow --verbose --target=$(HOME)/.config --restow i3
 	stow --verbose --target=$(HOME)/.config --restow hyprland

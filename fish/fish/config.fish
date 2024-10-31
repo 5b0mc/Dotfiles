@@ -22,6 +22,8 @@ set os (uname)
 switch $os
     case "Darwin"
         set -x PATH $PATH /opt/homebrew/bin
+    case "Linux"
+        set PATH $PATH /opt/nvim-linux64/bin
 end
 # stuff
 function pickrandom

@@ -54,5 +54,8 @@ bindings = [
 { key = "w", mods= "Command", action = "None"},
 ]
 
+[window]
+decorations = "None"
+
 [mouse]
 hide_when_typing = true
