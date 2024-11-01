@@ -1,3 +1,5 @@
+.PHONY: work sway i3 font
+
 work:
 	# remember to intall make and ripgrep for telescope plugin
 	-git clone --depth 1 https://github.com/wbthomason/packer.nvim ~/.local/share/nvim/site/pack/packer/start/packer.nvim
@@ -9,6 +11,8 @@ work:
 
 sway:
 	stow --verbose --target=$(HOME)/.config --restow sway
+
+i3:
 	stow --verbose --target=$(HOME)/.config --restow i3
 	stow --verbose --target=$(HOME)/.config --restow hyprland
 	stow --verbose --target=$(HOME) --restow Xorg
