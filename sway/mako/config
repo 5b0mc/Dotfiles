@@ -1,0 +1,14 @@
+background-color=#2e3440
+text-color=#d8dee9
+border-color=#2e3440
+# Timeout in millisecondi (5000ms = 5s)
+default-timeout=5000
+
+# Formato
+format=<b>%s</b>\n%b
+
+# Stile
+icons=1
+max-icon-size=48
+icon-location=left
+

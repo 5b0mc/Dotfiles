@@ -1,12 +1,12 @@
 ###########  
 ### setup and variables
 ###########  
-exec dbus-update-activation-environment DISPLAY XAUTHORITY WAYLAND_DISPLAY
-exec gnome-keyring-daemon --start --components=ssh,secrets,pkcs11
 # My preferred background
 output * bg /home/m/Documents/stuff/Nighthawks_by_Edward_Hopper_1942.jpg fill
 # My preferred app launcher
 set $menu tofi-drun --font /home/m/.local/share/fonts/ttf/FiraCodeNerdFont/FiraCodeNerdFont-SemiBold.ttf --border-width 0  --ascii-input true  | xargs swaymsg exec --
+# Notification daemon
+exec mako
 # My preferred terminal emulator
 set $term foot
 # My laptop i/o 
@@ -22,7 +22,7 @@ input  $laptop_keyboard {
     xkb_options caps:ctrl_modifier,altwin:swap_alt_win
 }
 output * {
-    scale 1.2
+    scale 1
 }
 output $laptop_display {
     res 2880x1800@60.000Hz
@@ -38,20 +38,22 @@ exec_always ./clamshellmode.sh $laptop_display
 ###########  
 set $mod Mod4
 bindsym $mod+shift+r reload
-bindsym XF86AudioRaiseVolume exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ +10%
-bindsym XF86AudioLowerVolume exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ -10%
-bindsym XF86AudioMute exec --no-startup-id pactl set-sink-mute @DEFAULT_SINK@ toggle
-bindsym XF86AudioMicMute exec --no-startup-id pactl set-source-mute @DEFAULT_SOURCE@ toggle
-bindsym XF86MonBrightnessDown exec brightnessctl set 5%-
-bindsym XF86MonBrightnessUp exec brightnessctl set 5%+
+bindsym XF86AudioRaiseVolume exec pactl set-sink-volume @DEFAULT_SINK@ +10%
+bindsym XF86AudioLowerVolume exec pactl set-sink-volume @DEFAULT_SINK@ -10%
+bindsym XF86AudioMute exec pactl set-sink-mute @DEFAULT_SINK@ toggle
+bindsym XF86AudioMicMute exec pactl set-source-mute @DEFAULT_SOURCE@ toggle
 bindsym XF86AudioPlay exec playerctl play-pause
 bindsym XF86AudioNext exec playerctl next
 bindsym XF86AudioPrev exec playerctl previous
+bindsym XF86MonBrightnessDown exec brightnessctl set 5%-
+bindsym XF86MonBrightnessUp exec brightnessctl set 5%+
 bindsym XF86Display exec swaymsg output $laptop_display toggle
 # start my terminal
 bindsym $mod+Return exec $term
 # start my launcher
 bindsym $mod+d exec $menu
+# save screenshots in Pictures
+bindsym $mod+p exec grim -g "$(slurp)" -t png 
 
 ###########  
 ### workspaces
@@ -85,19 +87,21 @@ bindsym $mod+shift+8 move container to workspace number 8
 bindsym $mod+shift+9 move container to workspace number 9
 bindsym $mod+shift+0 move container to workspace number 10
 # workspaces names
-set $wsMedia 3
 set $wsSocial 4
-set $wsOffice 7
-set $wsMail 8
-set $wsStuff 9
+set $wsMusic 5
+set $wsMedia 6
+set $wsMail 7
+set $wsOffice 8
+set $wsAdmin 9
+set $wsStuff 0
 # assign window to a workspace with window criteria
 # use swaymsg -t get_tree 
 assign [app_id="org.telegram.desktop"] $wsSocial
-assign [app_id="spotify"] $wsMedia
-assign [app_id="org.gnome.Evolution"] $wsMail
+assign [app_id="spotify"] $wsMusic
+assign [app_id="betterbird"] $wsMail
 assign [app_id="libreoffice"] $wsOffice
 assign [app_id="Electron"] $wsStuff
-assign [app_id="Bruno"] $wsStuff
+assign [app_id="Bruno"] $wsAdmin
 assign [app_id="brave*"] $wsMedia
 assign [app_id="com.transmissionbt*"] $wsStuff
 # assign window options with window criteria
@@ -105,6 +109,7 @@ for_window [app_id="org.pulseaudio.pavucontrol"] floating enable, border normal
 for_window [app_id="org.gnome.Calculator"] floating enable, border normal
 for_window [app_id="org.gnome.Calendar"] floating enable, border normal
 for_window [app_id="org.gnome.Nautilus"] floating enable, border normal
+for_window [title="^Picture"] floating enable, sticky enable, border none
 focus_follows_mouse no
 # resize window (you can also use the mouse for that)
 mode "resize" {
@@ -127,8 +132,6 @@ bindsym $mod+l focus up
 bindsym $mod+semicolon focus right
 bindsym $mod+a focus parent
 bindsym $mod+c focus child
-bindsym $mod+n focus next
-bindsym $mod+p focus prev
 # fullscreen mode for the focused container
 bindsym $mod+f fullscreen toggle
 # change layout mode for the focused container
@@ -147,6 +150,11 @@ bindsym $mod+control+l move up
 bindsym $mod+control+semicolon move right
 # kill focused window
 bindsym $mod+control+w kill
+# disable mouse/trakpad scrolling on tabbed layout
+bindsym button4 nop
+bindsym button5 nop
+bindsym button6 nop
+bindsym button7 nop  
 
 ###########  
 ### style / bar
@@ -166,11 +174,6 @@ client.background       #161821
 bar {
     position top
     status_command  i3status
-    # disable mouse/trakpad scrolling
-    bindsym button4 nop
-    bindsym button5 nop
-    bindsym button6 nop
-    bindsym button7 nop  
     colors {
 	    background #161821
 	    statusline #c6c8d1
@@ -180,5 +183,10 @@ bar {
 	    inactive_workspace  #161821 #161821 #d2d4de
 	    urgent_workspace    #b4be82 #b4be82 #161821
     }
+    # disable mouse/trakpad scrolling
+    # bindsym button4 nop
+    # bindsym button5 nop
+    # bindsym button6 nop
+    # bindsym button7 nop  
 }
 
