@@ -5,7 +5,7 @@ xwayland disable
 # My preferred background
 output * bg /home/m/Documents/stuff/Nighthawks_by_Edward_Hopper_1942.jpg fill
 # My preferred app launcher
-set $menu tofi-drun --font /home/m/.local/share/fonts/ttf/FiraCodeNerdFont/FiraCodeNerdFont-SemiBold.ttf --border-width 0  --ascii-input true  | xargs swaymsg exec --
+set $menu tofi-drun | xargs swaymsg exec --
 # Notification daemon
 exec mako
 # My preferred terminal emulator
@@ -23,7 +23,7 @@ input  $laptop_keyboard {
     xkb_options caps:ctrl_modifier,altwin:swap_alt_win
 }
 output * {
-    scale 1.20
+    scale 1.5
 }
 output $laptop_display {
     res 2880x1800@60.000Hz
