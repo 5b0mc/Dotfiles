@@ -29,14 +29,13 @@ foreground = "0xc6c8d1"
 TERM = "xterm-256color"
 
 [font]
-builtin_box_drawing = true
+size = 11
 
 [font.normal]
 family = "FiraCode Nerd Font"
 
 [font.offset]
-x = 2
-y = 6
+y = 2
 
 [selection]
 save_to_clipboard = true

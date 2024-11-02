@@ -1,6 +1,7 @@
 ###########  
 ### setup and variables
 ###########  
+xwayland disable
 # My preferred background
 output * bg /home/m/Documents/stuff/Nighthawks_by_Edward_Hopper_1942.jpg fill
 # My preferred app launcher
@@ -8,21 +9,21 @@ set $menu tofi-drun --font /home/m/.local/share/fonts/ttf/FiraCodeNerdFont/FiraC
 # Notification daemon
 exec mako
 # My preferred terminal emulator
-set $term foot
-# My laptop i/o 
-# check inputs names with: swaymsg -t get_intputs
-# check outputs names with: swaymsg -t get_outputs
-set $laptop_display "eDP-1"
-set $laptop_keyboard "1:1:AT_Translated_Set_2_keyboard"
+set $term alacritty
 
 ###########  
-###  inputs / outputs 
+###  i/o 
 ###########  
+# check inputs names with: swaymsg -t get_intputs
+# check outputs names with: swaymsg -t get_outputs
+# My laptop i/o 
+set $laptop_display "eDP-1"
+set $laptop_keyboard "1:1:AT_Translated_Set_2_keyboard"
 input  $laptop_keyboard {
     xkb_options caps:ctrl_modifier,altwin:swap_alt_win
 }
 output * {
-    scale 1
+    scale 1.20
 }
 output $laptop_display {
     res 2880x1800@60.000Hz
@@ -37,6 +38,11 @@ exec_always ./clamshellmode.sh $laptop_display
 ### key bindings
 ###########  
 set $mod Mod4
+# start my terminal
+bindsym $mod+Return exec $term
+# start my launcher
+bindsym $mod+d exec $menu
+# media key/syms
 bindsym $mod+shift+r reload
 bindsym XF86AudioRaiseVolume exec pactl set-sink-volume @DEFAULT_SINK@ +10%
 bindsym XF86AudioLowerVolume exec pactl set-sink-volume @DEFAULT_SINK@ -10%
@@ -48,16 +54,20 @@ bindsym XF86AudioPrev exec playerctl previous
 bindsym XF86MonBrightnessDown exec brightnessctl set 5%-
 bindsym XF86MonBrightnessUp exec brightnessctl set 5%+
 bindsym XF86Display exec swaymsg output $laptop_display toggle
-# start my terminal
-bindsym $mod+Return exec $term
-# start my launcher
-bindsym $mod+d exec $menu
 # save screenshots in Pictures
-bindsym $mod+p exec grim -g "$(slurp)" -t png 
+bindsym $mod+Print exec grim -g "$(slurp)"
 
 ###########  
 ### workspaces
 ###########  
+# workspaces names
+set $wsSocial 4
+set $wsMusic 5
+set $wsMedia 6
+set $wsMail 7
+set $wsOffice 8
+set $wsAdmin 9
+set $wsStuff 0
 # Allow switching between workspaces with left and right swipes
 bindgesture swipe:right workspace prev
 bindgesture swipe:left workspace next
@@ -73,8 +83,13 @@ bindsym $mod+7 workspace number 7
 bindsym $mod+8 workspace number 8
 bindsym $mod+9 workspace number 9
 bindsym $mod+0 workspace number 10
+# navigate active workspaces
 bindsym $mod+shift+j workspace prev
 bindsym $mod+shift+semicolon workspace next
+
+###########  
+### containers
+###########  
 # move focused container to workspace
 bindsym $mod+shift+1 move container to workspace number 1
 bindsym $mod+shift+2 move container to workspace number 2
@@ -86,14 +101,10 @@ bindsym $mod+shift+7 move container to workspace number 7
 bindsym $mod+shift+8 move container to workspace number 8
 bindsym $mod+shift+9 move container to workspace number 9
 bindsym $mod+shift+0 move container to workspace number 10
-# workspaces names
-set $wsSocial 4
-set $wsMusic 5
-set $wsMedia 6
-set $wsMail 7
-set $wsOffice 8
-set $wsAdmin 9
-set $wsStuff 0
+
+###########  
+### windows
+###########  
 # assign window to a workspace with window criteria
 # use swaymsg -t get_tree 
 assign [app_id="org.telegram.desktop"] $wsSocial
@@ -121,10 +132,6 @@ mode "resize" {
         bindsym Escape mode "default"
 }
 bindsym $mod+r mode "resize"
-
-###########  
-### container / window
-###########  
 # change focus
 bindsym $mod+j focus left
 bindsym $mod+k focus down
@@ -150,17 +157,16 @@ bindsym $mod+control+l move up
 bindsym $mod+control+semicolon move right
 # kill focused window
 bindsym $mod+control+w kill
-# disable mouse/trakpad scrolling on tabbed layout
+
+###########  
+### global style
+###########  
+font pango:Cantarell, bold 11
+# disable mouse/trakpad es. scrolling on tabbed layout
 bindsym button4 nop
 bindsym button5 nop
 bindsym button6 nop
 bindsym button7 nop  
-
-###########  
-### style / bar
-###########  
-# global font
-font pango:FiraCode Nerd Font 11
 default_border none
 gaps inner 11px
 # class                 border  backgr  text    child_border
@@ -170,7 +176,10 @@ client.unfocused        #161821 #161821 #ffffff #454948
 client.urgent           #b4be82 #b4be82 #161821 #268BD2
 client.placeholder      #000000 #0c0c0c #ffffff #000000
 client.background       #161821
-# setup status bar
+
+###########  
+### status bar
+###########  
 bar {
     position top
     status_command  i3status
@@ -183,10 +192,6 @@ bar {
 	    inactive_workspace  #161821 #161821 #d2d4de
 	    urgent_workspace    #b4be82 #b4be82 #161821
     }
-    # disable mouse/trakpad scrolling
-    # bindsym button4 nop
-    # bindsym button5 nop
-    # bindsym button6 nop
-    # bindsym button7 nop  
 }
 
+include /etc/sway/config.d/*

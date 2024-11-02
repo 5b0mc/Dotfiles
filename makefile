@@ -18,9 +18,16 @@ i3:
 	stow --verbose --target=$(HOME) --restow Xorg
 
 font:
+	stow --verbose --target=$(HOME)/.config --restow fonts
+	wget -O /tmp/font.zip https://github.com/ryanoasis/nerd-fonts/releases/download/v3.2.1/Ubuntu.zip
+	unzip /tmp/font.zip -d /tmp/font
+	rm /tmp/font.zip
+	rm -rf /tmp/font
+	cp -R /tmp/font/ ~/.local/share/fonts/
 	wget -O /tmp/font.zip https://github.com/ryanoasis/nerd-fonts/releases/download/v3.2.1/FiraCode.zip
 	unzip /tmp/font.zip -d /tmp/font
 	cp -R /tmp/font/ ~/.local/share/fonts/
-	fc-cache -f -v
 	rm /tmp/font.zip
 	rm -rf /tmp/font
+	fc-cache -f -v
+	
