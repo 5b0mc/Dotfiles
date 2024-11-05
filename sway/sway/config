@@ -6,9 +6,9 @@ xwayland disable
 output * bg /home/m/Documents/stuff/Nighthawks_by_Edward_Hopper_1942.jpg fill
 # My preferred app launcher
 set $menu tofi-drun | xargs swaymsg exec --
-# Notification daemon
+# My otification daemon
 exec mako
-# My preferred terminal emulator
+# My terminal emulator
 set $term alacritty
 
 ###########  
@@ -29,7 +29,7 @@ output $laptop_display {
     res 2880x1800@60.000Hz
     scale 2
 }
-# Clamshell mode for laptops: if the lid is close then disable it
+# Clamshell mode for laptops: if the lid is closed then disable it
 bindswitch --reload --locked lid:on output $laptop_display disable
 bindswitch --reload --locked lid:off output $laptop_display enable
 exec_always ./clamshellmode.sh $laptop_display
@@ -61,13 +61,14 @@ bindsym $mod+Print exec grim -g "$(slurp)"
 ### workspaces
 ###########  
 # workspaces names
-set $wsSocial 4
-set $wsMusic 5
-set $wsMedia 6
-set $wsMail 7
-set $wsOffice 8
-set $wsAdmin 9
-set $wsStuff 0
+set $wsAdmin 4
+set $wsStuff 5 
+
+set $wsSocial 7
+set $wsMail 8
+set $wsMusic 9
+set $wsMedia 9
+set $wsOffice 10
 # Allow switching between workspaces with left and right swipes
 bindgesture swipe:right workspace prev
 bindgesture swipe:left workspace next
@@ -91,16 +92,29 @@ bindsym $mod+shift+semicolon workspace next
 ### containers
 ###########  
 # move focused container to workspace
-bindsym $mod+shift+1 move container to workspace number 1
-bindsym $mod+shift+2 move container to workspace number 2
-bindsym $mod+shift+3 move container to workspace number 3
-bindsym $mod+shift+4 move container to workspace number 4
-bindsym $mod+shift+5 move container to workspace number 5
-bindsym $mod+shift+6 move container to workspace number 6
-bindsym $mod+shift+7 move container to workspace number 7
-bindsym $mod+shift+8 move container to workspace number 8
-bindsym $mod+shift+9 move container to workspace number 9
-bindsym $mod+shift+0 move container to workspace number 10
+bindsym $mod+control+1 move container to workspace number 1
+bindsym $mod+control+2 move container to workspace number 2
+bindsym $mod+control+3 move container to workspace number 3
+bindsym $mod+control+4 move container to workspace number 4
+bindsym $mod+control+5 move container to workspace number 5
+bindsym $mod+control+6 move container to workspace number 6
+bindsym $mod+control+7 move container to workspace number 7
+bindsym $mod+control+8 move container to workspace number 8
+bindsym $mod+control+9 move container to workspace number 9
+bindsym $mod+control+0 move container to workspace number 10
+
+# fullscreen mode for the focused container
+bindsym $mod+f fullscreen toggle
+# change layout mode for the focused container
+bindsym $mod+s layout stacking
+bindsym $mod+w layout tabbed
+bindsym $mod+e layout toggle split
+# split the focused container
+bindsym $mod+v split vertical
+bindsym $mod+h split horizontal
+bindsym $mod+space floating toggle
+# split container and make it tabbed
+bindsym $mod+t split vertical; layout tabbed
 
 ###########  
 ### windows
@@ -119,7 +133,6 @@ assign [app_id="com.transmissionbt*"] $wsStuff
 for_window [app_id="org.pulseaudio.pavucontrol"] floating enable, border normal
 for_window [app_id="org.gnome.Calculator"] floating enable, border normal
 for_window [app_id="org.gnome.Calendar"] floating enable, border normal
-for_window [app_id="org.gnome.Nautilus"] floating enable, border normal
 for_window [title="^Picture"] floating enable, sticky enable, border none
 focus_follows_mouse no
 # resize window (you can also use the mouse for that)
@@ -139,17 +152,6 @@ bindsym $mod+l focus up
 bindsym $mod+semicolon focus right
 bindsym $mod+a focus parent
 bindsym $mod+c focus child
-# fullscreen mode for the focused container
-bindsym $mod+f fullscreen toggle
-# change layout mode for the focused container
-bindsym $mod+s layout stacking
-bindsym $mod+w layout tabbed
-bindsym $mod+e layout toggle split
-# split the focused container
-bindsym $mod+v split vertical
-bindsym $mod+h split horizontal
-bindsym $mod+t split vertical; layout tabbed
-bindsym $mod+space floating toggle
 # move focused window
 bindsym $mod+control+j move left
 bindsym $mod+control+k move down
@@ -157,25 +159,6 @@ bindsym $mod+control+l move up
 bindsym $mod+control+semicolon move right
 # kill focused window
 bindsym $mod+control+w kill
-
-###########  
-### global style
-###########  
-font pango:Cantarell, bold 11
-# disable mouse/trakpad es. scrolling on tabbed layout
-bindsym button4 nop
-bindsym button5 nop
-bindsym button6 nop
-bindsym button7 nop  
-default_border none
-gaps inner 11px
-# class                 border  backgr  text    child_border
-client.focused          #c6c8d1 #c6c8d1 #161821 #84a0c6
-client.focused_inactive #161821 #161821 #ffffff #454948
-client.unfocused        #161821 #161821 #ffffff #454948
-client.urgent           #b4be82 #b4be82 #161821 #268BD2
-client.placeholder      #000000 #0c0c0c #ffffff #000000
-client.background       #161821
 
 ###########  
 ### status bar
@@ -194,4 +177,26 @@ bar {
     }
 }
 
+###########  
+### global style
+###########  
+font pango:Cantarell, bold 11
+gaps inner 11px
+# disable mouse/trakpad es. scrolling on tabbed layout
+bindsym button4 nop
+bindsym button5 nop
+bindsym button6 nop
+bindsym button7 nop  
+default_border none
+# class                 border  backgr  text    child_border
+client.focused          #c6c8d1 #c6c8d1 #161821 #84a0c6
+client.focused_inactive #161821 #161821 #ffffff #454948
+client.unfocused        #161821 #161821 #ffffff #454948
+client.urgent           #b4be82 #b4be82 #161821 #268BD2
+client.placeholder      #000000 #0c0c0c #ffffff #000000
+client.background       #161821
+
+###########  
+### default sway system integrations
+###########  
 include /etc/sway/config.d/*
