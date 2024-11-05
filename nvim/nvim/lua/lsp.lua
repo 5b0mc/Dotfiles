@@ -23,19 +23,22 @@ local on_attach = function(client, bufnr)
     client.server_capabilities.semanticTokensProvider = nil
 end
 
+
+-- npm i -g vscode-langservers-extracted
 lspconfig.cssls.setup {
     on_attach = on_attach,
     capabilities = capabilities,
 }
-
 lspconfig.html.setup {
     on_attach = on_attach,
     capabilities = capabilities,
 }
 
+-- npm install -g @vue/language-server
+-- npm install -g @vue/typescript-plugin
+-- npm install -g typescript-language-server typescript
 local vue_language_server_path = home .. "/.npm-packages/lib/node_modules/@vue/typescript-plugin"
 lspconfig.volar.setup {}
-
 lspconfig.ts_ls.setup {
     init_options = {
         plugins = {
@@ -72,6 +75,7 @@ lspconfig.rust_analyzer.setup({
   },
 })
 
+-- go install golang.org/x/tools/gopls@latest
 lspconfig.gopls.setup {
     cmd = { "gopls", "serve" },
     on_attach = on_attach,
@@ -88,6 +92,7 @@ lspconfig.gopls.setup {
     },
 }
 
+-- npm install -g pyright
 lspconfig.pyright.setup {
     capabilities = capabilities,
     on_attach = on_attach

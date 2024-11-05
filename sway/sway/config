@@ -1,7 +1,7 @@
 ###########  
 ### setup and variables
 ###########  
-xwayland disable
+# xwayland disable
 # My preferred background
 output * bg /home/m/Documents/stuff/Nighthawks_by_Edward_Hopper_1942.jpg fill
 # My preferred app launcher
@@ -23,7 +23,7 @@ input  $laptop_keyboard {
     xkb_options caps:ctrl_modifier,altwin:swap_alt_win
 }
 output * {
-    scale 1.5
+    scale 1.49
 }
 output $laptop_display {
     res 2880x1800@60.000Hz
@@ -61,14 +61,13 @@ bindsym $mod+Print exec grim -g "$(slurp)"
 ### workspaces
 ###########  
 # workspaces names
-set $wsAdmin 4
+set $wsMusic 🎵
 set $wsStuff 5 
-
-set $wsSocial 7
-set $wsMail 8
-set $wsMusic 9
-set $wsMedia 9
-set $wsOffice 10
+set $wsOffice 6
+set $wsMedia 7
+set $wsSocial 8
+set $wsMail 9
+set $wsAdmin 0
 # Allow switching between workspaces with left and right swipes
 bindgesture swipe:right workspace prev
 bindgesture swipe:left workspace next
@@ -84,6 +83,7 @@ bindsym $mod+7 workspace number 7
 bindsym $mod+8 workspace number 8
 bindsym $mod+9 workspace number 9
 bindsym $mod+0 workspace number 10
+bindsym $mod+m workspace 🎵
 # navigate active workspaces
 bindsym $mod+shift+j workspace prev
 bindsym $mod+shift+semicolon workspace next
