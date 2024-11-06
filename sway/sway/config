@@ -12,6 +12,25 @@ exec mako
 set $term alacritty
 
 ###########  
+### global style
+###########  
+font pango:Cantarell, bold 11
+gaps inner 11px
+default_border none
+# color class           border  backgr  text    child_border
+client.focused          #c6c8d1 #c6c8d1 #161821 #84a0c6
+client.focused_inactive #161821 #161821 #ffffff #454948
+client.unfocused        #161821 #161821 #ffffff #454948
+client.urgent           #b4be82 #b4be82 #161821 #268BD2
+client.placeholder      #000000 #0c0c0c #ffffff #000000
+client.background       #161821
+# disable mouse/trakpad es. scrolling on tabbed layout
+bindsym button4 nop
+bindsym button5 nop
+bindsym button6 nop
+bindsym button7 nop  
+
+###########  
 ###  i/o 
 ###########  
 # check inputs names with: swaymsg -t get_intputs
@@ -22,11 +41,13 @@ set $laptop_keyboard "1:1:AT_Translated_Set_2_keyboard"
 input  $laptop_keyboard {
     xkb_options caps:ctrl_modifier,altwin:swap_alt_win
 }
+# 27" displays
 output * {
-    scale 1.49
+    scale 1.50
 }
+# 14" notebook display
 output $laptop_display {
-    res 2880x1800@60.000Hz
+    res 2880x1800@120.000Hz
     scale 2
 }
 # Clamshell mode for laptops: if the lid is closed then disable it
@@ -61,13 +82,12 @@ bindsym $mod+Print exec grim -g "$(slurp)"
 ### workspaces
 ###########  
 # workspaces names
+set $wsOffice 5
+set $wsStuff 6
+set $wsSocial 7
+set $wsMail 8
+set $wsMedia 9
 set $wsMusic 🎵
-set $wsStuff 5 
-set $wsOffice 6
-set $wsMedia 7
-set $wsSocial 8
-set $wsMail 9
-set $wsAdmin 0
 # Allow switching between workspaces with left and right swipes
 bindgesture swipe:right workspace prev
 bindgesture swipe:left workspace next
@@ -82,7 +102,6 @@ bindsym $mod+6 workspace number 6
 bindsym $mod+7 workspace number 7
 bindsym $mod+8 workspace number 8
 bindsym $mod+9 workspace number 9
-bindsym $mod+0 workspace number 10
 bindsym $mod+m workspace 🎵
 # navigate active workspaces
 bindsym $mod+shift+j workspace prev
@@ -102,19 +121,18 @@ bindsym $mod+control+7 move container to workspace number 7
 bindsym $mod+control+8 move container to workspace number 8
 bindsym $mod+control+9 move container to workspace number 9
 bindsym $mod+control+0 move container to workspace number 10
-
 # fullscreen mode for the focused container
 bindsym $mod+f fullscreen toggle
 # change layout mode for the focused container
 bindsym $mod+s layout stacking
 bindsym $mod+w layout tabbed
 bindsym $mod+e layout toggle split
+# split container and make it tabbed
+bindsym $mod+t split vertical; layout tabbed
 # split the focused container
 bindsym $mod+v split vertical
 bindsym $mod+h split horizontal
 bindsym $mod+space floating toggle
-# split container and make it tabbed
-bindsym $mod+t split vertical; layout tabbed
 
 ###########  
 ### windows
@@ -126,7 +144,7 @@ assign [app_id="spotify"] $wsMusic
 assign [app_id="betterbird"] $wsMail
 assign [app_id="libreoffice"] $wsOffice
 assign [app_id="Electron"] $wsStuff
-assign [app_id="Bruno"] $wsAdmin
+assign [app_id="Bruno"] $wsStuff
 assign [app_id="brave*"] $wsMedia
 assign [app_id="com.transmissionbt*"] $wsStuff
 # assign window options with window criteria
@@ -145,7 +163,7 @@ mode "resize" {
         bindsym Escape mode "default"
 }
 bindsym $mod+r mode "resize"
-# change focus
+# change window focus
 bindsym $mod+j focus left
 bindsym $mod+k focus down
 bindsym $mod+l focus up
@@ -176,25 +194,6 @@ bar {
 	    urgent_workspace    #b4be82 #b4be82 #161821
     }
 }
-
-###########  
-### global style
-###########  
-font pango:Cantarell, bold 11
-gaps inner 11px
-# disable mouse/trakpad es. scrolling on tabbed layout
-bindsym button4 nop
-bindsym button5 nop
-bindsym button6 nop
-bindsym button7 nop  
-default_border none
-# class                 border  backgr  text    child_border
-client.focused          #c6c8d1 #c6c8d1 #161821 #84a0c6
-client.focused_inactive #161821 #161821 #ffffff #454948
-client.unfocused        #161821 #161821 #ffffff #454948
-client.urgent           #b4be82 #b4be82 #161821 #268BD2
-client.placeholder      #000000 #0c0c0c #ffffff #000000
-client.background       #161821
 
 ###########  
 ### default sway system integrations
