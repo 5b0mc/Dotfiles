@@ -15,7 +15,7 @@ set $term alacritty
 ### global style
 ###########  
 font pango:Cantarell, bold 11
-gaps inner 11px
+gaps inner 7px
 default_border none
 # color class           border  backgr  text    child_border
 client.focused          #c6c8d1 #c6c8d1 #161821 #84a0c6
@@ -75,8 +75,8 @@ bindsym XF86AudioPrev exec playerctl previous
 bindsym XF86MonBrightnessDown exec brightnessctl set 5%-
 bindsym XF86MonBrightnessUp exec brightnessctl set 5%+
 bindsym XF86Display exec swaymsg output $laptop_display toggle
-# save screenshots in Pictures
-bindsym $mod+Print exec grim -g "$(slurp)"
+# save screenshots in the clipboard (secondary selection)
+bindsym Print exec grim -g "$(slurp)" - | wl-copy
 
 ###########  
 ### workspaces
@@ -141,18 +141,19 @@ bindsym $mod+space floating toggle
 # use swaymsg -t get_tree 
 assign [app_id="org.telegram.desktop"] $wsSocial
 assign [app_id="spotify"] $wsMusic
+assign [app_id="rhythmbox"] $wsMusic
 assign [app_id="betterbird"] $wsMail
 assign [app_id="libreoffice"] $wsOffice
 assign [app_id="Electron"] $wsStuff
 assign [app_id="Bruno"] $wsStuff
-assign [app_id="brave*"] $wsMedia
 assign [app_id="com.transmissionbt*"] $wsStuff
+assign [app_id="brave*"] $wsMedia
 # assign window options with window criteria
 for_window [app_id="org.pulseaudio.pavucontrol"] floating enable, border normal
 for_window [app_id="org.gnome.Calculator"] floating enable, border normal
 for_window [app_id="org.gnome.Calendar"] floating enable, border normal
 for_window [title="^Picture"] floating enable, sticky enable, border none
-focus_follows_mouse no
+focus_follows_mouse yes
 # resize window (you can also use the mouse for that)
 mode "resize" {
         bindsym j resize shrink width 10 px or 10 ppt

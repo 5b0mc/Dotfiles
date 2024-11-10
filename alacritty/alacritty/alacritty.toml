@@ -37,9 +37,6 @@ family = "FiraCode Nerd Font"
 [font.offset]
 y = 2
 
-[selection]
-save_to_clipboard = true
-
 [window.padding]
 x = 2
 y = 2
@@ -55,3 +52,7 @@ bindings = [
 
 [mouse]
 hide_when_typing = true
+
+[selection]
+save_to_clipboard = true
+
