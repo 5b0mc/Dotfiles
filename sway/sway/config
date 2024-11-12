@@ -14,7 +14,7 @@ set $term alacritty
 ###########  
 ### global style
 ###########  
-font pango:Cantarell, bold 11
+font pango:Ubuntu Nerd Font, bold 11
 gaps inner 7px
 default_border none
 # color class           border  backgr  text    child_border

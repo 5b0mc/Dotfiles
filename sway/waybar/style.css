@@ -1,12 +1,13 @@
 * {
     /* `otf-font-awesome` is required to be installed for icons */
-    font-family: Cantarell, sans-serif;
+    font-family: Ubuntu Nerd Font, monospace;
     font-size: 14px;
+    font-weight: 600;
+    color: #ECEFF4;
 }
 
 window#waybar {
     background-color: #161821;
-    color: #ffffff;
     transition-property: background-color;
     transition-duration: .5s;
 }
@@ -45,7 +46,6 @@ button:hover {
 #workspaces button {
     padding: 0 5px;
     background-color: transparent;
-    color: #ffffff;
 }
 
 #workspaces button:hover {
@@ -83,7 +83,6 @@ button:hover {
 #power-profiles-daemon,
 #mpd {
     padding: 0 10px;
-    color: #ffffff;
 }
 
 #window,
@@ -92,12 +91,12 @@ button:hover {
 }
 
 /* If workspaces is the leftmost module, omit left margin */
-.modules-left > widget:first-child > #workspaces {
+.modules-left>widget:first-child>#workspaces {
     margin-left: 0;
 }
 
 /* If workspaces is the rightmost module, omit right margin */
-.modules-right > widget:last-child > #workspaces {
+.modules-right>widget:last-child>#workspaces {
     margin-right: 0;
 }
 
@@ -105,8 +104,8 @@ button:hover {
     background-color: #64727D;
 }
 
-#battery.charging, #battery.plugged {
-    color: #ffffff;
+#battery.charging,
+#battery.plugged {
     background-color: #26A65B;
 }
 
@@ -120,7 +119,6 @@ button:hover {
 /* Using steps() instead of linear as a timing function to limit cpu usage */
 #battery.critical:not(.charging) {
     background-color: #f53c3c;
-    color: #ffffff;
     animation-name: blink;
     animation-duration: 0.5s;
     animation-timing-function: steps(12);
@@ -186,11 +184,11 @@ label:focus {
     background-color: #eb4d4b;
 }
 
-#tray > .passive {
+#tray>.passive {
     -gtk-icon-effect: dim;
 }
 
-#tray > .needs-attention {
+#tray>.needs-attention {
     -gtk-icon-effect: highlight;
     background-color: #eb4d4b;
 }
@@ -237,11 +235,11 @@ label:focus {
     min-width: 16px;
 }
 
-#keyboard-state > label {
+#keyboard-state>label {
     padding: 0 5px;
 }
 
-#keyboard-state > label.locked {
+#keyboard-state>label.locked {
     background: rgba(0, 0, 0, 0.2);
 }
 
@@ -250,7 +248,7 @@ label:focus {
 }
 
 #scratchpad.empty {
-	background-color: transparent;
+    background-color: transparent;
 }
 
 #privacy {
