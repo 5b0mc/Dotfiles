@@ -1,7 +1,7 @@
 ###########  
 ### setup and variables
 ###########  
-# xwayland disable
+xwayland disable
 # My preferred background
 output * bg /home/m/Documents/stuff/Nighthawks_by_Edward_Hopper_1942.jpg fill
 # My preferred app launcher
@@ -43,7 +43,7 @@ input  $laptop_keyboard {
 }
 # 27" displays
 output * {
-    scale 1.50
+    scale 1.5
 }
 # 14" notebook display
 output $laptop_display {
@@ -183,17 +183,18 @@ bindsym $mod+control+w kill
 ### status bar
 ###########  
 bar {
-    position top
-    status_command  i3status
-    colors {
-	    background #161821
-	    statusline #c6c8d1
-	    separator  #c6c8d1
-	    focused_workspace   #161821 #c6c8d1 #161821
-	    active_workspace    #d2d4de #d2d4de #161821
-	    inactive_workspace  #161821 #161821 #d2d4de
-	    urgent_workspace    #b4be82 #b4be82 #161821
-    }
+    swaybar_command waybar
+    # position top
+    # status_command i3status
+    # colors {
+	    # background #161821
+	    # statusline #c6c8d1
+	    # separator  #c6c8d1
+	    # focused_workspace   #161821 #c6c8d1 #161821
+	    # active_workspace    #d2d4de #d2d4de #161821
+	    # inactive_workspace  #161821 #161821 #d2d4de
+	    # urgent_workspace    #b4be82 #b4be82 #161821
+    # }
 }
 
 ###########  
