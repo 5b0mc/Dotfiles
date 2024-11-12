@@ -129,10 +129,6 @@ button:hover {
     animation-direction: alternate;
 }
 
-#power-profiles-daemon {
-    padding-right: 15px;
-}
-
 label:focus {
     background-color: #000000;
 }
@@ -148,10 +144,6 @@ label:focus {
 
 #disk {
     background-color: #964B00;
-}
-
-#network {
-    background-color: #2980b9;
 }
 
 #network.disconnected {
@@ -193,10 +185,6 @@ label:focus {
 
 #temperature.critical {
     background-color: #eb4d4b;
-}
-
-#tray {
-    background-color: #2980b9;
 }
 
 #tray > .passive {

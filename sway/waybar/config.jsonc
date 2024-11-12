@@ -17,6 +17,7 @@
     // ],
     "modules-right": [
         "mpd",
+        "network",
    //     "idle_inhibitor",
         "pulseaudio",
         // "cpu",
@@ -28,7 +29,6 @@
         "battery",
         "battery#bat2",
         "power-profiles-daemon",
-        "network",
         "tray",
         "clock"
       //  "custom/power"
@@ -103,8 +103,7 @@
         }
     },
     "tray": {
-        // "icon-size": 21,
-        "spacing": 10
+     //   "spacing": 10
     },
     "clock": {
         // "timezone": "America/New_York",
@@ -175,7 +174,7 @@
         "format-bluetooth": "{volume}% {icon} {format_source}",
         "format-bluetooth-muted": " {icon} {format_source}",
         "format-muted": " {format_source}",
-        "format-source": "{volume}% ",
+        "format-source": " {volume}% ",
         "format-source-muted": "",
         "format-icons": {
             "headphone": "",
