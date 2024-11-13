@@ -4,6 +4,7 @@ require('lualine').setup {
         icons_enabled = false
     }
 }
+require("nvim-tree").setup()
 
 local cmp = require 'cmp'
 cmp.setup({

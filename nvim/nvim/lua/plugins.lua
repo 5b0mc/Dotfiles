@@ -14,7 +14,9 @@ return require("packer").startup(function()
     use 'tpope/vim-commentary'
     use 'tpope/vim-fugitive'
     use "ibhagwan/fzf-lua"
+    use "nvim-tree/nvim-tree.lua"
 
+    use 'nvim-tree/nvim-web-devicons'
     use 'cocopon/iceberg.vim'
     use 'nvim-lualine/lualine.nvim'
     vim.cmd("colorscheme iceberg")

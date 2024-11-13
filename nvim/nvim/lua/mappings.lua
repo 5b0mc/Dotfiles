@@ -3,7 +3,8 @@ vim.keymap.set('i', 'jj', '<Esc>', { noremap = true, silent = true })
 vim.keymap.set('n', '<C-j>', ':bprevious<CR>', { noremap = true, silent = true })
 vim.keymap.set('n', '<C-;>', ':bn<CR>', { noremap = true })
 
-vim.keymap.set('n', '<Leader>e', ':Explore<CR>', { noremap = true, silent = true })
+vim.keymap.set('n', '<Leader>e', ':NvimTreeToggle<CR>', { noremap = true, silent = true })
+vim.keymap.set('n', '<Leader>f', ':NvimTreeFindFile<CR>', { noremap = true, silent = true })
 vim.keymap.set('n', '<Leader>d', ':bd<CR>', { noremap = true, silent = true })
 vim.keymap.set('n', '<Leader>w', ':w<CR>', { noremap = true, silent = true })
 
