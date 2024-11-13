@@ -29,10 +29,10 @@ vim.keymap.set('n', '<Leader>q',
 -- vim.keymap.set('n', 'l', 'k', { noremap = true, silent = true })
 -- vim.keymap.set('n', ';', 'l', { noremap = true, silent = true })
 
--- vim.keymap.set('n', '<C-w>j', '<C-w>h', { noremap = true, silent = true })
--- vim.keymap.set('n', '<C-w>k', '<C-w>j', { noremap = true, silent = true })
--- vim.keymap.set('n', '<C-w>l', '<C-w>k', { noremap = true, silent = true })
--- vim.keymap.set('n', '<C-w>;', '<C-w>l', { noremap = true, silent = true })
+vim.keymap.set('n', '<C-w>j', '<C-w>h', { noremap = true, silent = true })
+vim.keymap.set('n', '<C-w>k', '<C-w>j', { noremap = true, silent = true })
+vim.keymap.set('n', '<C-w>l', '<C-w>k', { noremap = true, silent = true })
+vim.keymap.set('n', '<C-w>;', '<C-w>l', { noremap = true, silent = true })
 
 -- vim.keymap.set("t", "j", "<Left>", { noremap = true, silent = true, buffer = true })
 -- vim.keymap.set("t", "k", "<Down>", { noremap = true, silent = true, buffer = true })
