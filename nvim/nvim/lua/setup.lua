@@ -29,6 +29,12 @@ cmp.setup({
 })
 
 require 'fzf-lua'.setup {
+     buffers = {
+    file_icons        = false,
+},
+     files = {
+    file_icons        = false,
+},
     keymap = {
         fzf = {
             -- ["ctrl-k"]     = "down",
