@@ -23,7 +23,7 @@ local on_attach = function(client, bufnr)
     vim.keymap.set('n', '<space>c', vim.lsp.buf.code_action, bufopts)
     vim.keymap.set('n', '<space>w', function()
         if #vim.lsp.get_active_clients({ bufnr = 0 }) > 0 then
-            vim.lsp.buf.format({ async = true })
+            vim.lsp.buf.format({ async = false })
         end
         vim.cmd("write")
     end, opts)
