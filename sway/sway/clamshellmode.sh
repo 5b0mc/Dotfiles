@@ -17,17 +17,3 @@ case "$LS" in
         exit 1 ;;
 esac
 
-is_on_ac_power() {
-    upower -i $(upower -e | grep 'line_power') | grep -q "state:\s*charging\|state:\s*fully-charged"
-    return $?
-}
-is_external_monitor_connected() {
-    swaymsg -t get_outputs | grep -q "HDMI\|DP"
-    return $?
-}
-
-if is_on_ac_power; then
-    powerprofilesctl set performance
-else
-    powerprofilesctl set balanced
-fi

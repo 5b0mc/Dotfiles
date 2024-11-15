@@ -50,10 +50,13 @@ output $laptop_display {
     res 2880x1800@120.000Hz
     scale 2
 }
-# Clamshell mode for laptops: if the lid is closed then disable it
-bindswitch --reload --locked lid:on output $laptop_display disable
+# Clamshell mode for laptop
+# if the lid is closed whith an external monitor then disable it
+# bindswitch --reload --locked lid:on output $laptop_display disable
+# bindswitch --reload --locked lid:off output $laptop_display enable
+# exec_always ./clamshellmode.sh $laptop_display
+bindswitch --reload --locked lid:on exec "[ $(swaymsg -t get_outputs | jq '. | length') -gt 1 ] && swaymsg output $laptop_display disable"
 bindswitch --reload --locked lid:off output $laptop_display enable
-exec_always ./clamshellmode.sh $laptop_display
 
 ###########  
 ### key bindings
@@ -201,3 +204,11 @@ bar {
 ### default sway system integrations
 ###########  
 include /etc/sway/config.d/*
+
+###########  
+### app on startup
+###########  
+exec betterbird
+exec telegram-desktop
+exec chromium
+exec spotify-launcher
