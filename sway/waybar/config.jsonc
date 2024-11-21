@@ -8,11 +8,12 @@
         "sway/scratchpad"
     ],
     "modules-right": [
-        "pulseaudio",
+        "wireplumber",
         "network",
         "power-profiles-daemon",
-        "battery",
         "custom/power",
+        "bluetooth",
+        "battery",
         "tray",
         "clock"
     ],
@@ -27,32 +28,32 @@
         "tooltip-format": "{app}: {title}"
     },
     "bluetooth": {
-        "format": " {status}  ",
-        "format-disabled": "", // an empty format will hide the module
-        "format-connected": " {num_connections} connected  ",
+        "format": "",
+        "format-disabled": "󰂲",
+        "format-connected": "󰂰",
         "tooltip-format": "{controller_alias}\t{controller_address}",
-        "tooltip-format-connected": "{controller_alias}\n\n{device_enumerate}",
-        "tooltip-format-enumerate-connected": "{device_alias}\t{device_address}"
+        "tooltip-format-connected": "{device_alias} (battery {device_battery_percentage}%)",
+        "tooltip-format-enumerate-connected": "{device_alias}\t{device_address}",
+        "on-click": "blueberry"
     },
-    "tray": { 
-    },
+    "tray": { },
     "clock": {
-        "tooltip-format": "\n<tt><small>{calendar}</small></tt>",
         "format": "{:%Y-%m-%d   %H:%M}",
-        "locale": "it_IT.UTF-8"
+        "locale": "it_IT.UTF-8",
+        "tooltip": false
     },
     "battery": {
         "states": {
             "warning": 30,
             "critical": 15
         },
-        "format": "{capacity}% {icon}",
+        "format": "{capacity}% {icon} ",
         "format-charging": "",
         "format-plugged": "",
         "format-icons": ["", "", "", "", ""]
     },
     "power-profiles-daemon": {
-        "format": "{icon} ",
+        "format": "{icon}",
         "tooltip-format": "Power profile: {profile}",
         "tooltip": true,
         "format-icons": {
@@ -63,39 +64,39 @@
         }
     },
     "network": {
-        "format-wifi": "  ",
+        "format-wifi": " ",
         "format-ethernet": "{ipaddr}/{cidr}",
         "tooltip-format": "{essid} ({signalStrength}%) via {gwaddr}",
         "format-linked": "{ifname} (No IP)",
         "format-disconnected": "Disconnected",
         "format-alt": "{ifname}: {ipaddr}/{cidr}"
     },
-    "pulseaudio": {
-        "format": "{volume}% {icon} ",
+    "wireplumber": {
+        "format": "{volume}% {icon}",
         "format-bluetooth": "{volume}% {icon} {format_source}",
         "format-bluetooth-muted": " {icon} {format_source}",
-        "format-muted": "  ",
+        "format-muted": "",
         "format-source": "{volume}% ",
         "format-source-muted": "",
         "format-icons": {
-            "headphone": " ",
-            "hands-free": " ",
-            "headset": " ",
-            "phone": " ",
+            "headphone": "",
+            "hands-free": "",
+            "headset": "",
+            "phone": "",
             "portable": "",
             "car": "",
-            "default": [" ", " ", " "]
+            "default": ["", "", ""]
         },
         "on-click": "pavucontrol"
     },
     "custom/power": {
-        "format" : "⏻ ",
+        "format" : "⏻",
         "tooltip": false,
         "menu": "on-click",
         "menu-file": "$HOME/.config/waybar/power_menu.xml",
         "menu-actions": {
-            "shutdown": "shutdown",
-            "reboot": "reboot",
+            "shutdown": "sudo poweroff",
+            "reboot": "sudo reboot",
             "suspend": "systemctl suspend",
             "hibernate": "systemctl hibernate"
         }

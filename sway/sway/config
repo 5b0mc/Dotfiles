@@ -1,12 +1,12 @@
 ###########  
 ### setup and variables
 ###########  
-xwayland disable
-# My preferred background
+# xwayland disable
+# My background
 output * bg /home/m/Documents/stuff/Nighthawks_by_Edward_Hopper_1942.jpg fill
-# My preferred app launcher
+# My app launcher
 set $menu tofi-drun | xargs swaymsg exec --
-# My otification daemon
+# My notification daemon
 exec mako
 # My terminal emulator
 set $term alacritty
@@ -52,11 +52,9 @@ output $laptop_display {
 }
 # Clamshell mode for laptop
 # if the lid is closed whith an external monitor then disable it
-# bindswitch --reload --locked lid:on output $laptop_display disable
-# bindswitch --reload --locked lid:off output $laptop_display enable
-# exec_always ./clamshellmode.sh $laptop_display
-bindswitch --reload --locked lid:on exec "[ $(swaymsg -t get_outputs | jq '. | length') -gt 1 ] && swaymsg output $laptop_display disable"
+bindswitch --reload --locked lid:on output $laptop_display disable
 bindswitch --reload --locked lid:off output $laptop_display enable
+exec_always ./clamshellmode.sh $laptop_display
 
 ###########  
 ### key bindings
@@ -84,13 +82,12 @@ bindsym Print exec grim -g "$(slurp)" - | wl-copy
 ###########  
 ### workspaces
 ###########  
-# workspaces names
 set $wsOffice 5
 set $wsStuff 6
 set $wsSocial 7
 set $wsMail 8
 set $wsMedia 9
-set $wsMusic 🎵
+set $wsMusic M
 # Allow switching between workspaces with left and right swipes
 bindgesture swipe:right workspace prev
 bindgesture swipe:left workspace next
@@ -105,7 +102,8 @@ bindsym $mod+6 workspace number 6
 bindsym $mod+7 workspace number 7
 bindsym $mod+8 workspace number 8
 bindsym $mod+9 workspace number 9
-bindsym $mod+m workspace 🎵
+bindsym $mod+m workspace M
+bindsym $mod+n workspace M
 # navigate active workspaces
 bindsym $mod+shift+j workspace prev
 bindsym $mod+shift+semicolon workspace next
@@ -187,17 +185,6 @@ bindsym $mod+control+w kill
 ###########  
 bar {
     swaybar_command waybar
-    # position top
-    # status_command i3status
-    # colors {
-	    # background #161821
-	    # statusline #c6c8d1
-	    # separator  #c6c8d1
-	    # focused_workspace   #161821 #c6c8d1 #161821
-	    # active_workspace    #d2d4de #d2d4de #161821
-	    # inactive_workspace  #161821 #161821 #d2d4de
-	    # urgent_workspace    #b4be82 #b4be82 #161821
-    # }
 }
 
 ###########  
@@ -208,7 +195,8 @@ include /etc/sway/config.d/*
 ###########  
 ### app on startup
 ###########  
+exec $term
+exec chromium
 exec betterbird
 exec telegram-desktop
-exec chromium
 exec spotify-launcher
