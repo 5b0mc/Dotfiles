@@ -9,11 +9,11 @@
     ],
     "modules-right": [
         "wireplumber",
+        "bluetooth",
         "network",
         "power-profiles-daemon",
-        "custom/power",
-        "bluetooth",
         "battery",
+        "custom/power",
         "tray",
         "clock"
     ],
