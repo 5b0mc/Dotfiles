@@ -14,10 +14,15 @@ return require("packer").startup(function()
     use 'tpope/vim-commentary'
     use 'tpope/vim-fugitive'
     use "ibhagwan/fzf-lua"
-    use "nvim-tree/nvim-tree.lua"
-
-    use 'nvim-tree/nvim-web-devicons'
-    use 'cocopon/iceberg.vim'
+    use { "nvim-neo-tree/neo-tree.nvim",
+    branch = "v3.x",
+    requires = { 
+      "nvim-lua/plenary.nvim",
+      "nvim-tree/nvim-web-devicons",
+      "MunifTanjim/nui.nvim",
+    }
+  }
     use 'nvim-lualine/lualine.nvim'
-    vim.cmd("colorscheme iceberg")
+    use 'rose-pine/neovim'
+    vim.cmd("colorscheme rose-pine")
 end)

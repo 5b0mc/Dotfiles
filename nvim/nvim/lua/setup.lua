@@ -4,7 +4,20 @@ require('lualine').setup {
         icons_enabled = false
     }
 }
-require("nvim-tree").setup()
+
+require("neo-tree").setup({
+    sources = {
+        "filesystem",
+        -- "buffers",
+        -- "git_status",
+    },
+    filesystem = {
+        filtered_items = {
+             hide_dotfiles = false,
+             hide_gitignored = false,
+        }
+    }
+})
 
 local cmp = require 'cmp'
 cmp.setup({
