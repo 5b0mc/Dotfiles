@@ -1,3 +1,9 @@
+require("rose-pine").setup({
+ highlight_groups = {
+        Comment = { fg = "foam" },
+    },
+})
+
 require('lualine').setup {
     options = {
         theme = 'iceberg',
@@ -10,6 +16,9 @@ require("neo-tree").setup({
         "filesystem",
         -- "buffers",
         -- "git_status",
+    },
+    icon = {
+        default = ""
     },
     filesystem = {
         filtered_items = {

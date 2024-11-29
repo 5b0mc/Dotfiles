@@ -46,7 +46,10 @@ lspconfig.html.setup {
 -- npm install -g @vue/typescript-plugin
 -- npm install -g typescript-language-server typescript
 local vue_language_server_path = home .. "/.npm-packages/lib/node_modules/@vue/typescript-plugin"
-lspconfig.volar.setup {}
+lspconfig.volar.setup {
+    on_attach = on_attach,
+    capabilities = capabilities,
+}
 lspconfig.ts_ls.setup {
     init_options = {
         plugins = {
