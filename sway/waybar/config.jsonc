@@ -17,8 +17,18 @@
         "tray",
         "clock"
     ],
+    "mpris": {
+        "format": "{player_icon}",
+        "format-paused": "{status_icon}",
+        "player-icons": {
+            "default": "⏸" 
+        },
+        "status-icons": {
+            "paused": "▶"
+        }
+    },
     "sway/mode": {
-        "format": "<span style=\"italic\">{}</span>"
+        "format": "{}"
     },
     "sway/scratchpad": {
         "format": "{icon} {count}",
@@ -38,7 +48,7 @@
     },
     "tray": { },
     "clock": {
-        "format": "{:%Y-%m-%d   %H:%M}",
+        "format": "{:%Y-%m-%d %A %H:%M}",
         "locale": "it_IT.UTF-8",
         "tooltip": false
     },
@@ -49,8 +59,10 @@
         },
         "format": "{capacity}% {icon} ",
         "format-charging": "",
+       	"interval": 1,
         "format-plugged": "",
-        "format-icons": ["", "", "", "", ""]
+        "format-icons": ["", "", "", "", ""],
+        "on-update" : "./batteryNotification.sh"
     },
     "power-profiles-daemon": {
         "format": "{icon}",
@@ -85,7 +97,7 @@
             "phone": "",
             "portable": "",
             "car": "",
-            "default": ["", "", ""]
+            "default": ["", "", " "]
         },
         "on-click": "pavucontrol"
     },

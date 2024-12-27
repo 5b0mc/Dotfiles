@@ -1,32 +1,11 @@
-require("rose-pine").setup({
- highlight_groups = {
-        Comment = { fg = "foam" },
-    },
-})
+vim.cmd("colorscheme nord")
 
 require('lualine').setup {
     options = {
-        theme = 'iceberg',
+        theme = 'nord',
         icons_enabled = false
     }
 }
-
-require("neo-tree").setup({
-    sources = {
-        "filesystem",
-        -- "buffers",
-        -- "git_status",
-    },
-    icon = {
-        default = ""
-    },
-    filesystem = {
-        filtered_items = {
-             hide_dotfiles = false,
-             hide_gitignored = false,
-        }
-    }
-})
 
 local cmp = require 'cmp'
 cmp.setup({

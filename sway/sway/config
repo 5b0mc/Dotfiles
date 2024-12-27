@@ -1,7 +1,7 @@
 ###########  
 ### setup and variables
 ###########  
-# xwayland disable
+xwayland disable
 # My background
 output * bg /home/m/Documents/stuff/Nighthawks_by_Edward_Hopper_1942.jpg fill
 # My app launcher
@@ -9,20 +9,20 @@ set $menu tofi-drun | xargs swaymsg exec --
 # My notification daemon
 exec mako
 # My terminal emulator
-set $term alacritty
+set $term ghostty
 
 ###########  
 ### global style
 ###########  
-font pango:Ubuntu Nerd Font, bold 11
-gaps inner 7px
+font pango:Ubuntu Nerd Font, bold 10
+gaps inner 6px
 default_border none
 # color class           border  backgr  text    child_border
 client.focused          #c6c8d1 #c6c8d1 #161821 #84a0c6
-client.focused_inactive #161821 #161821 #ffffff #454948
-client.unfocused        #161821 #161821 #ffffff #454948
+client.focused_inactive #161821 #161821 #999999 #454948
+client.unfocused        #161821 #161821 #999999 #454948
 client.urgent           #b4be82 #b4be82 #161821 #268BD2
-client.placeholder      #000000 #0c0c0c #ffffff #000000
+client.placeholder      #000000 #0c0c0c #999999 #000000
 client.background       #161821
 # disable mouse/trakpad es. scrolling on tabbed layout
 bindsym button4 nop
@@ -41,7 +41,11 @@ set $laptop_keyboard "1:1:AT_Translated_Set_2_keyboard"
 input  $laptop_keyboard {
     xkb_options caps:ctrl_modifier,altwin:swap_alt_win
 }
-# 27" displays
+# ThinkPad red nipple
+input "2:10:TPPS/2_Elan_TrackPoint" {
+    pointer_accel -1
+}
+# 27" external displays
 output * {
     scale 1.5
 }
@@ -60,12 +64,12 @@ exec_always ./clamshellmode.sh $laptop_display
 ### key bindings
 ###########  
 set $mod Mod4
+bindsym $mod+shift+r reload
 # start my terminal
 bindsym $mod+Return exec $term
 # start my launcher
 bindsym $mod+d exec $menu
 # media key/syms
-bindsym $mod+shift+r reload
 bindsym XF86AudioRaiseVolume exec pactl set-sink-volume @DEFAULT_SINK@ +10%
 bindsym XF86AudioLowerVolume exec pactl set-sink-volume @DEFAULT_SINK@ -10%
 bindsym XF86AudioMute exec pactl set-sink-mute @DEFAULT_SINK@ toggle
@@ -73,8 +77,8 @@ bindsym XF86AudioMicMute exec pactl set-source-mute @DEFAULT_SOURCE@ toggle
 bindsym XF86AudioPlay exec playerctl play-pause
 bindsym XF86AudioNext exec playerctl next
 bindsym XF86AudioPrev exec playerctl previous
-bindsym XF86MonBrightnessDown exec brightnessctl set 5%-
-bindsym XF86MonBrightnessUp exec brightnessctl set 5%+
+bindsym XF86MonBrightnessDown exec brightnessctl set 20%-
+bindsym XF86MonBrightnessUp exec brightnessctl set 20%+
 bindsym XF86Display exec swaymsg output $laptop_display toggle
 # save screenshots in the clipboard (secondary selection)
 bindsym Print exec grim -g "$(slurp)" - | wl-copy
@@ -106,10 +110,9 @@ bindsym $mod+7 workspace number 7
 bindsym $mod+8 workspace number 8
 bindsym $mod+9 workspace number 9
 bindsym $mod+m workspace M
-bindsym $mod+n workspace M
 # navigate active workspaces
-bindsym $mod+shift+j workspace prev
-bindsym $mod+shift+semicolon workspace next
+bindsym $mod+p workspace prev
+bindsym $mod+n workspace next
 
 ###########  
 ### containers
@@ -128,9 +131,10 @@ bindsym $mod+control+0 move container to workspace number 10
 # fullscreen mode for the focused container
 bindsym $mod+f fullscreen toggle
 # change layout mode for the focused container
-bindsym $mod+s layout stacking
 bindsym $mod+w layout tabbed
 bindsym $mod+e layout toggle split
+# split container and make it stacking
+bindsym $mod+s split vertical; layout stacking
 # split container and make it tabbed
 bindsym $mod+t split vertical; layout tabbed
 # split the focused container
@@ -151,11 +155,8 @@ assign [app_id="libreoffice"] $wsOffice
 assign [app_id="Electron"] $wsStuff
 assign [app_id="Bruno"] $wsStuff
 assign [app_id="com.transmissionbt*"] $wsStuff
-assign [app_id="brave*"] $wsMedia
 # assign window options with window criteria
 for_window [app_id="org.pulseaudio.pavucontrol"] floating enable, border normal
-for_window [app_id="org.gnome.Calculator"] floating enable, border normal
-for_window [app_id="org.gnome.Calendar"] floating enable, border normal
 for_window [title="^Picture"] floating enable, sticky enable, border none
 focus_follows_mouse yes
 # resize window (you can also use the mouse for that)
@@ -176,10 +177,10 @@ bindsym $mod+semicolon focus right
 bindsym $mod+a focus parent
 bindsym $mod+c focus child
 # move focused window
-bindsym $mod+control+j move left
-bindsym $mod+control+k move down
-bindsym $mod+control+l move up
-bindsym $mod+control+semicolon move right
+bindsym $mod+shift+j move left
+bindsym $mod+shift+k move down
+bindsym $mod+shift+l move up
+bindsym $mod+shift+semicolon move right
 # kill focused window
 bindsym $mod+control+w kill
 
@@ -202,4 +203,3 @@ exec $term
 exec chromium
 exec betterbird
 exec telegram-desktop
-exec spotify-launcher

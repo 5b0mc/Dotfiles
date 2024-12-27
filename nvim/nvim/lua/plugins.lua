@@ -14,14 +14,7 @@ return require("packer").startup(function()
     use 'tpope/vim-commentary'
     use 'tpope/vim-fugitive'
     use "ibhagwan/fzf-lua"
-    use { "nvim-neo-tree/neo-tree.nvim",
-    branch = "v3.x",
-    requires = { 
-      "nvim-lua/plenary.nvim",
-      "MunifTanjim/nui.nvim",
-    }
-  }
+
+    use 'shaunsingh/nord.nvim'
     use 'nvim-lualine/lualine.nvim'
-    use 'rose-pine/neovim'
-    vim.cmd("colorscheme rose-pine")
 end)

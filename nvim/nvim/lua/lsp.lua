@@ -42,6 +42,12 @@ lspconfig.html.setup {
     capabilities = capabilities,
 }
 
+lspconfig.ocamllsp.setup {
+    cmd = {home .. "/.opam/default/bin/ocamllsp"},
+    on_attach = on_attach,
+    capabilities = capabilities,
+}
+
 -- npm install -g @vue/language-server
 -- npm install -g @vue/typescript-plugin
 -- npm install -g typescript-language-server typescript

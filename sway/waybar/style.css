@@ -64,3 +64,8 @@ button:hover {
 #tray>.needs-attention {
     -gtk-icon-effect: highlight;
 }
+
+#mode {
+    font-style: italic;
+    color: #bf616a;
+}
