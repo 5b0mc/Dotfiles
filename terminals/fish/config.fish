@@ -25,8 +25,8 @@ set -x GOPATH $HOME/.go
 set -x PATH $PATH $GOPATH/bin
 # Cargo e Rustup
 set -x CARGO_HOME $HOME/.cargo
-set -x RUSTUP_HOME $HOME/.rustup
 set -x PATH $PATH $CARGO_HOME/bin
+set -x RUSTUP_HOME $HOME/.rustup
 set -x PATH $PATH $RUSTUP_HOME/bin
 
 # Set Environment for Linux or MacOS
