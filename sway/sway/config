@@ -9,7 +9,7 @@ set $menu tofi-drun | xargs swaymsg exec --
 # My notification daemon
 exec mako
 # My terminal emulator
-set $term ghostty
+set $term alacritty
 
 ###########  
 ### global style
@@ -64,6 +64,7 @@ exec_always ./clamshellmode.sh $laptop_display
 ### key bindings
 ###########  
 set $mod Mod4
+set $alt Mod1
 bindsym $mod+shift+r reload
 # start my terminal
 bindsym $mod+Return exec $term
@@ -85,6 +86,8 @@ bindsym Print exec grim -g "$(slurp)" - | wl-copy
 # move current workspace to different monitor
 bindsym $mod+Prior move workspace to output left
 bindsym $mod+Next move workspace to output right
+# paste from primary register, like middle-click
+bindsym $alt+v exec wl-paste -p
 
 ###########  
 ### workspaces

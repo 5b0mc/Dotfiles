@@ -1,7 +1,7 @@
 .PHONY: work sway i3 font
 
 work:
-	# remember to install make and fzf and ripgrep!
+	# remember to install fzf and ripgrep!
 	-git clone --depth 1 https://github.com/wbthomason/packer.nvim ~/.local/share/nvim/site/pack/packer/start/packer.nvim
 	stow --verbose --target=$(HOME)/.config --restow nvim
 	stow --verbose --target=$(HOME)/.config --restow terminals
@@ -9,10 +9,10 @@ work:
 
 sway:
 	stow --verbose --target=$(HOME)/.config --restow sway
+#	stow --verbose --target=$(HOME)/.config --restow hyprland
 
 i3:
 	stow --verbose --target=$(HOME)/.config --restow i3
-#	stow --verbose --target=$(HOME)/.config --restow hyprland
 	stow --verbose --target=$(HOME) --restow Xorg
 
 font:
