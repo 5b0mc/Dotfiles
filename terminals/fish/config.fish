@@ -52,7 +52,7 @@ end
 
 # Print  the color value of an pixel
 function colorpicker
-    grim -g "$(slurp -p)" -t ppm - | magick - -format '%[pixel:p{0,0}]' txt:-
+    grim -g "(slurp -p)" -t ppm - | magick - -format '%[pixel:p{0,0}]' txt:-
 end
 
 # Make a Quick Decision
