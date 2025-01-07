@@ -34,9 +34,9 @@
     "custom/pomodoro": {
         "format": "{}",
         "return-type": "json",
-        "exec": "waybar-module-pomodoro",
-        "on-click": "waybar-module-pomodoro toggle",
-        "on-click-right": "waybar-module-pomodoro reset"
+        "exec": "/home/m/.cargo/bin/waybar-module-pomodoro",
+        "on-click": "/home/m/.cargo/bin/waybar-module-pomodoro toggle",
+        "on-click-right": "/home/m/.cargo/bin/waybar-module-pomodoro reset"
     },
     "sway/scratchpad": {
         "format": "{icon} {count}",
