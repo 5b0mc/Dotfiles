@@ -28,6 +28,10 @@ vim.opt.clipboard = "unnamedplus"
 vim.opt.shortmess = vim.opt.shortmess + 'I'
 vim.opt.completeopt = menu, menuone, noselect
 
+-- Better line navigation for wrapped lines
+vim.keymap.set('n', 'j', 'gj', { silent = true })
+vim.keymap.set('n', 'k', 'gk', { silent = true })
+
 vim.api.nvim_create_autocmd({ 'BufEnter' }, {
     pattern = '*.{js,jsx,ts,tsx,vue}',
     command = 'syntax sync fromstart',

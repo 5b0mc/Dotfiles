@@ -1,4 +1,6 @@
 nvim/nvim/plugin
 packer_compiled.lua
-fish/fish/conf.d
+fish_variables
+
+
 

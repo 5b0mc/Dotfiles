@@ -63,3 +63,18 @@ function coin
         echo "Yes."
     end
 end
+
+# Iterates through files in ~/.config/keys, converting filenames to uppercase variable names and exporting their contents as environment variables
+if test -d ~/.config/keys
+    for key_file in ~/.config/keys/*
+        if test -f $key_file
+            set file_name (basename $key_file)
+            set var_name (string upper $file_name)
+            set key_content (cat $key_file)
+            if test -n "$key_content"
+                set -gx $var_name $key_content
+            end
+        end
+    end
+end
+

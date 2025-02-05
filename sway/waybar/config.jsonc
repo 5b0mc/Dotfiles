@@ -1,4 +1,4 @@
-// -*- mode: jsonc -*-
+// -*- m ode: jsonc -*-
 {
     "height": 28,
     "spacing": 2,
@@ -14,7 +14,7 @@
         "power-profiles-daemon",
         "battery",
         "custom/power",
-        "custom/pomodoro",
+        // "custom/pomodoro",
         "tray",
         "clock"
     ],

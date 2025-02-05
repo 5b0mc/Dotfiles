@@ -10,8 +10,11 @@ set $menu tofi-drun | xargs swaymsg exec --
 exec mako
 # Adjust screen color temperature based on location/time
 exec gammastep -l 44.2:12.3 &
+# monitor manager
+exec kanshi
 # My terminal emulator
 set $term alacritty
+
 
 ###########  
 ### global style
@@ -88,8 +91,7 @@ bindsym Print exec grim -g "$(slurp)" - | wl-copy
 # move current workspace to different monitor
 bindsym $mod+Prior move workspace to output left
 bindsym $mod+Next move workspace to output right
-bindsym $mod+minus scratchpad show
-
+bindsym $mod+0 scratchpad show
 ###########  
 ### workspaces
 ###########  
@@ -121,6 +123,7 @@ bindsym $mod+n workspace next
 ###########  
 ### containers
 ###########  
+bindsym $mod+control+ 0 move scratchpad
 # move focused container to workspace
 bindsym $mod+control+1 move container to workspace number 1
 bindsym $mod+control+2 move container to workspace number 2
@@ -136,9 +139,8 @@ bindsym $mod+control+0 move container to workspace number 10
 bindsym $mod+f fullscreen toggle
 # change layout mode for the focused container
 bindsym $mod+w layout tabbed
+bindsym $mod+s layout stacking
 bindsym $mod+e layout toggle split
-# split container and make it stacking
-bindsym $mod+s split vertical; layout stacking
 # split container and make it tabbed
 bindsym $mod+t split vertical; layout tabbed
 # split the focused container
@@ -159,7 +161,6 @@ assign [app_id="libreoffice"] $wsOffice
 assign [app_id="Electron"] $wsStuff
 assign [app_id="Bruno"] $wsStuff
 assign [app_id="com.transmissionbt*"] $wsStuff
-for_window [app_id="sublime_text"] move scratchpad
 # assign window options with window criteria
 for_window [app_id="org.pulseaudio.pavucontrol"] floating enable, border normal
 for_window [title="^Picture"] floating enable, sticky enable, border none
@@ -175,9 +176,6 @@ mode "resize" {
         bindsym Escape mode "default"
 }
 
-floating_maximum_size  800 x 800
-floating_modifier control
-
 bindsym $mod+r mode "resize"
 # change window focus
 bindsym $mod+j focus left
@@ -192,7 +190,6 @@ bindsym $mod+control+j move left
 bindsym $mod+control+k move down
 bindsym $mod+control+l move up
 bindsym $mod+control+semicolon move right
-bindsym $mod+control+minus  move scratchpad
 # kill focused window
 bindsym $mod+control+w kill
 
@@ -215,5 +212,4 @@ exec $term
 exec chromium
 exec betterbird
 exec telegram-desktop
-exec subl 
 
