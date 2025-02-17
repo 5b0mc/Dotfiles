@@ -58,7 +58,6 @@ require 'fzf-lua'.setup {
 require("avante_lib").load()
 local avante = require('avante')
 avante.setup({
-
   ---@alias Provider "claude" | "openai" | "azure" | "gemini" | "cohere" | "copilot" | string
   provider = "claude", -- Recommend using Claude
   -- WARNING: Since auto-suggestions are a high-frequency operation and therefore expensive,
@@ -135,7 +134,7 @@ avante.setup({
     wrap = true, -- similar to vim.o.wrap
     width = 40, -- default % based on available width
     sidebar_header = {
-      enabled = true, -- true, false to enable/disable the header
+      enabled = false, -- true, false to enable/disable the header
       align = "center", -- left, center, right for title
       rounded = false,
     },

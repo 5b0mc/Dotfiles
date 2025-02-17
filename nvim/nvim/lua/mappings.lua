@@ -1,10 +1,6 @@
 vim.keymap.set('i', 'jj', '<Esc>', { noremap = true, silent = true })
 
-vim.keymap.set('n', '<C-j>', ':bprevious<CR>', { noremap = true, silent = true })
-vim.keymap.set('n', '<C-;>', ':bn<CR>', { noremap = true })
-
 vim.keymap.set('n', '<Leader>e', ':Explore<CR>', { noremap = true, silent = true })
-vim.keymap.set('n', '<Leader>f', ':Neotree reveal<CR>', { noremap = true, silent = true })
 vim.keymap.set('n', '<Leader>d', ':bd<CR>', { noremap = true, silent = true })
 vim.keymap.set('n', '<Leader>w', ':w<CR>', { noremap = true, silent = true })
 
@@ -26,3 +22,7 @@ vim.keymap.set("t", "j", "<Left>", { noremap = true, silent = true, buffer = tru
 vim.keymap.set("t", "k", "<Down>", { noremap = true, silent = true, buffer = true })
 vim.keymap.set("t", "l", "<Up>", { noremap = true, silent = true, buffer = true })
 vim.keymap.set("t", ";", "<Right>", { noremap = true, silent = true, buffer = true })
+
+vim.keymap.set('n', 'j', 'gj', { silent = true })
+vim.keymap.set('n', 'k', 'gk', { silent = true })
+
