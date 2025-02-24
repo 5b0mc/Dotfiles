@@ -64,6 +64,51 @@ function coin
     end
 end
 
+# Make a Poderate Decision
+function m8b
+    set net_responses \
+        "Yes, prioritize this right away to push your venture forward" \
+        "No, you should focus on a more profitable or strategic activity" \
+        "Absolutely, it aligns perfectly with your long-term vision" \
+        "No, it doesn't seem to be the best use of your limited resources" \
+        "Yes, it's a wise investment that can elevate you" \
+        "Better not, you risk stretching yourself too thin" \
+        "Yes, it's a strategic move that could boost your brand presence" \
+        "Hold off: reconsider how to make the most of your resources"
+    set reflection_questions \
+        "How does this choice affect your core business goals?" \
+        "Are you investing your time in the area with the highest leverage?" \
+        "Could a simpler or more automated approach save you effort?" \
+        "Is this decision aligned with your envisioned growth trajectory?" \
+        "What measurable outcome do you hope to achieve?" \
+        "Are you focusing on what truly drives revenue or just staying busy?" \
+        "Could outsourcing or a short-term partnership provide better results?" \
+        "What’s the opportunity cost of waiting versus acting now?"
+    set combined_prompts \
+        "Yes, but check if you have enough funds and time to see it through" \
+        "No, yet consider a low-effort alternative to test this idea" \
+        "Go for it, but set clear milestones to monitor progress" \
+        "Pause: are there more pressing tasks that need attention first?" \
+        "Proceed, but track results carefully to pivot if needed" \
+        "Wait: gather more market data or user feedback before committing" \
+        "Yes, but plan how you'll balance this with your daily operations" \
+        "No, but use the insights gained to refine your overall strategy"
+    set output_type (math (random) % 3)
+    switch $output_type
+        case 0
+            set index (math (random) % (count $net_responses) + 1)
+            echo $net_responses[$index]
+
+        case 1
+            set index (math (random) % (count $reflection_questions) + 1)
+            echo $reflection_questions[$index]
+
+        case 2
+            set index (math (random) % (count $combined_prompts) + 1)
+            echo $combined_prompts[$index]
+    end
+end
+
 # Iterates through files in ~/.config/keys, converting filenames to uppercase variable names and exporting their contents as environment variables
 if test -d ~/.config/keys
     for key_file in ~/.config/keys/*

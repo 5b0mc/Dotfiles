@@ -67,7 +67,7 @@ lspconfig.ts_ls.setup {
         },
     },
     filetypes = { 'typescript', 'javascript', 'javascriptreact', 'typescriptreact', 'vue' },
-    root_dir = util.root_pattern("package.json"),
+    root_dir = util.root_pattern("package.json", "tsconfig.json", "jsconfig.json"),
     single_file_support = false,
     on_attach = on_attach,
     capabilities = capabilities,

@@ -17,25 +17,6 @@ set $term alacritty
 
 
 ###########  
-### global style
-###########  
-font pango:Ubuntu Nerd Font, bold 10
-gaps inner 6
-default_border none
-# color class           border  backgr  text    child_border
-client.focused          #c6c8d1 #c6c8d1 #161821 #84a0c6
-client.focused_inactive #161821 #161821 #999999 #454948
-client.unfocused        #161821 #161821 #999999 #454948
-client.urgent           #b4be82 #b4be82 #161821 #268BD2
-client.placeholder      #000000 #0c0c0c #999999 #000000
-client.background       #161821
-# disable mouse/trakpad es. scrolling on tabbed layout
-bindsym button4 nop
-bindsym button5 nop
-bindsym button6 nop
-bindsym button7 nop  
-
-###########  
 ###  i/o 
 ###########  
 # check inputs names with: swaymsg -t get_intputs
@@ -66,11 +47,16 @@ bindswitch --reload --locked lid:off output $laptop_display enable
 exec_always ./clamshellmode.sh $laptop_display
 
 ###########  
-### key bindings
+### system
 ###########  
 set $mod Mod4
 set $alt Mod1
 bindsym $mod+control+r reload
+bindsym $mod+control+e exec swaynag -t warning -m 'Exit?' -B 'Y' 'swaymsg exit'
+# disable mouse/trakpad es. scrolling on tabbed layout
+bindsym button4 nop
+bindsym button5 nop
+bindsym button6 nop
 # start my terminal
 bindsym $mod+Return exec $term
 # start my launcher
@@ -91,7 +77,8 @@ bindsym Print exec grim -g "$(slurp)" - | wl-copy
 # move current workspace to different monitor
 bindsym $mod+Prior move workspace to output left
 bindsym $mod+Next move workspace to output right
-bindsym $mod+0 scratchpad show
+
+
 ###########  
 ### workspaces
 ###########  
@@ -117,13 +104,12 @@ bindsym $mod+8 workspace number 8
 bindsym $mod+9 workspace number 9
 bindsym $mod+m workspace M
 # navigate active workspaces
-bindsym $mod+p workspace prev
-bindsym $mod+n workspace next
+bindsym $mod+comma workspace prev
+bindsym $mod+period workspace next
 
 ###########  
 ### containers
 ###########  
-bindsym $mod+control+ 0 move scratchpad
 # move focused container to workspace
 bindsym $mod+control+1 move container to workspace number 1
 bindsym $mod+control+2 move container to workspace number 2
@@ -135,8 +121,6 @@ bindsym $mod+control+7 move container to workspace number 7
 bindsym $mod+control+8 move container to workspace number 8
 bindsym $mod+control+9 move container to workspace number 9
 bindsym $mod+control+0 move container to workspace number 10
-# fullscreen mode for the focused container
-bindsym $mod+f fullscreen toggle
 # change layout mode for the focused container
 bindsym $mod+w layout tabbed
 bindsym $mod+s layout stacking
@@ -146,7 +130,6 @@ bindsym $mod+t split vertical; layout tabbed
 # split the focused container
 bindsym $mod+v split vertical
 bindsym $mod+h split horizontal
-bindsym $mod+comma toggle
 
 ###########  
 ### windows
@@ -164,6 +147,9 @@ assign [app_id="com.transmissionbt*"] $wsStuff
 # assign window options with window criteria
 for_window [app_id="org.pulseaudio.pavucontrol"] floating enable, border normal
 for_window [title="^Picture"] floating enable, sticky enable, border none
+# Scratchpad
+bindsym $mod+Shift+minus move scratchpad
+bindsym $mod+minus scratchpad show
 
 focus_follows_mouse yes
 # resize window (you can also use the mouse for that)
@@ -191,7 +177,10 @@ bindsym $mod+control+k move down
 bindsym $mod+control+l move up
 bindsym $mod+control+semicolon move right
 # kill focused window
-bindsym $mod+control+w kill
+bindsym $mod+q kill
+# fullscreen mode for the focused container
+bindsym $mod+f fullscreen toggle
+bindsym $mod+Shift+space floating toggle
 
 ###########  
 ### status bar
@@ -201,15 +190,34 @@ bar {
 }
 
 ###########  
-### default sway system integrations
-###########  
-include /etc/sway/config.d/*
-
-###########  
-### app on startup
+### apps on startup
 ###########  
 exec $term
 exec chromium
 exec betterbird
 exec telegram-desktop
 
+
+###########  
+### global style
+###########  
+font pango:Ubuntu Nerd Font, bold 10
+gaps inner 2
+gaps outer 2
+default_border none
+
+# color class           border  backgr  text    child_border
+client.focused          #c6c8d1 #c6c8d1 #161821 #84a0c6
+client.focused_inactive #161821 #161821 #999999 #454948
+client.unfocused        #161821 #161821 #999999 #454948
+client.urgent           #b4be82 #b4be82 #161821 #268BD2
+client.placeholder      #000000 #0c0c0c #999999 #000000
+client.background       #161821
+
+
+###########  
+### default sway system integrations
+###########  
+include /etc/sway/config.d/*
+
+bindsym button7 nop  
