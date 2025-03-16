@@ -40,6 +40,9 @@ output $laptop_display {
     res 2880x1800@120.000Hz
     scale 2
 }
+# second external monitor in daisychain
+output "DP-6" transform 90
+
 # Clamshell mode for laptop
 # if the lid is closed whith an external monitor then disable it
 bindswitch --reload --locked lid:on output $laptop_display disable
@@ -148,7 +151,7 @@ assign [app_id="com.transmissionbt*"] $wsStuff
 for_window [app_id="org.pulseaudio.pavucontrol"] floating enable, border normal
 for_window [title="^Picture"] floating enable, sticky enable, border none
 # Scratchpad
-bindsym $mod+Shift+minus move scratchpad
+bindsym $mod+control+minus move scratchpad
 bindsym $mod+minus scratchpad show
 
 focus_follows_mouse yes
@@ -180,7 +183,7 @@ bindsym $mod+control+semicolon move right
 bindsym $mod+q kill
 # fullscreen mode for the focused container
 bindsym $mod+f fullscreen toggle
-bindsym $mod+Shift+space floating toggle
+bindsym $mod+control+space floating toggle
 
 ###########  
 ### status bar

@@ -1,4 +1,4 @@
-.PHONY: work sway i3 font
+.PHONY: work sway i3 font zsh
 
 work:
 	# remember to install fzf and ripgrep!

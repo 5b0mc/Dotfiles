@@ -56,6 +56,7 @@
     },
     "tray": { },
     "clock": {
+        "on-click" : "/home/m/Projects/deca/build/deca",
         "format": "{:%Y-%m-%d %A %H:%M}",
         "locale": "it_IT.UTF-8",
         "tooltip": false

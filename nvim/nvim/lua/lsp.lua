@@ -4,7 +4,6 @@ local lspconfig = require "lspconfig"
 local capabilities = require('cmp_nvim_lsp').default_capabilities(vim.lsp.protocol.make_client_capabilities())
 
 local opts = { noremap = true, silent = true }
-
 vim.keymap.set('n', '<space>z', vim.diagnostic.open_float, opts)
 vim.keymap.set('n', '<space>p', vim.diagnostic.goto_prev, opts)
 vim.keymap.set('n', '<space>n', vim.diagnostic.goto_next, opts)
@@ -43,7 +42,7 @@ lspconfig.html.setup {
 }
 
 lspconfig.ocamllsp.setup {
-    cmd = {home .. "/.opam/default/bin/ocamllsp"},
+    cmd = { home .. "/.opam/default/bin/ocamllsp" },
     on_attach = on_attach,
     capabilities = capabilities,
 }
@@ -62,7 +61,7 @@ lspconfig.ts_ls.setup {
             {
                 name = '@vue/typescript-plugin',
                 location = vue_language_server_path,
-                languages = {"javascript", "typescript", "vue"},
+                languages = { "javascript", "typescript", "vue" },
             },
         },
     },
@@ -74,22 +73,22 @@ lspconfig.ts_ls.setup {
 }
 
 lspconfig.denols.setup {
-  on_attach = on_attach,
-  root_dir = util.root_pattern("deno.json", "deno.jsonc"),
+    on_attach = on_attach,
+    root_dir = util.root_pattern("deno.json", "deno.jsonc"),
 }
 
 lspconfig.rust_analyzer.setup({
-  on_attach = on_attach,
-  capabilities = capabilities,
-  filetypes = {"rust"},
-  root_dir = util.root_pattern("Cargo.toml"),
-  settings = {
-    ['rust_analyzer'] = {
-      cargo = {
-        allFeatures = true,
-      },
+    on_attach = on_attach,
+    capabilities = capabilities,
+    filetypes = { "rust" },
+    root_dir = util.root_pattern("Cargo.toml"),
+    settings = {
+        ['rust_analyzer'] = {
+            cargo = {
+                allFeatures = true,
+            },
+        },
     },
-  },
 })
 
 -- go install golang.org/x/tools/gopls@latest

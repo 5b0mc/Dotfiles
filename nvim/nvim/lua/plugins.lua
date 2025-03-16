@@ -18,24 +18,4 @@ return require("packer").startup(function()
     use 'shaunsingh/nord.nvim'
     use 'nvim-lualine/lualine.nvim'
 
-    use {
-        'yetone/avante.nvim',
-        build = "make",
-        lazy = false,
-        version = false,
-        BUILD_FROM_SOURCE = true,
-        requires = {
-            "stevearc/dressing.nvim",
-            'nvim-lua/plenary.nvim',
-            'MunifTanjim/nui.nvim',
-            {
-                'MeanderingProgrammer/render-markdown.nvim',
-                config = function()
-                    require('render-markdown').setup({
-                        file_types = { "markdown", "Avante" },
-                    })
-                end,
-            },
-        },
-    }
 end)
