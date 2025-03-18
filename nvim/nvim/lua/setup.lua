@@ -1,12 +1,5 @@
 vim.cmd("colorscheme nord")
 
-require('lualine').setup {
-    options = {
-        theme = 'nord',
-        icons_enabled = false
-    }
-}
-
 local cmp = require 'cmp'
 cmp.setup({
     snippet = {
@@ -28,6 +21,13 @@ cmp.setup({
         { name = 'vsnip' },
     })
 })
+
+require('lualine').setup {
+    options = {
+        theme = 'nord',
+        icons_enabled = false
+    }
+}
 
 require 'fzf-lua'.setup {
     buffers = {
@@ -55,3 +55,4 @@ require 'fzf-lua'.setup {
     },
 }
 
+require('oil').setup()

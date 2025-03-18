@@ -1,6 +1,6 @@
 vim.keymap.set('i', 'jj', '<Esc>', { noremap = true, silent = true })
 
-vim.keymap.set('n', '<Leader>e', ':Explore<CR>', { noremap = true, silent = true })
+vim.keymap.set('n', '<Leader>e', ':Oil<CR>', { noremap = true, silent = true })
 vim.keymap.set('n', '<Leader>d', ':bd<CR>', { noremap = true, silent = true })
 vim.keymap.set('n', '<Leader>w', ':w<CR>', { noremap = true, silent = true })
 

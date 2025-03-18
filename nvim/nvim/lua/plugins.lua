@@ -14,6 +14,7 @@ return require("packer").startup(function()
     use 'tpope/vim-commentary'
     use 'tpope/vim-fugitive'
     use "ibhagwan/fzf-lua"
+    use "stevearc/oil.nvim"
 
     use 'shaunsingh/nord.nvim'
     use 'nvim-lualine/lualine.nvim'
