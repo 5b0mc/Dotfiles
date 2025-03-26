@@ -1,3 +1,4 @@
+
 ###########  
 ### setup and variables
 ###########  
@@ -6,12 +7,6 @@ xwayland disable
 output * bg /home/m/Documents/stuff/Nighthawks_by_Edward_Hopper_1942.jpg fill
 # My app launcher
 set $menu tofi-drun | xargs swaymsg exec --
-# My notification daemon
-exec mako
-# Adjust screen color temperature based on location/time
-exec gammastep -l 44.2:12.3 &
-# monitor manager
-exec kanshi
 # My terminal emulator
 set $term alacritty
 
@@ -33,19 +28,22 @@ input "2:10:TPPS/2_Elan_TrackPoint" {
 }
 # 27" external displays
 output * {
-    scale 1.5
+    scale 1.5 
+    resolution 3840x2160@120.000Hz
 }
+# 27" second external displays
+output "DP-6" transform 90
 # 14" notebook display
 output $laptop_display {
     res 2880x1800@120.000Hz
     scale 2
 }
-
 # Clamshell mode for laptop
 # if the lid is closed whith an external monitor then disable it
 bindswitch --reload --locked lid:on output $laptop_display disable
 bindswitch --reload --locked lid:off output $laptop_display enable
 exec_always ./clamshellmode.sh $laptop_display
+
 
 ###########  
 ### system
@@ -63,8 +61,8 @@ bindsym $mod+Return exec $term
 # start my launcher
 bindsym $mod+d exec $menu
 # media key/syms
-bindsym XF86AudioRaiseVolume exec pactl set-sink-volume @DEFAULT_SINK@ +10%
-bindsym XF86AudioLowerVolume exec pactl set-sink-volume @DEFAULT_SINK@ -10%
+bindsym XF86AudioRaiseVolume exec wpctl set-volume @DEFAULT_AUDIO_SINK@ 5%+ -l 1.2
+bindsym XF86AudioLowerVolume exec wpctl set-volume @DEFAULT_AUDIO_SINK@ 5%-
 bindsym XF86AudioMute exec pactl set-sink-mute @DEFAULT_SINK@ toggle
 bindsym XF86AudioMicMute exec pactl set-source-mute @DEFAULT_SOURCE@ toggle
 bindsym XF86AudioPlay exec playerctl play-pause
@@ -75,13 +73,16 @@ bindsym XF86MonBrightnessUp exec brightnessctl set 20%+
 bindsym XF86Display exec swaymsg output $laptop_display toggle
 # save screenshots in the clipboard (secondary selection)
 bindsym Print exec grim -g "$(slurp)" - | wl-copy
-# move current workspace to different monitor
-bindsym $mod+Prior move workspace to output left
-bindsym $mod+Next move workspace to output right
+
 
 ###########  
 ### workspaces
 ###########  
+# move current workspace to different monitor
+bindsym $mod+Prior move workspace to output left
+bindsym $mod+Next move workspace to output right
+bindsym $mod+left move workspace to output left
+bindsym $mod+right move workspace to output right
 # Allow switching between workspaces with left and right swipes
 bindgesture swipe:right workspace prev
 bindgesture swipe:left workspace next
@@ -104,7 +105,7 @@ bindsym $mod+m workspace $ws_main
 bindsym $mod+comma workspace prev
 bindsym $mod+period workspace next
 bindsym $mod+Tab workspace back_and_forth
-#workspace $ws_main output $laptop_display
+
 
 ###########  
 ### containers
@@ -120,7 +121,6 @@ bindsym $mod+control+7 move container to workspace number 7
 bindsym $mod+control+8 move container to workspace number 8
 bindsym $mod+control+9 move container to workspace number 9
 bindsym $mod+control+m move container to workspace $ws_main
-
 # change layout mode for the focused container
 bindsym $mod+w layout tabbed
 bindsym $mod+s layout stacking
@@ -131,6 +131,7 @@ bindsym $mod+t split vertical; layout tabbed
 bindsym $mod+v split vertical
 bindsym $mod+h split horizontal
 
+
 ###########  
 ### windows
 ###########  
@@ -138,18 +139,17 @@ bindsym $mod+h split horizontal
 # use swaymsg -t get_tree 
 assign [app_id="betterbird"] $ws_main
 assign [app_id="spotify"] $ws_main
+assign [app_id="org.telegram.desktop"] $ws_main
 assign [app_id="libreoffice"] $ws_office
 assign [app_id="Electron"] $ws_stuff
 assign [app_id="Bruno"] $ws_stuff
 assign [app_id="com.transmissionbt*"] $ws_stuff
 # floating windows for daemonized programs 
-for_window [app_id="org.telegram.desktop"] floating enable, border none
 for_window [app_id="org.pulseaudio.pavucontrol"] floating enable, border none
 for_window [title="^Picture"] floating enable, border none
 # Scratchpad
 bindsym $mod+control+minus move scratchpad
 bindsym $mod+minus scratchpad show
-
 focus_follows_mouse yes
 # resize window (you can also use the mouse for that)
 mode "resize" {
@@ -160,7 +160,6 @@ mode "resize" {
         # back to normal
         bindsym Escape mode "default"
 }
-
 bindsym $mod+r mode "resize"
 # change window focus
 bindsym $mod+j focus left
@@ -180,6 +179,8 @@ bindsym $mod+q kill
 # fullscreen mode for the focused container
 bindsym $mod+f fullscreen toggle
 bindsym $mod+control+space floating toggle
+bindsym button7 nop  
+
 
 ###########  
 ### global style
@@ -188,8 +189,6 @@ font pango:Ubuntu Nerd Font, bold 10
 gaps inner 2
 gaps outer 2
 default_border none
-workspace_layout tabbed
-
 # color class           border  backgr  text    child_border
 client.focused          #c6c8d1 #c6c8d1 #161821 #84a0c6
 client.focused_inactive #161821 #161821 #999999 #454948
@@ -198,6 +197,7 @@ client.urgent           #b4be82 #b4be82 #161821 #268BD2
 client.placeholder      #000000 #0c0c0c #999999 #000000
 client.background       #161821
 
+
 ###########  
 ### status bar
 ###########  
@@ -205,9 +205,15 @@ bar {
     swaybar_command waybar
 }
 
+
 ###########  
 ### apps on startup
 ###########  
+# My notification daemon
+exec mako
+# Adjust screen color temperature based on location/time
+exec gammastep -l 44.2:12.3 &
+# My apps
 exec $term
 exec chromium
 exec betterbird
@@ -218,5 +224,3 @@ exec telegram-desktop
 ### default sway system integrations
 ###########  
 include /etc/sway/config.d/*
-
-bindsym button7 nop  

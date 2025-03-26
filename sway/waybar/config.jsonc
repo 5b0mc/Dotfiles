@@ -109,7 +109,6 @@
         },
         "on-click": "pavucontrol", 
         "scroll-step": 2
-
     },
     "custom/power": {
         "format" : "⏻",
