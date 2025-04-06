@@ -7,7 +7,7 @@ export TERM=xterm-256color
 alias jn="jupyter notebook"
 alias python="python3"
 alias vim="nvim"
-alias vi="vim"
+alias vi="/bin/vi"
 # Aliases as Shortcuts for My Favorite Folders
 alias do="cd ~/Dotfiles"
 alias wn="cd ~/Code/WiNet"
@@ -29,13 +29,12 @@ set -x PATH $PATH $CARGO_HOME/bin
 set -x RUSTUP_HOME $HOME/.rustup
 set -x PATH $PATH $RUSTUP_HOME/bin
 
+set -x PATH $PATH $HOME/.local/bin
 # Set Environment for Linux or MacOS
 set os (uname)
 switch $os
     case "Darwin"
         set -x PATH $PATH /opt/homebrew/bin
-    case "Linux"
-        set PATH $PATH /opt/nvim-linux64/bin
 end
 
 # Find a random file in the current folder

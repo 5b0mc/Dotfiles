@@ -15,6 +15,7 @@ local on_attach = function(client, bufnr)
     vim.keymap.set('n', 'gd', vim.lsp.buf.definition, bufopts)
     vim.keymap.set('n', 'gr', vim.lsp.buf.references, bufopts)
     vim.keymap.set('n', 'gi', vim.lsp.buf.implementation, bufopts)
+    vim.keymap.set('n', 'gcc', vim.lsp.buf.implementation, bufopts)
     vim.keymap.set('n', 'gt', vim.lsp.buf.type_definition, bufopts)
     vim.keymap.set('n', 'K', vim.lsp.buf.hover, bufopts)
     vim.keymap.set('n', '<space>k', vim.lsp.buf.signature_help, bufopts)
@@ -54,6 +55,8 @@ local vue_language_server_path = home .. "/.npm-packages/lib/node_modules/@vue/t
 lspconfig.volar.setup {
     on_attach = on_attach,
     capabilities = capabilities,
+    hybridMode = false,
+
 }
 lspconfig.ts_ls.setup {
     init_options = {

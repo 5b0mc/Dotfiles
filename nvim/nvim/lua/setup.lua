@@ -56,3 +56,4 @@ require 'fzf-lua'.setup {
 }
 
 require('oil').setup()
+
