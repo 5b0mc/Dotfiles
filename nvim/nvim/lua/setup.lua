@@ -1,6 +1,4 @@
--- vim.cmd("colorscheme tokyonight")
 vim.cmd("colorscheme nord")
-
 
 local cmp = require('cmp')
 cmp.setup({
@@ -67,46 +65,3 @@ vim.api.nvim_create_autocmd("FileType", {
     vim.bo.commentstring = "// %s"
   end,
 })
-
-require("noice").setup({
-messages = {
-    enabled = false, -- Disabilita l'interfaccia dei messaggi di Noice
-  },
-  lsp = {
-    override = {
-      ["vim.lsp.util.convert_input_to_markdown_lines"] = true,
-      ["vim.lsp.util.stylize_markdown"] = true,
-      ["cmp.entry.get_documentation"] = true,
-    },
-    hover = {
-      enabled = true,
-      silent = true,
-    },
-    signature = {
-      enabled = true,
-    },
-  },
-  presets = {
-    bottom_search = true,
-    command_palette = true,
-    long_message_to_split = true,
-    inc_rename = true,
-    lsp_doc_border = true,
-  },
-  views = {
-    hover = {
-      border = {
-        style = "rounded",
-      },
-      win_options = {
-        winhighlight = { Normal = "NormalFloat", FloatBorder = "FloatBorder" },
-      },
-    },
-  },
-})
-
-
--- Highlight opzionali (ottimizzati per il tema Nord)
--- vim.api.nvim_set_hl(0, "NormalFloat", { bg = "#2E3440", fg = "#ECEFF4" })
--- vim.api.nvim_set_hl(0, "FloatBorder", { fg = "#88C0D0", bg = "#2E3440" })
-

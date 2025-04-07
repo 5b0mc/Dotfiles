@@ -32,7 +32,7 @@ output * {
     resolution 3840x2160@120.000Hz
 }
 # 27" second external displays
-#output "DP-6" transform 90
+output "DP-6" transform 90
 # 14" notebook display
 output $laptop_display {
     res 2880x1800@120.000Hz

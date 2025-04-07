@@ -16,11 +16,8 @@ return require("packer").startup(function()
     use 'tpope/vim-fugitive'
     use "ibhagwan/fzf-lua"
     use "stevearc/oil.nvim"
-    use "folke/noice.nvim"
-    use "MunifTanjim/nui.nvim"
-    use 'shaunsingh/nord.nvim'
-    use 'folke/tokyonight.nvim'
 
+    use 'shaunsingh/nord.nvim'
     use 'nvim-lualine/lualine.nvim'
 
 end)
