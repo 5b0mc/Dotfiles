@@ -7,7 +7,7 @@ export TERM=xterm-256color
 alias jn="jupyter notebook"
 alias python="python3"
 alias vim="nvim"
-alias vi="/bin/vi"
+alias vi="vim"
 # Aliases as Shortcuts for My Favorite Folders
 alias do="cd ~/Dotfiles"
 alias wn="cd ~/Code/WiNet"

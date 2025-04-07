@@ -3,6 +3,9 @@
 ### setup and variables
 ###########  
 xwayland disable
+set $mod Mod4
+set $alt Mod1
+tiling_drag disable
 # My background
 output * bg /home/m/Documents/stuff/Nighthawks_by_Edward_Hopper_1942.jpg fill
 # My app launcher
@@ -48,8 +51,6 @@ exec_always ./clamshellmode.sh $laptop_display
 ###########  
 ### system
 ###########  
-set $mod Mod4
-set $alt Mod1
 bindsym $mod+control+r reload
 bindsym $mod+control+e exec swaynag -t warning -m 'Exit?' -B 'Y' 'swaymsg exit'
 # disable mouse/trakpad es. scrolling on tabbed layout
