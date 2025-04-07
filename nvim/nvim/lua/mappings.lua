@@ -24,9 +24,3 @@ vim.keymap.set("t", ";", "<Right>", { noremap = true, silent = true, buffer = tr
 vim.keymap.set('n', 'j', 'gj', { silent = true })
 vim.keymap.set('n', 'k', 'gk', { silent = true })
 
-vim.api.nvim_create_autocmd("FileType", {
-  pattern = "vue",
-  callback = function()
-    vim.bo.commentstring = "// %s"
-  end,
-})
