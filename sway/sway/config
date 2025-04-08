@@ -22,8 +22,9 @@ set $term alacritty
 # My laptop i/o 
 set $laptop_display "eDP-1"
 set $laptop_keyboard "1:1:AT_Translated_Set_2_keyboard"
+input * xkb_options compose:ralt
 input  $laptop_keyboard {
-    xkb_options caps:ctrl_modifier,altwin:swap_alt_win
+    xkb_options caps:ctrl_modifier,altwin:swap_alt_win,compose:ralt
 }
 # ThinkPad red nipple
 input "2:10:TPPS/2_Elan_TrackPoint" {
