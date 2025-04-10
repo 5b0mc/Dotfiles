@@ -1,7 +1,7 @@
 vim.g.mapleader = " "
 vim.g.netrw_banner = 0
-vim.o.laststatus = 0
-
+vim.o.laststatus = 3
+vim.o.cmdheight=0
 vim.opt.relativenumber = false
 vim.opt.number = true
 vim.opt.relativenumber = true
