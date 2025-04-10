@@ -1,56 +1,35 @@
 [colors.primary]
-background = "#2e3440"
-foreground = "#d8dee9"
-dim_foreground = "#a5abb6"
+background = '#14161b'
+foreground = '#e0e2ea'
 
 [colors.cursor]
-text = "#2e3440"
-cursor = "#d8dee9"
-
-[colors.vi_mode_cursor]
-text = "#2e3440"
-cursor = "#d8dee9"
+text = '#14161b'
+cursor = '#e0e2ea'
 
 [colors.selection]
-text = "CellForeground"
-background = "#4c566a"
-
-[colors.search.matches]
-foreground = "CellBackground"
-background = "#88c0d0"
+text = '#14161b'
+background = '#2c2e33'
 
 [colors.normal]
-black = "#3b4252"
-red = "#bf616a"
-green = "#a3be8c"
-yellow = "#ebcb8b"
-blue = "#81a1c1"
-magenta = "#b48ead"
-cyan = "#88c0d0"
-white = "#e5e9f0"
+black   = '#2c2e33'
+red     = '#a30202'
+green   = '#b3f6c0'
+yellow  = '#6b5300'
+blue    = '#81a9c6'
+magenta = '#9d81bb'
+cyan    = '#128184'
+white   = '#4f5258'
 
 [colors.bright]
-black = "#4c566a"
-red = "#bf616a"
-green = "#a3be8c"
-yellow = "#ebcb8b"
-blue = "#81a1c1"
-magenta = "#b48ead"
-cyan = "#8fbcbb"
-white = "#eceff4"
+black   = '#2c2e33'
+red     = '#ffc0b9'
+green   = '#b3f6c0'
+yellow  = '#fce094'
+blue    = '#8cf8f7'
+magenta = '#7f639b'
+cyan    = '#007373'
+white   = '#c4c6cd'
 
-[colors.dim]
-black = "#373e4d"
-red = "#94545d"
-green = "#809575"
-yellow = "#b29e75"
-blue = "#68809a"
-magenta = "#8c738c"
-cyan = "#6d96a5"
-white = "#aeb3bb"
-
-[env]
-TERM = "xterm-256color"
 
 [terminal.shell]
 program = "/usr/bin/fish"
