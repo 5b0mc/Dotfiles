@@ -1,7 +1,5 @@
 vim.g.mapleader = " "
 vim.g.netrw_banner = 0
-vim.o.laststatus = 3
-vim.o.cmdheight=0
 vim.opt.relativenumber = false
 vim.opt.number = true
 vim.opt.relativenumber = true
@@ -28,7 +26,12 @@ vim.opt.clipboard = "unnamedplus"
 vim.opt.shortmess = vim.opt.shortmess + 'I'
 vim.opt.completeopt = menu, menuone, noselect
 
-vim.api.nvim_create_autocmd({ 'BufEnter' }, {
-    pattern = '*.{js,jsx,ts,tsx,vue}',
-    command = 'syntax sync fromstart',
-})
+vim.opt.statusline = "%!v:lua.get_statusline()"
+vim.opt.showmode = false 
+vim.opt.ruler = false 
+vim.o.laststatus = 2
+vim.opt.showcmd = false
+vim.opt.showmatch = false
+vim.opt.shortmess = vim.opt.shortmess + 'c'
+
+vim.cmd("colorscheme nord")
