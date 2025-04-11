@@ -6,11 +6,10 @@ _G.statusline = {}
 -- Nota: StatusLineGit usa lo stesso colore di StatusLineMode
 -- La posizione (row:col) ora ha lo stesso sfondo del file
 vim.cmd([[
-  hi StatusLineMode guifg=#ECEFF4 guibg=#5E81AC gui=bold
-  hi StatusLineGit guifg=#ECEFF4 guibg=#5E81AC gui=bold
+  hi StatusLineMode guifg=#D8DEE9 guibg=#5E81AC 
+  hi StatusLineGit guifg=#D8DEE9  guibg=#5E81AC 
+  hi StatusLinePosition guifg=#D8DEE9  guibg=#3B4252
   hi StatusLineFile guifg=#D8DEE9 guibg=#3B4252
-  hi StatusLineSep2 guifg=#81A1C1 guibg=#3B4252
-  hi StatusLinePosition guifg=#ECEFF4 guibg=#3B4252 gui=bold
 ]])
 -- Cache globale per il branch Git
 _G.statusline.git_cache = { branch = "", last_checked = 0 }
@@ -160,9 +159,6 @@ function _G.get_statusline()
   
   -- Modalità a sinistra
   table.insert(parts, "%#StatusLineMode#" .. _G.statusline.mode())
-  
-  -- File info con troncamento affidabile
-  table.insert(parts, "%#StatusLineSep2# ")
   
   -- Aggiungiamo il nome file con path troncato dinamicamente
   table.insert(parts, "%#StatusLineFile#" .. _G.statusline.format_filename() .. " %m%r%h%w")
