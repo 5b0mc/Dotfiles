@@ -48,7 +48,6 @@ require 'fzf-lua'.setup {
     },
 }
 
-require('oil').setup()
 
 vim.api.nvim_create_autocmd("FileType", {
   pattern = "vue",

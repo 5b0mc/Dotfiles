@@ -161,7 +161,7 @@ function _G.get_statusline()
   table.insert(parts, "%#StatusLineMode#" .. _G.statusline.mode())
   
   -- Aggiungiamo il nome file con path troncato dinamicamente
-  table.insert(parts, "%#StatusLineFile#" .. _G.statusline.format_filename() .. " %m%r%h%w")
+  table.insert(parts, "%#StatusLineFile# " .. _G.statusline.format_filename() .. " %m%r%h%w")
   
   -- Allineamento a destra diretto
   table.insert(parts, "%#StatusLineFile#%=")

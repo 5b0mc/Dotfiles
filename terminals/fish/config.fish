@@ -13,6 +13,7 @@ alias do="cd ~/Dotfiles"
 alias wn="cd ~/Code/WiNet"
 alias ms="cd ~/Writing/MirkoSacchetti"
 alias co="cd ~/Code"
+alias pr="cd ~/Projects"
 # Sunday as first day of the week is an abomination
 alias cal="cal -3m"
 
