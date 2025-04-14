@@ -1,5 +1,4 @@
 return require("packer").startup(function()
-
     use "ibhagwan/fzf-lua"
     use "stevearc/oil.nvim"
     use 'hrsh7th/cmp-buffer'

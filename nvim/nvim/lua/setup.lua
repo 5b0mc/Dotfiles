@@ -22,6 +22,8 @@ cmp.setup({
   })
 })
 
+require 'oil'.setup {}
+
 require 'fzf-lua'.setup {
     buffers = {
         file_icons        = false,
@@ -47,7 +49,6 @@ require 'fzf-lua'.setup {
         },
     },
 }
-
 
 vim.api.nvim_create_autocmd("FileType", {
   pattern = "vue",
