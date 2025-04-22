@@ -17,3 +17,4 @@ border-color=#d8dee9
 [urgency=critical]
 text-color=#bf616a
 border-color=#bf616a
+default-timeout=0
