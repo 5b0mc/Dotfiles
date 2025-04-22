@@ -1,4 +1,5 @@
 local cmp = require('cmp')
+
 cmp.setup({
   window = {
     documentation = cmp.config.window.bordered(),
@@ -23,6 +24,7 @@ cmp.setup({
 })
 
 require 'oil'.setup {}
+require'lualine'.setup()
 
 require 'fzf-lua'.setup {
     buffers = {

@@ -1,4 +1,3 @@
-vim.g.mapleader = " "
 vim.g.netrw_banner = 0
 vim.opt.relativenumber = false
 vim.opt.number = true
@@ -26,7 +25,6 @@ vim.opt.clipboard = "unnamedplus"
 vim.opt.shortmess = vim.opt.shortmess + 'I'
 vim.opt.completeopt = menu, menuone, noselect
 
-vim.opt.statusline = "%!v:lua.get_statusline()"
 vim.opt.showmode = false 
 vim.opt.ruler = false 
 vim.o.laststatus = 2
