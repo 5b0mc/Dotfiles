@@ -24,7 +24,11 @@ cmp.setup({
 })
 
 require 'oil'.setup {}
-require'lualine'.setup()
+require'lualine'.setup{
+    options ={
+        icons_enabled=false,
+    }
+}
 
 require 'fzf-lua'.setup {
     buffers = {

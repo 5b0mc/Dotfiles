@@ -216,8 +216,8 @@ exec mako
 # Adjust screen color temperature based on location/time
 exec gammastep -l 44.2:12.3 &
 # My apps
-exec $term
 exec chromium
+exec $term
 exec betterbird
 exec telegram-desktop
 

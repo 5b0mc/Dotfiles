@@ -3,6 +3,7 @@ vim.g.mapleader = ' '
 vim.g.maplocalleader = ' '
 
 vim.keymap.set('i', 'lk', '<Esc>',opts)
+vim.keymap.set('v', 'lk', '<Esc>',opts)
 
 vim.keymap.set('n', '<Leader>a', 'ggVG',opts)
 vim.keymap.set('n', '<Leader>e', ':Oil<CR>', opts)
