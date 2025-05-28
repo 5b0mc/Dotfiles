@@ -36,7 +36,6 @@ output * {
     resolution 3840x2160@120.000Hz
 }
 # 27" second external displays
-output "DP-6" transform 90
 # 14" notebook display
 output $laptop_display {
     res 2880x1800@120.000Hz
@@ -70,8 +69,8 @@ bindsym XF86AudioMicMute exec pactl set-source-mute @DEFAULT_SOURCE@ toggle
 bindsym XF86AudioPlay exec playerctl play-pause
 bindsym XF86AudioNext exec playerctl next
 bindsym XF86AudioPrev exec playerctl previous
-bindsym XF86MonBrightnessDown exec brightnessctl set 20%-
-bindsym XF86MonBrightnessUp exec brightnessctl set 20%+
+bindsym XF86MonBrightnessDown exec brightnessctl set 2%-
+bindsym XF86MonBrightnessUp exec brightnessctl set 2%+
 bindsym XF86Display exec swaymsg output $laptop_display toggle
 # save screenshots in the clipboard (secondary selection)
 bindsym Print exec grim -g "$(slurp)" - | wl-copy
@@ -148,7 +147,6 @@ assign [app_id="Bruno"] $ws_stuff
 assign [app_id="com.transmissionbt*"] $ws_stuff
 # floating windows for daemonized programs 
 for_window [app_id="org.pulseaudio.pavucontrol"] floating enable, border none
-for_window [title="^Picture"] floating enable, border none
 # Scratchpad
 bindsym $mod+control+minus move scratchpad
 bindsym $mod+minus scratchpad show

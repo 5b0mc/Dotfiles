@@ -3,6 +3,7 @@ set fish_greeting
 set -g theme_nerd_fonts yes
 set -g TERM xterm-256color
 export TERM=xterm-256color
+export EDITOR=nvim
 # Aliases
 alias jn="jupyter notebook"
 alias python="python3"

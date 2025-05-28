@@ -1,0 +1,13 @@
+map j updir
+map k down
+map l up
+map ; open
+map <enter> open
+map f $$EDITOR $(fzf)
+
+cmd pickrandom ${{
+    file=$(ls -1 | shuf -n 1)
+    lf -remote "select $file"
+}}
+
+

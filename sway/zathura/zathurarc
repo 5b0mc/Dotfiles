@@ -4,12 +4,24 @@
 set window-title-basename true
 set statusbar-home-tilde  true
 set recolor               true
-set selection-clipboard   clipboard
+# set selection-clipboard   clipboard
+# set guioptions none
+set selection-notification false
+
+unmap h
+unmap j
+unmap k
+unmap l
+map j scroll left
+map k scroll down
+map l scroll up
+map ; scroll right
 
 # LAYOUT SETTINGS
 # ---------------
 set statusbar-h-padding 0
 set statusbar-v-padding 0
+set page-padding 0
 set show-scrollbars     false
 
 # NORD THEME
@@ -39,9 +51,6 @@ set inputbar-fg                 "#E5E9F0"
 set statusbar-bg                "#2E3440"
 set statusbar-fg                "#E5E9F0"
 
-set highlight-active-color      "#BF616A"
-set highlight-color             "rgba( 191, 97, 136 , 0.4)"
-
 set default-bg                  "#2E3440"
 set default-fg                  "#D8DEE9"
 set render-loading              "true"
@@ -50,3 +59,9 @@ set render-loading-fg           "#434C5E"
 
 set recolor-lightcolor          "#2E3440"
 set recolor-darkcolor           "#ECEFF4"
+
+set highlight-color            "rgba(126, 136, 159, 0.2)"
+set highlight-active-color     "rgba(126, 136, 159, 0.2)"
+
+
+
