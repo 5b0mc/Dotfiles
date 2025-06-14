@@ -2,7 +2,7 @@
 ###########  
 ### setup and variables
 ###########  
-xwayland disable
+# xwayland disable
 set $mod Mod4
 set $alt Mod1
 tiling_drag disable
@@ -36,6 +36,7 @@ output * {
     resolution 3840x2160@120.000Hz
 }
 # 27" second external displays
+output "LG Electronics LG HDR 4K 0x00006D62" transform 90
 # 14" notebook display
 output $laptop_display {
     res 2880x1800@120.000Hz
@@ -138,8 +139,8 @@ bindsym $mod+h split horizontal
 ###########  
 # assign window to a workspace with window criteria
 # use swaymsg -t get_tree 
-assign [app_id="betterbird"] $ws_main
 assign [app_id="spotify"] $ws_main
+assign [app_id="betterbird"] $ws_main
 assign [app_id="org.telegram.desktop"] $ws_main
 assign [app_id="libreoffice"] $ws_office
 assign [app_id="Electron"] $ws_stuff

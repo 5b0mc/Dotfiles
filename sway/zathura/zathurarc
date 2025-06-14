@@ -7,6 +7,7 @@ set recolor               true
 # set selection-clipboard   clipboard
 # set guioptions none
 set selection-notification false
+set statusbar-at-top true
 
 unmap h
 unmap j

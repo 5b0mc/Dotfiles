@@ -85,11 +85,11 @@
     },
     "network": {
         "format-wifi": " ",
-        "format-ethernet": "{ipaddr}/{cidr}",
+        "format-ethernet": "🖧",
         "tooltip-format": "{essid} ({signalStrength}%) via {gwaddr}",
         "format-linked": "{ifname} (No IP)",
         "format-disconnected": "Disconnected",
-        "format-alt": "{ifname}: {ipaddr}/{cidr}"
+        "format-alt": "{ifname} {ipaddr}/{cidr}"
     },
     "wireplumber": {
         "format": "{volume}% {icon}",
