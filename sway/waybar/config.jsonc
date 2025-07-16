@@ -1,11 +1,13 @@
 // -*- m ode: jsonc -*-
 {
+    "reload_style_on_change": true,
     "height": 28,
     "spacing": 2,
     "modules-left": [
         "sway/workspaces",
         "sway/mode",
-        "sway/scratchpad"
+        "sway/scratchpad",
+        "hyprland/workspaces"
     ],
     "modules-right": [
         "wireplumber",
@@ -31,12 +33,22 @@
     "sway/mode": {
         "format": "{}"
     },
-    "custom/pomodoro": {
-        "format": "{}",
-        "return-type": "json",
-        "exec": "/home/m/.cargo/bin/waybar-module-pomodoro",
-        "on-click": "/home/m/.cargo/bin/waybar-module-pomodoro toggle",
-        "on-click-right": "/home/m/.cargo/bin/waybar-module-pomodoro reset"
+    "hyprland/workspaces": {
+    "on-click": "activate",
+    "format": "{icon}",
+    "format-icons": {
+      "default": "",
+      "1": "1",
+      "2": "2",
+      "3": "3",
+      "4": "4",
+      "5": "5",
+      "6": "6",
+      "7": "7",
+      "8": "8",
+      "9": "9",
+      "active": "󱓻"
+    }
     },
     "sway/scratchpad": {
         "format": "{icon} {count}",
