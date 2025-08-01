@@ -12,10 +12,8 @@ alias vi="vim"
 # Aliases as Shortcuts for My Favorite Folders
 alias do="cd ~/Dotfiles"
 alias wn="cd ~/Code/WiNet"
-alias ms="cd ~/Writing/MirkoSacchetti"
+alias ms="cd ~/Writings/MS/"
 alias co="cd ~/Code"
-alias pr="cd ~/Projects"
-alias jk="vim ~/Projects/lkj/notes/interactions"
 # Sunday as first day of the week is an abomination
 alias cal="cal -3m"
 

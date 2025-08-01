@@ -1,35 +1,54 @@
 
-###########  
-### setup and variables
-###########  
+
+####         ####
+####         ####
+#### General ####
+####         ####
+
+#### Default Sway startup scripts
+#### Synchronizes environment variables with systemd and D-Bus 
+#### Ensure proper Wayland session integration for user applications and services
+include /etc/sway/config.d/*
+
+#### Xwayland is an X server that runs as a Wayland client, translating X11 calls to Wayland
+#### so that applications built for X11 can still function even though the system is running on Wayland 
+#### Most applications don't need it es. Chromium or Firefox, but it is required by some applications es. Steam or VLC
+#### There is no reason to disable it unless for debugging or 'purist' purposes, is a lightweight process
+#### But when is enebled invalidate Wayland's security model
+#### Xwayland is enabled by default
 # xwayland disable
+
 set $mod Mod4
 set $alt Mod1
-tiling_drag disable
-# My background
-output * bg /home/m/Documents/stuff/Nighthawks_by_Edward_Hopper_1942.jpg fill
-# My app launcher
+tiling_drag disabled
+#### My app launcher
 set $menu tofi-drun | xargs swaymsg exec --
-# My terminal emulator
+#### My terminal emulator
 set $term alacritty
 
 
-###########  
-###  i/o 
-###########  
+####                  ####
+####                  ####
+#### Inputs & Outputs ####
+####                  ####
+
+set $laptop_display "eDP-1"
+set $laptop_keyboard "1:1:AT_Translated_Set_2_keyboard"
+
 # check inputs names with: swaymsg -t get_intputs
 # check outputs names with: swaymsg -t get_outputs
 # My laptop i/o 
-set $laptop_display "eDP-1"
-set $laptop_keyboard "1:1:AT_Translated_Set_2_keyboard"
 input * xkb_options compose:ralt
 input  $laptop_keyboard {
-    xkb_options caps:ctrl_modifier,altwin:swap_alt_win,compose:ralt
+    xkb_options caps:ctrl_modifier,altwin:swap_alt_win
 }
 # ThinkPad red nipple
 input "2:10:TPPS/2_Elan_TrackPoint" {
     pointer_accel -1
 }
+
+#### My background image
+output * bg /home/m/Documents/stuff/Nighthawks_by_Edward_Hopper_1942.jpg fill
 # 27" external displays
 output * {
     scale 1.5 
@@ -52,8 +71,6 @@ exec_always ./clamshellmode.sh $laptop_display
 ###########  
 ### system
 ###########  
-bindsym $mod+control+r reload
-bindsym $mod+control+e exec swaynag -t warning -m 'Exit?' -B 'Y' 'swaymsg exit'
 # disable mouse/trakpad es. scrolling on tabbed layout
 bindsym button4 nop
 bindsym button5 nop
@@ -113,21 +130,20 @@ bindsym $mod+Tab workspace back_and_forth
 ### containers
 ###########  
 # move focused container to workspace
-bindsym $mod+control+1 move container to workspace number 1
-bindsym $mod+control+2 move container to workspace number 2
-bindsym $mod+control+3 move container to workspace number 3
-bindsym $mod+control+4 move container to workspace number 4
-bindsym $mod+control+5 move container to workspace number 5
-bindsym $mod+control+6 move container to workspace number 6
-bindsym $mod+control+7 move container to workspace number 7
-bindsym $mod+control+8 move container to workspace number 8
-bindsym $mod+control+9 move container to workspace number 9
-bindsym $mod+control+m move container to workspace $ws_main
+bindsym $mod+shift+1 move container to workspace number 1
+bindsym $mod+shift+2 move container to workspace number 2
+bindsym $mod+shift+3 move container to workspace number 3
+bindsym $mod+shift+4 move container to workspace number 4
+bindsym $mod+shift+5 move container to workspace number 5
+bindsym $mod+shift+6 move container to workspace number 6
+bindsym $mod+shift+7 move container to workspace number 7
+bindsym $mod+shift+8 move container to workspace number 8
+bindsym $mod+shift+9 move container to workspace number 9
+bindsym $mod+shift+m move container to workspace $ws_main
 # change layout mode for the focused container
-bindsym $mod+c split horizontal
-bindsym $mod+e layout toggle split
-bindsym $mod+s layout toggle stacking splitv
-bindsym $mod+w layout toggle tabbed splitv
+bindsym $mod+a split horizontal
+bindsym $mod+w layout toggle tabbed stacking
+bindsym $mod+s layout toggle split
 
 ###########  
 ### windows
@@ -142,13 +158,13 @@ assign [app_id="Electron"] $ws_stuff
 assign [app_id="Bruno"] $ws_stuff
 assign [app_id="com.transmissionbt*"] $ws_stuff
 # floating windows for daemonized programs 
-for_window [app_id="org.pulseaudio.pavucontrol"] floating enable, border none
+for_window [app_id="org.pulseaudio.pavucontrol"] floating enable
 # Scratchpad
-bindsym $mod+control+minus move scratchpad
+bindsym $mod+shift+minus move scratchpad
 bindsym $mod+minus scratchpad show
 focus_follows_mouse yes
 # resize window  mode
-bindsym $mod+control+g exec "notify-send -u critical 'RESIZE MODE' 'Use j, k, l, ; to resize. ESC to exit.' -p > /tmp/resize_notification_id ; swaymsg mode resize"
+bindsym $mod+shift+g exec "notify-send -u critical 'RESIZE MODE' 'Use j, k, l, ; to resize. ESC to exit.' -p > /tmp/resize_notification_id ; swaymsg mode resize"
 mode "resize" {
         bindsym j resize shrink width 10 px or 10 ppt
         bindsym k resize grow height 10 px or 10 ppt
@@ -163,19 +179,24 @@ bindsym $mod+k focus down
 bindsym $mod+l focus up
 bindsym $mod+semicolon focus right
 # focus parent/child container
-bindsym $mod+a focus parent
-bindsym $mod+apostrophe focus child
+bindsym $mod+p focus parent
+bindsym $mod+c focus child
 # move focused window
 bindsym $mod+control+j move left
 bindsym $mod+control+k move down
 bindsym $mod+control+l move up
 bindsym $mod+control+semicolon move right
+
 # kill focused window
-bindsym $mod+q kill
+bindsym $mod+shift+q kill
 # fullscreen mode for the focused container
 bindsym $mod+f fullscreen toggle
-bindsym $mod+control+space floating toggle
+bindsym $mod+shift+space floating toggle
+bindsym $mod+shift+f focus mode_toggle
+
 bindsym button7 nop  
+bindsym $mod+shift+r reload
+bindsym $mod+shift+e exec swaynag -t warning -m 'Exit?' -B 'Y' 'swaymsg exit'
 
 
 ###########  
@@ -184,14 +205,15 @@ bindsym button7 nop
 font pango:Ubuntu Nerd Font, bold 10
 gaps inner 2
 gaps outer 2
-default_border none
-# color class           border  backgr  text    child_border
-client.focused          #c6c8d1 #c6c8d1 #161821 #84a0c6
-client.focused_inactive #161821 #161821 #999999 #454948
-client.unfocused        #161821 #161821 #999999 #454948
-client.urgent           #b4be82 #b4be82 #161821 #268BD2
-client.placeholder      #000000 #0c0c0c #999999 #000000
-client.background       #161821
+default_border pixel 2
+
+# color class           border  backgr  text    indicator
+client.focused          #a5abb6 #a5abb6 #161821 #64727D
+client.focused_inactive #161821 #161821 #a5abb6 #64727D
+client.unfocused        #161821 #161821 #a5abb6 #64727D
+client.urgent           #64727D #64727D #161821 #64727D
+client.placeholder      #161821 #161821 #a5abb6 #64727D
+client.background               #161821
 
 
 ###########  
@@ -208,7 +230,7 @@ bar {
 # My notification daemon
 exec mako
 # Adjust screen color temperature based on location/time
-exec gammastep-indicator
+exec gammastep
 # My apps
 exec chromium
 exec $term
@@ -216,7 +238,3 @@ exec betterbird
 exec telegram-desktop
 
 
-###########  
-### default sway system integrations
-###########  
-include /etc/sway/config.d/*
