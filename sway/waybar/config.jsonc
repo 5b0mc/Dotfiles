@@ -9,6 +9,13 @@
         "sway/scratchpad",
         "hyprland/workspaces"
     ],
+    "modules-center": [
+        "custom/launcher",
+        "custom/split-toggle",
+        "custom/layout-toggle",
+        "custom/new-layout-split",
+        "custom/kill-window"
+    ],
     "modules-right": [
         "wireplumber",
         "bluetooth",
@@ -16,7 +23,6 @@
         "power-profiles-daemon",
         "battery",
         "custom/power",
-        // "custom/pomodoro",
         "tray",
         "clock"
     ],
@@ -133,5 +139,25 @@
             "suspend": "systemctl suspend",
             "hibernate": "systemctl hibernate"
         }
+    },
+    "custom/launcher":{
+        "format" : "▢",
+        "on-click" : "fuzzel "
+    },
+    "custom/split-toggle":{
+        "format" : "🜂",
+        "on-click" : "swaymsg layout toggle split"
+    },
+    "custom/layout-toggle":{
+        "format" : "🜃",
+        "on-click" : "swaymsg layout toggle tabbed stacking"
+    },
+    "custom/kill-window":{
+        "format" : "◎",
+        "on-click" : "swaymsg kill"
+    },
+    "custom/new-layout-split":{
+        "format" : "🜉",
+        "on-click" : "swaymsg split horizontal"
     }
 }

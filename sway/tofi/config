@@ -10,4 +10,5 @@ font-size = 16
 font = /home/m/.local/share/fonts/font/UbuntuNerdFont.ttf
 selection-color = #e27878
 width = 485
+mouse-enable = true
 height = 300

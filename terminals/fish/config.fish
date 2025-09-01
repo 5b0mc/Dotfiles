@@ -38,6 +38,58 @@ switch $os
         set -x PATH $PATH /opt/homebrew/bin
 end
 
+function sanitize_title
+    if test (count $argv) -eq 0
+        echo "No title..."
+        return 1
+    end
+    set title $argv[1]
+    set clean (string replace -a ' ' '_' $title)
+    set clean (string replace -ra '[\/\\\:\*\?\"\<\>\|\)\(-]' '_' $clean)
+    set clean (string replace -ra '_+' '_' $clean)
+    set clean (string replace -ra '^_+|_+$' '' $clean)
+    set clean (string replace -r '__+' '_' $clean)
+    echo $clean
+end
+
+function yt_audio
+    set rawtitle (yt-dlp --get-title $argv[1] 2>/dev/null)
+    if test $status -ne 0
+        echo "Error: Could not get video title"
+        return 1
+    end
+    set title (sanitize_title $rawtitle)
+    if test -z "$title"
+        echo "Error: Could not sanitize title"
+        return 1
+    end
+    yt-dlp -f "bestaudio[ext=webm]/bestaudio[ext=m4a]/bestaudio" \
+        --extract-audio \
+        --audio-format opus \
+        --audio-quality 0 \
+        -o "~/Videos/yt_audio/$title.%(ext)s" \
+        $argv[1]
+end
+
+
+function yt_video
+    set rawtitle (yt-dlp --get-title $argv[1] 2>/dev/null)
+    if test $status -ne 0
+        echo "Error: Could not get video title"
+        return 1
+    end
+    set title (sanitize_title $rawtitle)
+    if test -z "$title"
+        echo "Error: Could not sanitize title"
+        return 1
+    end
+    yt-dlp -f "bestvideo+bestaudio/best" \
+        --merge-output-format mp4 \
+        -o "~/Videos/yt_video/$title.%(ext)s" \
+        $argv[1]
+end
+
+
 # Find a random file in the current folder
 function pickrandom
     find . -maxdepth 1 -mindepth 1 -type d | shuf -n 14
@@ -61,51 +113,6 @@ function coin
         echo "No."
     else
         echo "Yes."
-    end
-end
-
-# Make a Poderate Decision
-function m8b
-    set net_responses \
-        "Yes, prioritize this right away to push your venture forward" \
-        "No, you should focus on a more profitable or strategic activity" \
-        "Absolutely, it aligns perfectly with your long-term vision" \
-        "No, it doesn't seem to be the best use of your limited resources" \
-        "Yes, it's a wise investment that can elevate you" \
-        "Better not, you risk stretching yourself too thin" \
-        "Yes, it's a strategic move that could boost your brand presence" \
-        "Hold off: reconsider how to make the most of your resources"
-    set reflection_questions \
-        "How does this choice affect your core business goals?" \
-        "Are you investing your time in the area with the highest leverage?" \
-        "Could a simpler or more automated approach save you effort?" \
-        "Is this decision aligned with your envisioned growth trajectory?" \
-        "What measurable outcome do you hope to achieve?" \
-        "Are you focusing on what truly drives revenue or just staying busy?" \
-        "Could outsourcing or a short-term partnership provide better results?" \
-        "What’s the opportunity cost of waiting versus acting now?"
-    set combined_prompts \
-        "Yes, but check if you have enough funds and time to see it through" \
-        "No, yet consider a low-effort alternative to test this idea" \
-        "Go for it, but set clear milestones to monitor progress" \
-        "Pause: are there more pressing tasks that need attention first?" \
-        "Proceed, but track results carefully to pivot if needed" \
-        "Wait: gather more market data or user feedback before committing" \
-        "Yes, but plan how you'll balance this with your daily operations" \
-        "No, but use the insights gained to refine your overall strategy"
-    set output_type (math (random) % 3)
-    switch $output_type
-        case 0
-            set index (math (random) % (count $net_responses) + 1)
-            echo $net_responses[$index]
-
-        case 1
-            set index (math (random) % (count $reflection_questions) + 1)
-            echo $reflection_questions[$index]
-
-        case 2
-            set index (math (random) % (count $combined_prompts) + 1)
-            echo $combined_prompts[$index]
     end
 end
 
