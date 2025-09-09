@@ -98,9 +98,10 @@ if mountpoint -q "$MOUNT_POINT"; then
     --no-encryption \
     --full-if-older-than 2M \
     --force \
+    --include "$HOME/Books/" \
     --include "$HOME/Code/" \
     --include "$HOME/Documents/" \
-    --include "$HOME/Music/" \
+    --include "$HOME/Audio/" \
     --include "$HOME/Books/" \
     --include "$HOME/Pictures/" \
     --include "$HOME/Projects/" \
@@ -119,7 +120,7 @@ else
 fi
 
 log "Checking if we should close the mapper..."
-if [ "$MAPPER_NAME" = "RED" ] && [ -e "$MAPPER" ]; then
+if [ "$MAPPER_NAME" = "$DISK_NAME" ] && [ -e "$MAPPER" ]; then
   log "Closing encrypted device $MAPPER_NAME..."
   sudo cryptsetup close "$MAPPER_NAME" || log "Could not close mapper. It may still be in use."
 else

@@ -67,7 +67,7 @@ function yt_audio
         --extract-audio \
         --audio-format opus \
         --audio-quality 0 \
-        -o "~/Videos/yt_audio/$title.%(ext)s" \
+        -o "~/Audio/yt_audio/$title.%(ext)s" \
         $argv[1]
 end
 

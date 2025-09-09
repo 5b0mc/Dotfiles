@@ -235,6 +235,6 @@ exec gammastep
 exec chromium
 exec $term
 exec betterbird
-exec telegram-desktop
+exec Telegram
 
 
