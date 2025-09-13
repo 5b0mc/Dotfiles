@@ -10,6 +10,7 @@ alias python="python3"
 alias vim="nvim"
 alias vi="vim"
 # Aliases as Shortcuts for My Favorite Folders
+alias dw="cd ~/Downloads"
 alias do="cd ~/Dotfiles"
 alias wn="cd ~/Code/WiNet"
 alias ms="cd ~/Writings/MS/"

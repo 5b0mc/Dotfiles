@@ -16,7 +16,7 @@ include /etc/sway/config.d/*
 #### There is no reason to disable it unless for debugging or 'purist' purposes, is a lightweight process
 #### But when is enebled invalidate Wayland's security model
 #### Xwayland is enabled by default
-# xwayland disable
+xwayland disable
 
 set $mod Mod4
 set $alt Mod1
@@ -54,7 +54,7 @@ output * {
     scale 1.5 
     resolution 3840x2160@120.000Hz
 }
-# 27" second external displays
+# 27" second vertical external displays
 output "LG Electronics LG HDR 4K 0x00006D62" transform 90
 # 14" notebook display
 output $laptop_display {
@@ -63,9 +63,8 @@ output $laptop_display {
 }
 # Clamshell mode for laptop
 # if the lid is closed whith an external monitor then disable it
-bindswitch --reload --locked lid:on output $laptop_display disable
-bindswitch --reload --locked lid:off output $laptop_display enable
-exec_always ./clamshellmode.sh $laptop_display
+bindswitch --locked lid:on output $laptop_display disable
+bindswitch --locked lid:off output $laptop_display enable
 
 
 ###########  
@@ -150,7 +149,7 @@ bindsym $mod+s layout toggle split
 ###########  
 # assign window to a workspace with window criteria
 # use swaymsg -t get_tree 
-assign [class="Spotify"] $ws_main
+assign [app_id="spotify"] $ws_main
 assign [app_id="betterbird"] $ws_main
 assign [app_id="org.telegram.desktop"] $ws_main
 assign [app_id="libreoffice"] $ws_office
@@ -159,6 +158,8 @@ assign [app_id="Bruno"] $ws_stuff
 assign [app_id="com.transmissionbt*"] $ws_stuff
 # floating windows for daemonized programs 
 for_window [app_id="org.pulseaudio.pavucontrol"] floating enable
+for_window [app_id="blueberry.py"] floating enable
+
 # Scratchpad
 bindsym $mod+shift+minus move scratchpad
 bindsym $mod+minus scratchpad show
@@ -232,7 +233,7 @@ exec mako
 # Adjust screen color temperature based on location/time
 exec gammastep
 # My apps
-exec chromium
+exec firefox-developer-edition
 exec $term
 exec betterbird
 exec Telegram
