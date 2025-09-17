@@ -63,8 +63,8 @@ output $laptop_display {
 }
 # Clamshell mode for laptop
 # if the lid is closed whith an external monitor then disable it
-bindswitch --locked lid:on output $laptop_display disable
-bindswitch --locked lid:off output $laptop_display enable
+bindswitch --reload --locked lid:on output $laptop_display disable
+bindswitch --reload --locked lid:off output $laptop_display enable
 
 
 ###########  
