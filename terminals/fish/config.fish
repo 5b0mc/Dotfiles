@@ -10,7 +10,7 @@ alias python="python3"
 alias vim="nvim"
 alias vi="vim"
 # Aliases as Shortcuts for My Favorite Folders
-alias dw="cd ~/Downloads"
+alias dl="cd ~/Downloads"
 alias do="cd ~/Dotfiles"
 alias wn="cd ~/Code/WiNet"
 alias ms="cd ~/Writings/MS/"
@@ -30,7 +30,7 @@ set -x CARGO_HOME $HOME/.cargo
 set -x PATH $PATH $CARGO_HOME/bin
 set -x RUSTUP_HOME $HOME/.rustup
 set -x PATH $PATH $RUSTUP_HOME/bin
-
+# Local apps and Web apps
 set -x PATH $PATH $HOME/.local/bin
 # Set Environment for Linux or MacOS
 set os (uname)
