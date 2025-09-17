@@ -98,8 +98,12 @@ end
 
 # Generate random srings for passwords
 function newpass
+    set -l length 8
+    if not test (count $argv) -eq 0
+        set length $argv[1]
+    end
     for i in (seq 3)
-        openssl rand -base64 10 | tr -d '/+=\n' | head -c 8;echo
+        openssl rand -base64 40 | tr -d '/+=\n' | head -c "$length" ; echo
     end
 end
 
