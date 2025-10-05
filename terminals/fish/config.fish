@@ -93,7 +93,7 @@ end
 
 # Find a random file in the current folder
 function pickrandom
-    find . -maxdepth 1 -mindepth 1 -type d | shuf -n 14
+    find . -maxdepth 1 | shuf -n 14
 end
 
 # Generate random srings for passwords

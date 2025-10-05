@@ -187,17 +187,16 @@ bindsym $mod+control+j move left
 bindsym $mod+control+k move down
 bindsym $mod+control+l move up
 bindsym $mod+control+semicolon move right
-
 # kill focused window
 bindsym $mod+control+q kill
 # fullscreen mode for the focused container
 bindsym $mod+f fullscreen toggle
+# floating mode for the focused container
+bindsym $mod+space focus mode_toggle
 bindsym $mod+control+space floating toggle
-bindsym $mod+control+f focus mode_toggle
-
+# reload sway conf
 bindsym button7 nop  
 bindsym $mod+control+r reload
-bindsym $mod+control+e exec swaynag -t warning -m 'Exit?' -B 'Y' 'swaymsg exit'
 
 
 ###########  
