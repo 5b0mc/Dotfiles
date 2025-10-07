@@ -53,7 +53,7 @@ function sanitize_title
     echo $clean
 end
 
-function yt_audio
+function dl_audio
     set rawtitle (yt-dlp --get-title $argv[1] 2>/dev/null)
     if test $status -ne 0
         echo "Error: Could not get video title"
@@ -68,12 +68,12 @@ function yt_audio
         --extract-audio \
         --audio-format opus \
         --audio-quality 0 \
-        -o "~/Audio/yt_audio/$title.%(ext)s" \
+        -o "~/Audio/dl_audio/$title.%(ext)s" \
         $argv[1]
 end
 
 
-function yt_video
+function dl_video
     set rawtitle (yt-dlp --get-title $argv[1] 2>/dev/null)
     if test $status -ne 0
         echo "Error: Could not get video title"
@@ -86,7 +86,7 @@ function yt_video
     end
     yt-dlp -f "bestvideo+bestaudio/best" \
         --merge-output-format mp4 \
-        -o "~/Videos/yt_video/$title.%(ext)s" \
+        -o "~/Videos/dl_video/$title.%(ext)s" \
         $argv[1]
 end
 

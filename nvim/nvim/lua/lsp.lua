@@ -1,6 +1,4 @@
 local home = os.getenv("HOME")
-local util = require "lspconfig/util"
-local lspconfig = require "lspconfig"
 local opts = { noremap = true, silent = true }
 local capabilities = require('cmp_nvim_lsp').default_capabilities(vim.lsp.protocol.make_client_capabilities())
 
@@ -17,7 +15,7 @@ local on_attach = function(client, bufnr)
     vim.keymap.set('n', '<space>r', vim.lsp.buf.rename, bufopts)
     vim.keymap.set('n', '<space>c', vim.lsp.buf.code_action, bufopts)
     vim.keymap.set('n', '<space>w', function()
-        if #vim.lsp.get_active_clients({ bufnr = 0 }) > 0 then
+        if #vim.lsp.get_clients({ bufnr = 0 }) > 0 then
             -- Usa pcall per eseguire la formattazione e ignorare eventuali errori
             pcall(vim.lsp.buf.format, { async = false })
         end
@@ -29,58 +27,69 @@ end
 
 
 -- npm i -g vscode-langservers-extracted
-lspconfig.cssls.setup {
+vim.lsp.config('cssls', {
     on_attach = on_attach,
     capabilities = capabilities,
-}
-lspconfig.html.setup {
+})
+vim.lsp.config('html', {
     on_attach = on_attach,
     capabilities = capabilities,
-}
-
-lspconfig.ocamllsp.setup {
-    cmd = { home .. "/.opam/default/bin/ocamllsp" },
-    on_attach = on_attach,
-    capabilities = capabilities,
-}
+})
+vim.lsp.enable('cssls')
+vim.lsp.enable('html')
 
 -- npm install -g @vue/language-server
 -- npm install -g @vue/typescript-plugin
 -- npm install -g typescript-language-server typescript
 local vue_language_server_path = home .. "/.npm-packages/lib/node_modules/@vue/typescript-plugin"
-lspconfig.volar.setup {
-    on_attach = on_attach,
-    capabilities = capabilities,
-    hybridMode = false,
-
+local tsserver_filetypes = { 'typescript', 'javascript', 'javascriptreact', 'typescriptreact', 'vue' }
+local vue_plugin = {
+  name = '@vue/typescript-plugin',
+  location = vue_language_server_path,
+  languages = { 'vue' },
+  configNamespace = 'typescript',
 }
-lspconfig.ts_ls.setup {
-    init_options = {
-        plugins = {
-            {
-                name = '@vue/typescript-plugin',
-                location = vue_language_server_path,
-                languages = { "javascript", "typescript", "vue" },
-            },
-        },
+local ts_ls_config = {
+  init_options = {
+    plugins = {
+      vue_plugin,
     },
-    filetypes = { 'typescript', 'javascript', 'javascriptreact', 'typescriptreact', 'vue' },
-    root_dir = util.root_pattern("package.json", "tsconfig.json", "jsconfig.json"),
-    single_file_support = false,
-    on_attach = on_attach,
-    capabilities = capabilities,
+  },
+  filetypes = tsserver_filetypes,
+  on_attach = on_attach,
+  capabilities = capabilities,
 }
 
-lspconfig.denols.setup {
-    on_attach = on_attach,
-    root_dir = util.root_pattern("deno.json", "deno.jsonc"),
+-- If you are on most recent `nvim-lspconfig`
+local vue_ls_config = {
+     on_attach = on_attach,
+     capabilities = capabilities,
+     hybridMode = false,
 }
+-- vim.lsp.config('ts_ls', {
+--     init_options = {
+--         plugins = {
+--             {
+--                 name = '@vue/typescript-plugin',
+--                 location = vue_language_server_path,
+--                 languages = { "javascript", "typescript", "vue" },
+--             },
+--         },
+--     },
+--     filetypes = { 'typescript', 'javascript', 'javascriptreact', 'typescriptreact', 'vue' },
+--     single_file_support = false,
+--     on_attach = on_attach,
+--     capabilities = capabilities,
+-- })
+vim.lsp.config('vue_ls', vue_ls_config)
+vim.lsp.config('ts_ls', ts_ls_config)
+vim.lsp.enable({'ts_ls', 'vue_ls'})
 
-lspconfig.rust_analyzer.setup({
+vim.lsp.enable('rust_analyzer')
+vim.lsp.config('rust_analyzer', {
     on_attach = on_attach,
     capabilities = capabilities,
     filetypes = { "rust" },
-    root_dir = util.root_pattern("Cargo.toml"),
     settings = {
         ['rust_analyzer'] = {
             cargo = {
@@ -90,13 +99,27 @@ lspconfig.rust_analyzer.setup({
     },
 })
 
+-- npm install -g pyright
+vim.lsp.enable('pyright')
+vim.lsp.config('pyright', {
+    capabilities = capabilities,
+    on_attach = on_attach
+})
+
+-- pacman -S clang
+vim.lsp.enable('clangd')
+vim.lsp.config('clangd', {
+    capabilities = capabilities,
+    on_attach = on_attach
+})
+
 -- go install golang.org/x/tools/gopls@latest
-lspconfig.gopls.setup {
+vim.lsp.enable('gopls')
+vim.lsp.config('gopls', {
     cmd = { "gopls", "serve" },
     on_attach = on_attach,
     capabilities = capabilities,
     filetypes = { "go", "gomod" },
-    root_dir = util.root_pattern("go.work", "go.mod", ".git"),
     settings = {
         gopls = {
             analyses = {
@@ -105,20 +128,5 @@ lspconfig.gopls.setup {
             staticcheck = true,
         },
     },
-}
-
--- npm install -g pyright
-lspconfig.pyright.setup {
-    capabilities = capabilities,
-    on_attach = on_attach
-}
-
-lspconfig.clangd.setup({
-    capabilities = capabilities,
-    on_attach = on_attach
 })
 
-lspconfig.ols.setup ({
-    capabilities = capabilities,
-    on_attach = on_attach
-})

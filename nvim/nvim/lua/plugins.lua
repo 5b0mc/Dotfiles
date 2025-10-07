@@ -1,6 +1,5 @@
 return require("packer").startup(function()
-    use "ibhagwan/fzf-lua"
-    use "stevearc/oil.nvim"
+    use 'wbthomason/packer.nvim'
     use 'hrsh7th/cmp-buffer'
     use 'hrsh7th/cmp-cmdline'
     use 'hrsh7th/cmp-nvim-lsp'
@@ -11,7 +10,8 @@ return require("packer").startup(function()
     use 'neovim/nvim-lspconfig'
     use 'tpope/vim-commentary'
     use 'tpope/vim-fugitive'
-    use 'wbthomason/packer.nvim'
+    use "ibhagwan/fzf-lua"
+    use "stevearc/oil.nvim"
     use 'shaunsingh/nord.nvim'
     use 'nvim-lualine/lualine.nvim'
 end)

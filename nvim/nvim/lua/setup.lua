@@ -24,7 +24,7 @@ cmp.setup({
 })
 
 require 'oil'.setup {}
-require'lualine'.setup{
+require 'lualine'.setup{
     options ={
         icons_enabled=false,
     }
@@ -56,9 +56,9 @@ require 'fzf-lua'.setup {
     },
 }
 
-vim.api.nvim_create_autocmd("FileType", {
-  pattern = "vue",
-  callback = function()
-    vim.bo.commentstring = "// %s"
-  end,
-})
+-- vim.api.nvim_create_autocmd("FileType", {
+--   pattern = "vue",
+--   callback = function()
+--     vim.bo.commentstring = "// %s"
+--   end,
+-- })

@@ -108,7 +108,7 @@ if mountpoint -q "$MOUNT_POINT"; then
     --include "$HOME/Prompts/" \
     --include "$HOME/Hacks/" \
     --include "$HOME/Public/" \
-    --include "$HOME/Videos/" \
+    --include "$HOME/Video/" \
     --include "$HOME/Writings/" \
     --exclude "**" \
     --verbosity info "$HOME" "$NEW_DEST" | tee "$LOGFILE"
