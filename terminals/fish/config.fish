@@ -9,13 +9,14 @@ alias jn="jupyter notebook"
 alias python="python3"
 alias vim="nvim"
 alias vi="vim"
-# Aliases as Shortcuts for My Favorite Folders
+alias hx="helix"
+# Aliases as Shortcuts
 alias dl="cd ~/Downloads"
 alias do="cd ~/Dotfiles"
 alias wn="cd ~/Code/WiNet"
 alias ms="cd ~/Writings/MS/"
 alias co="cd ~/Code"
-# Sunday as first day of the week is an abomination
+# Sunday as first day of the week is a bestemmia
 alias cal="cal -3m"
 
 # Set Environment Variables
@@ -25,18 +26,46 @@ set -x PATH $PATH $NPM_PACKAGES/bin
 # Go
 set -x GOPATH $HOME/.go
 set -x PATH $PATH $GOPATH/bin
-# Cargo e Rustup
+# Cargo/Rustup
 set -x CARGO_HOME $HOME/.cargo
 set -x PATH $PATH $CARGO_HOME/bin
 set -x RUSTUP_HOME $HOME/.rustup
 set -x PATH $PATH $RUSTUP_HOME/bin
 # Local apps and Web apps
 set -x PATH $PATH $HOME/.local/bin
-# Set Environment for Linux or MacOS
+# Set Environment Variables for Linux or MacOS
 set os (uname)
 switch $os
-    case "Darwin"
+    case Darwin
         set -x PATH $PATH /opt/homebrew/bin
+end
+
+# Functions and Tools
+function coin
+    if test ( math (random) % 2) -eq 0
+        echo "No."
+    else
+        echo "Yes."
+    end
+end
+
+function pickrandom
+    find . -maxdepth 1 | shuf -n 14
+end
+
+function newpass
+    set -l length 8
+    if not test (count $argv) -eq 0
+        set length $argv[1]
+    end
+    for i in (seq 3)
+        openssl rand -base64 40 | tr -d '/+=\n' | head -c "$length"
+        echo
+    end
+end
+
+function colorpicker
+    grim -g "(slurp -p)" -t ppm - | magick - -format '%[pixel:p{0,0}]' txt:-
 end
 
 function sanitize_title
@@ -45,11 +74,9 @@ function sanitize_title
         return 1
     end
     set title $argv[1]
-    set clean (string replace -a ' ' '_' $title)
-    set clean (string replace -ra '[\/\\\:\*\?\"\<\>\|\)\(-]' '_' $clean)
+    set clean (string replace -ra '[\W]+' '_' $title)
     set clean (string replace -ra '_+' '_' $clean)
     set clean (string replace -ra '^_+|_+$' '' $clean)
-    set clean (string replace -r '__+' '_' $clean)
     echo $clean
 end
 
@@ -60,10 +87,6 @@ function dl_audio
         return 1
     end
     set title (sanitize_title $rawtitle)
-    if test -z "$title"
-        echo "Error: Could not sanitize title"
-        return 1
-    end
     yt-dlp -f "bestaudio[ext=webm]/bestaudio[ext=m4a]/bestaudio" \
         --extract-audio \
         --audio-format opus \
@@ -72,7 +95,6 @@ function dl_audio
         $argv[1]
 end
 
-
 function dl_video
     set rawtitle (yt-dlp --get-title $argv[1] 2>/dev/null)
     if test $status -ne 0
@@ -80,58 +102,38 @@ function dl_video
         return 1
     end
     set title (sanitize_title $rawtitle)
-    if test -z "$title"
-        echo "Error: Could not sanitize title"
-        return 1
-    end
     yt-dlp -f "bestvideo+bestaudio/best" \
         --merge-output-format mp4 \
         -o "~/Videos/dl_video/$title.%(ext)s" \
         $argv[1]
 end
 
-
-# Find a random file in the current folder
-function pickrandom
-    find . -maxdepth 1 | shuf -n 14
-end
-
-# Generate random srings for passwords
-function newpass
-    set -l length 8
-    if not test (count $argv) -eq 0
-        set length $argv[1]
+function convert_audio_to_opus
+    if test (count $argv) -lt 1
+        echo "no input file"
+        return 1
     end
-    for i in (seq 3)
-        openssl rand -base64 40 | tr -d '/+=\n' | head -c "$length" ; echo
-    end
+    set rawtitle $argv[1]
+    set title (sanitize_title $rawtitle)
+    set output "$title.opus"
+    ffmpeg -i $rawtitle -c:a libopus -b:a 160k $output
 end
 
-# Print  the color value of an pixel
-function colorpicker
-    grim -g "(slurp -p)" -t ppm - | magick - -format '%[pixel:p{0,0}]' txt:-
-end
-
-# Make a Quick Decision
-function coin
-    if test ( math (random) % 2) -eq 0
-        echo "No."
-    else
-        echo "Yes."
-    end
-end
-
-# Iterates through files in ~/.config/keys, converting filenames to uppercase variable names and exporting their contents as environment variables
-if test -d ~/.config/keys
-    for key_file in ~/.config/keys/*
-        if test -f $key_file
-            set file_name (basename $key_file)
-            set var_name (string upper $file_name)
-            set key_content (cat $key_file)
-            if test -n "$key_content"
-                set -gx $var_name $key_content
+# Load Local Api Keys (es. ANTHROPIC_API_KEY GOOGLE_AI_API_KEY OPENAI_API_KEY )
+# 1. Iterates through files in ~/.config/keys
+# 2. Converting filenames to uppercase variable names
+# 3. exporting their contents as environment variables
+function load_my_api_keys
+    if test -d ~/.config/keys
+        for key_file in ~/.config/keys/*
+            if test -f $key_file
+                set file_name (basename $key_file)
+                set var_name (string upper $file_name)
+                set key_content (cat $key_file)
+                if test -n "$key_content"
+                    set -gx $var_name $key_content
+                end
             end
         end
     end
 end
-
