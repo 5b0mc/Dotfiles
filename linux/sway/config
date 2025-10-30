@@ -48,7 +48,7 @@ input "2:10:TPPS/2_Elan_TrackPoint" {
 }
 
 #### My background image
-output * bg /home/m/Documents/stuff/Nighthawks_by_Edward_Hopper_1942.jpg fill
+output * bg /home/m/Dotfiles/Nighthawks_by_Edward_Hopper_1942.jpg fill
 # 27" external displays
 output * {
     scale 1.5 
@@ -160,21 +160,13 @@ assign [app_id="com.transmissionbt*"] $ws_stuff
 for_window [app_id="org.pulseaudio.pavucontrol"] floating enable
 for_window [app_id="blueberry.py"] floating enable
 
-# Scratchpad
-bindsym $mod+control+minus move scratchpad
-bindsym $mod+minus scratchpad show
-focus_follows_mouse yes
-# resize window  mode
-bindsym $mod+control+g exec "notify-send -u critical 'RESIZE MODE' 'Use j, k, l, ; to resize. ESC to exit.' -p > /tmp/resize_notification_id ; swaymsg mode resize"
-mode "resize" {
-        bindsym j resize shrink width 10 px or 10 ppt
-        bindsym k resize grow height 10 px or 10 ppt
-        bindsym l resize shrink height 10 px or 10 ppt
-        bindsym semicolon resize grow width 10 px or 10 ppt
-        # back to normal and close notification
-        bindsym Escape exec "makoctl dismiss -n $(cat /tmp/resize_notification_id); rm /tmp/resize_notification_id; swaymsg mode default"
-}
+# resize window 
+bindsym $mod+equal resize grow width 10 px or 10 ppt
+bindsym $mod+minus resize shrink width 10 px or 10 ppt
+bindsym $mod+shift+equal resize grow height 10 px or 10 ppt
+bindsym $mod+shift+minus resize shrink height 10 px or 10 ppt
 
+# focus
 bindsym $mod+j focus left
 bindsym $mod+k focus down
 bindsym $mod+l focus up
