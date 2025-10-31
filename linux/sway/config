@@ -22,7 +22,7 @@ set $mod Mod4
 set $alt Mod1
 tiling_drag disabled
 #### My app launcher
-set $menu tofi-drun | xargs swaymsg exec --
+set $menu fuzzel
 #### My terminal emulator
 set $term alacritty
 
@@ -91,6 +91,8 @@ bindsym XF86MonBrightnessUp exec brightnessctl set 5%+
 bindsym XF86Display exec swaymsg output $laptop_display toggle
 # save screenshots in the clipboard (secondary selection)
 bindsym Print exec grim -g "$(slurp)" - | wl-copy
+bindsym control+Print exec grim - | wl-copy
+bindsym $mod+grave exec hyprpicker | wl-copy
 
 
 ###########  
