@@ -9,13 +9,13 @@
         "sway/scratchpad",
         "hyprland/workspaces"
     ],
-    "modules-center": [
-        "custom/launcher",
-        "custom/split-toggle",
-        "custom/layout-toggle",
-        "custom/new-layout-split",
-        "custom/kill-window"
-    ],
+    //"modules-center": [
+   //     "custom/launcher",
+  //      "custom/split-toggle",
+//        "custom/layout-toggle",
+ //       "custom/new-layout-split",
+    //    "custom/kill-window"
+    //],
     "modules-right": [
         "wireplumber",
         "bluetooth",
