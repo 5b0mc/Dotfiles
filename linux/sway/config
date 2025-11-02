@@ -42,7 +42,11 @@ output * {
     resolution 3840x2160@120.000Hz
 }
 # 27" second vertical external displays
-output "LG Electronics LG HDR 4K 0x00006D62" transform 90
+output "LG Electronics LG HDR 4K 0x00006D62" {
+    resolution 3840x2160@60.000Hz
+    scale 1.5 
+    transform 90
+}
 # 14" notebook display
 output $laptop_display {
     res 2880x1800@120.000Hz
