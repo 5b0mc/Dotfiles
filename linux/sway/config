@@ -38,8 +38,8 @@ input "2:10:TPPS/2_Elan_TrackPoint" {
 }
 # 27" external displays
 output * {
-    scale 1.5 
     resolution 3840x2160@120.000Hz
+    scale 1.5 
 }
 # 27" second vertical external displays
 output "LG Electronics LG HDR 4K 0x00006D62" {
@@ -82,7 +82,7 @@ bindsym XF86Display exec swaymsg output $laptop_display toggle
 # save screenshots in the clipboard (secondary selection)
 bindsym Print exec grim -g "$(slurp)" - | wl-copy
 bindsym control+Print exec grim - | wl-copy
-bindsym $mod+grave exec hyprpicker | wl-copy
+#bindsym $mod+grave exec hyprpicker | wl-copy
 # zen mode
 bindsym $mod+z exec fish -c 'if pgrep -x waybar >/dev/null 2>&1; killall waybar; dunstctl set-paused true; else; nohup waybar >/dev/null 2>&1 & dunstctl set-paused false; end'
 
@@ -145,8 +145,6 @@ assign [app_id="spotify"] $ws_main
 assign [app_id="betterbird"] $ws_main
 assign [app_id="org.telegram.desktop"] $ws_main
 assign [app_id="libreoffice"] $ws_office
-assign [app_id="Electron"] $ws_stuff
-assign [app_id="Bruno"] $ws_stuff
 assign [app_id="com.transmissionbt*"] $ws_stuff
 # floating windows for daemonized programs 
 for_window [app_id="org.pulseaudio.pavucontrol"] floating enable

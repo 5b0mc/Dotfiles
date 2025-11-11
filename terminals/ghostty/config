@@ -1,4 +1,4 @@
-theme = nord
 window-decoration = false
 resize-overlay = never
 focus-follows-mouse = true
+background=#000000

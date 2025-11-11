@@ -10,6 +10,7 @@ alias python="python3"
 alias vim="nvim"
 alias vi="vim"
 alias hx="helix"
+alias t="tmux a || tmux"
 # Aliases as Shortcuts
 alias dl="cd ~/Downloads"
 alias do="cd ~/Dotfiles"
