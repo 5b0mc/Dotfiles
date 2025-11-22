@@ -26,6 +26,12 @@ local on_attach = function(client, bufnr)
 end
 
 
+vim.lsp.config('fish-lsp', {
+    on_attach = on_attach,
+    capabilities = capabilities,
+})
+vim.lsp.enable('fish-lsp')
+
 -- npm i -g vscode-langservers-extracted
 vim.lsp.config('cssls', {
     on_attach = on_attach,

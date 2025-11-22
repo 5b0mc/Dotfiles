@@ -37,15 +37,16 @@ input "2:10:TPPS/2_Elan_TrackPoint" {
     pointer_accel -1
 }
 # 27" external displays
-output * {
+output "Dell Inc. DELL U2725QE GNM6C34" {
     resolution 3840x2160@120.000Hz
-    scale 1.5 
+    scale 1.358333
+    position 0 0
 }
 # 27" second vertical external displays
 output "LG Electronics LG HDR 4K 0x00006D62" {
-    resolution 3840x2160@60.000Hz
-    scale 1.5 
+    resolution 2560x1440@30.000Hz
     transform 90
+    scale 1.4
 }
 # 14" notebook display
 output $laptop_display {
